@@ -1,4 +1,3 @@
-import Header from "../../components/Header";
 export default function RuPage() {
   const lensTypes = [
     {
@@ -26,11 +25,7 @@ export default function RuPage() {
     "временное затуманивание"
   ];
 
-return (
-  <>
-    <Header />
-    <main
-    
+  return (
     <main
       style={{
         fontFamily: "Arial, Helvetica, sans-serif",
