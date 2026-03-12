@@ -26,7 +26,11 @@ export default function RuPage() {
     "временное затуманивание"
   ];
 
-  return (
+return (
+  <>
+    <Header />
+    <main
+    
     <main
       style={{
         fontFamily: "Arial, Helvetica, sans-serif",
