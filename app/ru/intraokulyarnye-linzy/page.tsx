@@ -5,19 +5,23 @@ export default function LensesPage() {
   const lenses = [
     {
       title: "Монофокальные ИОЛ",
-      text: "Обеспечивают хорошее зрение на одном расстоянии, чаще всего вдаль. Для чтения могут понадобиться очки."
+      text: "Хорошее зрение на одном расстоянии (обычно вдаль). Для чтения чаще всего нужны очки.",
+      highlight: "базовый вариант"
     },
     {
       title: "Торические ИОЛ",
-      text: "Используются, если у пациента есть астигматизм. Позволяют скорректировать его во время операции."
+      text: "Используются, если есть астигматизм. Позволяют скорректировать его во время операции.",
+      highlight: "для астигматизма"
     },
     {
       title: "Мультифокальные ИОЛ",
-      text: "Помогают видеть на разных расстояниях: вдаль и вблизи. Часто уменьшают зависимость от очков."
+      text: "Позволяют видеть вдаль и вблизи. Могут уменьшить зависимость от очков.",
+      highlight: "максимальная свобода"
     },
     {
-      title: "EDOF (расширенный диапазон)",
-      text: "Дают хорошее зрение вдаль и на среднем расстоянии (например, компьютер)."
+      title: "EDOF",
+      text: "Обеспечивают хорошее зрение вдаль и на среднем расстоянии (компьютер, повседневные задачи).",
+      highlight: "баланс"
     }
   ];
 
@@ -28,69 +32,45 @@ export default function LensesPage() {
       <main>
 
         {/* HERO */}
-        <section
-          style={{
-            background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f8fafc 100%)",
-            padding: "72px 20px 56px"
-          }}
-        >
+        <section style={{ padding: "72px 20px", background: "#f8fafc" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div
-              style={{
-                display: "inline-block",
-                padding: "8px 14px",
-                borderRadius: 999,
-                background: "#ffffff",
-                border: "1px solid #dbeafe",
-                color: "#2563eb",
-                fontSize: 14,
-                fontWeight: 700,
-                marginBottom: 18
-              }}
-            >
-              Интраокулярные линзы
-            </div>
-
-            <h1
-              style={{
-                fontSize: 48,
-                lineHeight: 1.1,
-                maxWidth: 820,
-                margin: "0 0 18px",
-                color: "#0f172a"
-              }}
-            >
-              Какие бывают интраокулярные линзы (ИОЛ)
+            <h1 style={{ fontSize: 44 }}>
+              Интраокулярные линзы (ИОЛ): от чего зависит ваше зрение после операции
             </h1>
 
-            <p
-              style={{
-                fontSize: 20,
-                lineHeight: 1.7,
-                color: "#475569",
-                maxWidth: 820,
-                margin: 0
-              }}
-            >
-              Во время операции катаракты естественный хрусталик заменяется
-              искусственной линзой. От её типа зависит, как вы будете видеть
-              после операции.
+            <p style={{ fontSize: 20, color: "#475569", maxWidth: 800 }}>
+              При операции катаракты мутный хрусталик заменяется искусственной линзой.
+              Именно от её типа зависит, как вы будете видеть — только вдаль или на всех расстояниях.
             </p>
           </div>
         </section>
 
-        {/* TYPES */}
-        <section style={{ padding: "56px 20px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <h2
+        {/* КЛЮЧЕВАЯ МЫСЛЬ */}
+        <section style={{ padding: "40px 20px" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div
               style={{
-                fontSize: 34,
-                marginBottom: 28,
-                color: "#0f172a"
+                background: "#0f172a",
+                color: "#fff",
+                padding: 28,
+                borderRadius: 20
               }}
             >
-              Основные типы линз
-            </h2>
+              <h2 style={{ marginTop: 0 }}>
+                Важно понимать
+              </h2>
+              <p style={{ margin: 0, fontSize: 18, color: "#cbd5e1" }}>
+                Операция катаракты — это не только лечение, но и возможность
+                выбрать качество зрения на годы вперёд.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ТИПЫ ЛИНЗ */}
+        <section style={{ padding: "56px 20px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <h2 style={{ fontSize: 34 }}>Основные варианты линз</h2>
 
             <div
               style={{
@@ -104,39 +84,25 @@ export default function LensesPage() {
                   key={lens.title}
                   style={{
                     border: "1px solid #e2e8f0",
-                    borderRadius: 24,
+                    borderRadius: 20,
                     padding: 24,
-                    background: "#ffffff",
-                    boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+                    background: "#fff"
                   }}
                 >
                   <div
                     style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 16,
-                      background: "#eff6ff",
-                      marginBottom: 16
-                    }}
-                  />
-
-                  <h3
-                    style={{
-                      fontSize: 22,
-                      margin: "0 0 10px",
-                      color: "#0f172a"
+                      fontSize: 12,
+                      color: "#2563eb",
+                      fontWeight: 700,
+                      marginBottom: 8
                     }}
                   >
-                    {lens.title}
-                  </h3>
+                    {lens.highlight}
+                  </div>
 
-                  <p
-                    style={{
-                      margin: 0,
-                      color: "#475569",
-                      lineHeight: 1.7
-                    }}
-                  >
+                  <h3>{lens.title}</h3>
+
+                  <p style={{ color: "#475569" }}>
                     {lens.text}
                   </p>
                 </div>
@@ -145,45 +111,41 @@ export default function LensesPage() {
           </div>
         </section>
 
+        {/* СЦЕНАРИИ */}
+        <section style={{ background: "#f1f5f9", padding: "56px 20px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <h2>Как пациенты обычно выбирают</h2>
+
+            <div style={{ display: "grid", gap: 20, marginTop: 20 }}>
+              <div style={{ background: "#fff", padding: 20, borderRadius: 16 }}>
+                <b>Хочу просто хорошо видеть вдаль</b>
+                <p>Чаще выбирают монофокальные линзы.</p>
+              </div>
+
+              <div style={{ background: "#fff", padding: 20, borderRadius: 16 }}>
+                <b>Есть астигматизм</b>
+                <p>Важно обсудить торические линзы.</p>
+              </div>
+
+              <div style={{ background: "#fff", padding: 20, borderRadius: 16 }}>
+                <b>Хочу меньше зависеть от очков</b>
+                <p>Рассматривают мультифокальные или EDOF решения.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section style={{ padding: "56px 20px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div
-              style={{
-                background: "#0f172a",
-                color: "#ffffff",
-                borderRadius: 28,
-                padding: "36px 28px"
-              }}
-            >
-              <h2 style={{ fontSize: 32, margin: "0 0 16px" }}>
-                Как выбрать подходящую линзу
-              </h2>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ background: "#0f172a", color: "#fff", padding: 30, borderRadius: 20 }}>
+              <h2>Что обсудить с врачом</h2>
 
-              <p
-                style={{
-                  fontSize: 18,
-                  lineHeight: 1.8,
-                  color: "#cbd5e1",
-                  marginBottom: 20
-                }}
-              >
-                Выбор линзы зависит от образа жизни, зрения и ваших ожиданий.
-                Важно обсудить это с врачом перед операцией.
-              </p>
-
-              <ul
-                style={{
-                  paddingLeft: 20,
-                  margin: 0,
-                  color: "#cbd5e1",
-                  lineHeight: 1.9
-                }}
-              >
-                <li>важно ли вам видеть без очков</li>
+              <ul style={{ lineHeight: 1.9 }}>
+                <li>какое зрение для вас важнее — вдаль или без очков</li>
                 <li>есть ли астигматизм</li>
-                <li>работаете ли за компьютером</li>
-                <li>важно ли чтение без очков</li>
+                <li>образ жизни (чтение, компьютер, вождение)</li>
+                <li>ожидания от результата</li>
               </ul>
             </div>
           </div>
