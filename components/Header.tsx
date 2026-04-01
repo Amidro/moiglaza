@@ -12,22 +12,22 @@ export default function Header() {
     >
       <div
         style={{
-          maxWidth: 1200,
+          maxWidth: 1100,
           margin: "0 auto",
-          padding: "14px 40px",
+          padding: "16px 20px",
           display: "flex",
-          alignItems: "center",
           justifyContent: "space-between",
+          alignItems: "center",
           gap: 20
         }}
       >
         <a
           href="/ru"
           style={{
-            textDecoration: "none",
-            color: "#0f172a",
+            fontWeight: 700,
             fontSize: 24,
-            fontWeight: 700
+            color: "#0f172a",
+            textDecoration: "none"
           }}
         >
           MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
@@ -36,73 +36,34 @@ export default function Header() {
         <nav
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 10,
-            flexWrap: "wrap"
+            gap: 18,
+            flexWrap: "wrap",
+            alignItems: "center"
           }}
         >
-          <a
-            href="/ru"
-            style={{
-              textDecoration: "none",
-              color: "#334155",
-              padding: "10px 14px",
-              borderRadius: 999,
-              fontWeight: 600
-            }}
-          >
+          <a href="/ru" style={{ textDecoration: "none", color: "#334155" }}>
             Главная
           </a>
-
-          <a
-            href="/ru/katarakta"
-            style={{
-              textDecoration: "none",
-              color: "#334155",
-              padding: "10px 14px",
-              borderRadius: 999,
-              fontWeight: 600
-            }}
-          >
+          <a href="/ru/katarakta" style={{ textDecoration: "none", color: "#334155" }}>
             Катаракта
           </a>
-
           <a
             href="/ru/intraokulyarnye-linzy"
-            style={{
-              textDecoration: "none",
-              color: "#334155",
-              padding: "10px 14px",
-              borderRadius: 999,
-              fontWeight: 600
-            }}
+            style={{ textDecoration: "none", color: "#334155" }}
           >
             Интраокулярные линзы
           </a>
-
-          <a
-            href="/ru/suhoj-glaz"
-            style={{
-              textDecoration: "none",
-              color: "#334155",
-              padding: "10px 14px",
-              borderRadius: 999,
-              fontWeight: 600
-            }}
-          >
+          <a href="/ru/suhoj-glaz" style={{ textDecoration: "none", color: "#334155" }}>
             Сухой глаз
           </a>
-
           <a
             href="/uz"
             style={{
               textDecoration: "none",
               color: "#0f172a",
-              padding: "10px 16px",
-              borderRadius: 999,
-              fontWeight: 700,
               border: "1px solid #cbd5e1",
-              background: "#fff"
+              padding: "8px 14px",
+              borderRadius: 999
             }}
           >
             O‘zbekcha
