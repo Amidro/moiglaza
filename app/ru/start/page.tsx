@@ -162,32 +162,34 @@ export default function StartPage() {
     }
   ];
 
-  const isLastStep = step === steps.length - 1;
+const isLastStep = step === steps.length - 1;
 
-  const canGoNext = (() => {
-    switch (steps[step].id) {
-      case "lifestyle":
-        return !!answers.lifestyle;
-      case "visualFocuses":
-        return answers.visualFocuses.length > 0;
-      case "gadgetsComfort":
-        return !!answers.gadgetsComfort;
-      case "glassesFreedom":
-        return !!answers.glassesFreedom;
-      case "noGlassesSituations":
-        return answers.noGlassesSituations.length > 0;
-      default:
-        return false;
-    }
-  })();
+const currentStepId = step < steps.length ? steps[step].id : null;
 
-  const isComplete =
-    !!answers.lifestyle &&
-    answers.visualFocuses.length > 0 &&
-    !!answers.gadgetsComfort &&
-    !!answers.glassesFreedom &&
-    answers.noGlassesSituations.length > 0 &&
-    step >= steps.length;
+const canGoNext = (() => {
+  switch (currentStepId) {
+    case "lifestyle":
+      return !!answers.lifestyle;
+    case "visualFocuses":
+      return answers.visualFocuses.length > 0;
+    case "gadgetsComfort":
+      return !!answers.gadgetsComfort;
+    case "glassesFreedom":
+      return !!answers.glassesFreedom;
+    case "noGlassesSituations":
+      return answers.noGlassesSituations.length > 0;
+    default:
+      return false;
+  }
+})();
+
+const isComplete =
+  step >= steps.length &&
+  !!answers.lifestyle &&
+  answers.visualFocuses.length > 0 &&
+  !!answers.gadgetsComfort &&
+  !!answers.glassesFreedom &&
+  answers.noGlassesSituations.length > 0;
 
   const restart = () => {
     setStarted(false);
