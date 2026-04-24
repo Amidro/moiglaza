@@ -1,14 +1,15 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import {
-  BookIcon,
+  ReadingIcon,
   DropIcon,
   EyeIcon,
   LensIcon,
   QuestionIcon,
-  ScalpelIcon,
+  SurgeryIcon,
   SparklesIcon,
-  TargetIcon
+  TargetIcon,
+  CataractIcon
 } from "../../components/icons";
 
 const cards = [
@@ -20,7 +21,7 @@ const cards = [
     linkText: "Подробнее о причинах →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <EyeIcon />
+    icon: <CataractIcon />
   },
   {
     title: "Что такое катаракта?",
@@ -40,7 +41,7 @@ const cards = [
     linkText: "Подробнее о возрастном зрении →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <BookIcon />
+    icon: <ReadingIcon />
   },
   {
     title: "Как проходит операция при катаракте?",
@@ -50,7 +51,7 @@ const cards = [
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <ScalpelIcon />
+    icon: <SurgeryIcon />
   },
   {
     title: "Какое зрение вы хотите после операции?",
