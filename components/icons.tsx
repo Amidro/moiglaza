@@ -20,6 +20,22 @@ export function EyeIcon({ size = 22, color = "#2563eb" }: IconProps) {
   );
 }
 
+export function CataractIcon({ size = 22, color = "#2563eb" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M2.5 12C4.8 8.2 8.1 6 12 6C15.9 6 19.2 8.2 21.5 12C19.2 15.8 15.9 18 12 18C8.1 18 4.8 15.8 2.5 12Z"
+        stroke={color}
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="12" r="3.1" stroke={color} strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="1.3" fill={color} opacity="0.28" />
+    </svg>
+  );
+}
+
 export function QuestionIcon({ size = 22, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -35,7 +51,7 @@ export function QuestionIcon({ size = 22, color = "#2563eb" }: IconProps) {
   );
 }
 
-export function BookIcon({ size = 22, color = "#2563eb" }: IconProps) {
+export function ReadingIcon({ size = 22, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
@@ -54,7 +70,7 @@ export function BookIcon({ size = 22, color = "#2563eb" }: IconProps) {
   );
 }
 
-export function ScalpelIcon({ size = 22, color = "#2563eb" }: IconProps) {
+export function SurgeryIcon({ size = 22, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
@@ -110,7 +126,33 @@ export function LensIcon({ size = 24, color = "#2563eb" }: IconProps) {
   );
 }
 
-export function LayersIcon({ size = 24, color = "#2563eb" }: IconProps) {
+export function IntermediateIcon({ size = 24, color = "#2563eb" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <rect x="5" y="7" width="14" height="10" rx="2.5" stroke={color} strokeWidth="1.7" />
+      <path
+        d="M9 19H15"
+        stroke={color}
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10 10.5H14"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M9 13H15"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function MultifocalIcon({ size = 24, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
@@ -142,6 +184,19 @@ export function DropIcon({ size = 24, color = "#2563eb" }: IconProps) {
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
         d="M12 4.2C12 4.2 6.8 10.1 6.8 14C6.8 17 9.16 19.2 12 19.2C14.84 19.2 17.2 17 17.2 14C17.2 10.1 12 4.2 12 4.2Z"
+        stroke={color}
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function ComfortIcon({ size = 22, color = "#2563eb" }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12 19C12 19 5.5 15.2 5.5 10.3C5.5 8.2 7 6.8 8.8 6.8C10.2 6.8 11.2 7.5 12 8.4C12.8 7.5 13.8 6.8 15.2 6.8C17 6.8 18.5 8.2 18.5 10.3C18.5 15.2 12 19 12 19Z"
         stroke={color}
         strokeWidth="1.7"
         strokeLinejoin="round"
