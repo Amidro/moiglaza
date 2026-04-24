@@ -1,9 +1,78 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f8fafc;
+  --bg-blue-soft: #eff6ff;
+  --text: #0f172a;
+  --text-body: #475569;
+  --text-secondary: #64748b;
+  --border: #e2e8f0;
+  --border-soft: #dbeafe;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --shadow-strong: 0 18px 42px rgba(15, 23, 42, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+}
+
+main {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
 }
