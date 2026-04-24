@@ -1,6 +1,116 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { content } from "../../lib/content";
+
+function EyeIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+      />
+      <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function QuestionIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" stroke="#2563eb" strokeWidth="1.8" />
+      <path
+        d="M9.9 9.2C10.2 8.2 11 7.5 12.2 7.5C13.6 7.5 14.6 8.3 14.6 9.5C14.6 10.5 14 11.1 13.1 11.7C12.2 12.3 11.9 12.8 11.9 13.8"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="16.8" r="1" fill="#2563eb" />
+    </svg>
+  );
+}
+
+function BookIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M4.5 6.5C4.5 5.67 5.17 5 6 5H11C12.1 5 13 5.9 13 7V19C12.3 18.4 11.5 18 10.5 18H6C5.17 18 4.5 17.33 4.5 16.5V6.5Z"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M19.5 6.5C19.5 5.67 18.83 5 18 5H13C11.9 5 11 5.9 11 7V19C11.7 18.4 12.5 18 13.5 18H18C18.83 18 19.5 17.33 19.5 16.5V6.5Z"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
+function ScalpelIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M14.5 4.5L19.5 9.5"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M5 19L10.5 13.5L14.5 17.5L9 23"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M13.5 5.5L18.5 10.5"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function TargetIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" stroke="#2563eb" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="4.2" stroke="#2563eb" strokeWidth="1.8" />
+      <circle cx="12" cy="12" r="1.2" fill="#2563eb" />
+    </svg>
+  );
+}
+
+function LensIcon() {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <ellipse cx="12" cy="12" rx="5.5" ry="7" stroke="#2563eb" strokeWidth="1.8" />
+      <path d="M6 8L3.8 6.2" stroke="#2563eb" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M18 16L20.2 17.8" stroke="#2563eb" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function DropIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12 3C12 3 6 10 6 14.2C6 17.6 8.7 20 12 20C15.3 20 18 17.6 18 14.2C18 10 12 3 12 3Z"
+        stroke="#2563eb"
+        strokeWidth="1.8"
+      />
+    </svg>
+  );
+}
+
+function SparklesIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3L13.7 8.3L19 10L13.7 11.7L12 17L10.3 11.7L5 10L10.3 8.3L12 3Z" stroke="#2563eb" strokeWidth="1.6" />
+      <path d="M18.5 16L19.2 18L21.2 18.7L19.2 19.4L18.5 21.4L17.8 19.4L15.8 18.7L17.8 18L18.5 16Z" fill="#2563eb" />
+    </svg>
+  );
+}
 
 const cards = [
   {
@@ -10,7 +120,8 @@ const cards = [
       "После 40 лет это может быть связано с катарактой или возрастным ухудшением зрения вблизи. Важно понимать разницу, чтобы спокойнее обсудить её с врачом.",
     linkText: "Подробнее о причинах →",
     href: "/ru/katarakta",
-    accent: false
+    accent: false,
+    icon: <EyeIcon />
   },
   {
     title: "Что такое катаракта?",
@@ -19,7 +130,8 @@ const cards = [
       "Катаракта — это помутнение естественного хрусталика глаза. Из-за этого свет проходит хуже, и зрение становится менее чётким, как будто через туман.",
     linkText: "Подробнее о катаракте →",
     href: "/ru/katarakta",
-    accent: false
+    accent: false,
+    icon: <QuestionIcon />
   },
   {
     title: "Почему хуже видно вблизи?",
@@ -28,7 +140,8 @@ const cards = [
       "С возрастом глазу становится труднее фокусироваться на близком расстоянии. Это состояние называется пресбиопией и часто становится заметным при чтении и работе с телефоном.",
     linkText: "Подробнее о возрастном зрении →",
     href: "/ru/katarakta",
-    accent: false
+    accent: false,
+    icon: <BookIcon />
   },
   {
     title: "Как проходит операция при катаракте?",
@@ -37,7 +150,8 @@ const cards = [
       "Помутневший хрусталик заменяют прозрачной искусственной линзой через небольшой разрез. Операция обычно занимает около 15–20 минут и чаще всего проходит без боли.",
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
-    accent: false
+    accent: false,
+    icon: <ScalpelIcon />
   },
   {
     title: "Какое зрение вы хотите после операции?",
@@ -46,7 +160,8 @@ const cards = [
       "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом перед операцией. В результате вы увидите, какие технологии полезно знать перед консультацией.",
     linkText: "Пройти короткий опрос →",
     href: "/ru/start",
-    accent: true
+    accent: true,
+    icon: <TargetIcon />
   }
 ];
 
@@ -54,17 +169,20 @@ const topics = [
   {
     title: "Катаракта",
     text: "Что это такое, как развивается и как современная хирургия помогает вернуть чёткое зрение.",
-    href: "/ru/katarakta"
+    href: "/ru/katarakta",
+    icon: <EyeIcon />
   },
   {
     title: "Интраокулярные линзы",
     text: "Виды линз, их преимущества и как выбирать подходящий вариант вместе с врачом.",
-    href: "/ru/intraokulyarnye-linzy"
+    href: "/ru/intraokulyarnye-linzy",
+    icon: <LensIcon />
   },
   {
     title: "Сухой глаз",
     text: "Причины сухости и дискомфорта и что можно сделать для улучшения состояния.",
-    href: "/ru/suhoj-glaz"
+    href: "/ru/suhoj-glaz",
+    icon: <DropIcon />
   }
 ];
 
@@ -75,14 +193,11 @@ const cataractSteps = [
 ];
 
 export default function Page() {
-  const data = content.ru;
-
   return (
     <>
       <Header />
 
       <main>
-        {/* HERO */}
         <section
           style={{
             background:
@@ -124,7 +239,8 @@ export default function Page() {
                   lineHeight: 1.08,
                   margin: "0 0 18px",
                   color: "#0f172a",
-                  maxWidth: 620
+                  maxWidth: 620,
+                  letterSpacing: "-0.03em"
                 }}
               >
                 Простым языком о катаракте, зрении и современных линзах
@@ -180,12 +296,13 @@ export default function Page() {
             <div
               style={{
                 position: "relative",
-                minHeight: 360,
-                borderRadius: 32,
+                minHeight: 390,
+                borderRadius: 34,
                 background:
-                  "radial-gradient(circle at 60% 45%, rgba(255,255,255,0.95) 0%, rgba(219,234,254,0.88) 38%, rgba(191,219,254,0.38) 62%, rgba(239,246,255,0.15) 100%)",
+                  "radial-gradient(circle at 68% 46%, rgba(255,255,255,0.98) 0%, rgba(219,234,254,0.92) 34%, rgba(191,219,254,0.42) 58%, rgba(239,246,255,0.16) 100%)",
                 border: "1px solid rgba(191,219,254,0.8)",
-                overflow: "hidden"
+                overflow: "hidden",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)"
               }}
             >
               <div
@@ -193,50 +310,70 @@ export default function Page() {
                   position: "absolute",
                   inset: 0,
                   background:
-                    "radial-gradient(circle at 70% 50%, rgba(255,255,255,0.92) 0%, rgba(219,234,254,0.1) 45%, transparent 70%)"
+                    "radial-gradient(circle at 78% 36%, rgba(255,255,255,0.75) 0%, transparent 42%)"
                 }}
               />
               <div
                 style={{
                   position: "absolute",
-                  top: "10%",
-                  left: "14%",
-                  width: 380,
-                  height: 380,
+                  top: "8%",
+                  left: "10%",
+                  width: 420,
+                  height: 420,
                   borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.7)"
+                  border: "1px solid rgba(255,255,255,0.75)"
                 }}
               />
               <div
                 style={{
                   position: "absolute",
-                  top: "18%",
-                  left: "24%",
-                  width: 280,
-                  height: 280,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.7)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "12%",
                   top: "16%",
-                  width: 230,
-                  height: 230,
+                  left: "22%",
+                  width: 300,
+                  height: 300,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.75)"
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  right: "15%",
+                  top: "16%",
+                  width: 250,
+                  height: 250,
                   borderRadius: "50%",
                   background:
-                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 30%, rgba(191,219,254,0.72) 55%, rgba(147,197,253,0.28) 78%, rgba(96,165,250,0.06) 100%)",
+                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 26%, rgba(191,219,254,0.72) 50%, rgba(147,197,253,0.32) 72%, rgba(96,165,250,0.05) 100%)",
                   boxShadow:
-                    "0 0 0 10px rgba(255,255,255,0.32), 0 0 40px rgba(96,165,250,0.18)"
+                    "0 0 0 12px rgba(255,255,255,0.30), 0 0 50px rgba(96,165,250,0.20)"
                 }}
               />
+              <div
+                style={{
+                  position: "absolute",
+                  right: "10%",
+                  top: "8%",
+                  color: "rgba(37,99,235,0.12)",
+                  fontSize: 54,
+                  fontWeight: 700,
+                  lineHeight: 1.02,
+                  letterSpacing: "0.22em",
+                  textAlign: "center"
+                }}
+              >
+                Ш
+                <br />
+                Б
+                <br />
+                М
+                <br />
+                Н
+              </div>
             </div>
           </div>
         </section>
 
-        {/* USEFUL BLOCK */}
         <section style={{ padding: "72px 20px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div
@@ -264,7 +401,8 @@ export default function Page() {
                   fontSize: 36,
                   lineHeight: 1.2,
                   margin: "0 0 14px",
-                  color: "#0f172a"
+                  color: "#0f172a",
+                  letterSpacing: "-0.02em"
                 }}
               >
                 Когда этот сайт может быть вам полезен
@@ -301,12 +439,37 @@ export default function Page() {
                     border: item.accent
                       ? "2px solid #93c5fd"
                       : "1px solid #e2e8f0",
-                    borderRadius: 22,
+                    borderRadius: 24,
                     padding: 20,
-                    boxShadow: "0 10px 30px rgba(15,23,42,0.05)",
-                    minHeight: 290
+                    boxShadow: item.accent
+                      ? "0 14px 34px rgba(37,99,235,0.10)"
+                      : "0 10px 30px rgba(15,23,42,0.05)",
+                    minHeight: 300,
+                    position: "relative"
                   }}
                 >
+                  {item.accent && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 16,
+                        right: 16,
+                        width: 24,
+                        height: 24,
+                        borderRadius: 999,
+                        background: "#2563eb",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#ffffff",
+                        fontSize: 14,
+                        fontWeight: 700
+                      }}
+                    >
+                      ✓
+                    </div>
+                  )}
+
                   <summary
                     style={{
                       listStyle: "none",
@@ -317,7 +480,7 @@ export default function Page() {
                       style={{
                         width: 52,
                         height: 52,
-                        borderRadius: 16,
+                        borderRadius: 999,
                         background: item.accent ? "#dbeafe" : "#eff6ff",
                         display: "flex",
                         alignItems: "center",
@@ -325,22 +488,16 @@ export default function Page() {
                         marginBottom: 18
                       }}
                     >
-                      <div
-                        style={{
-                          width: 12,
-                          height: 12,
-                          borderRadius: 999,
-                          background: "#2563eb"
-                        }}
-                      />
+                      {item.icon}
                     </div>
 
                     <h3
                       style={{
-                        fontSize: 22,
+                        fontSize: 21,
                         lineHeight: 1.35,
                         color: "#0f172a",
-                        margin: "0 0 12px"
+                        margin: "0 0 12px",
+                        letterSpacing: "-0.01em"
                       }}
                     >
                       {item.title}
@@ -416,7 +573,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* TOPICS */}
         <section
           style={{
             padding: "72px 20px",
@@ -436,7 +592,8 @@ export default function Page() {
                   fontSize: 36,
                   lineHeight: 1.2,
                   margin: "0 0 14px",
-                  color: "#0f172a"
+                  color: "#0f172a",
+                  letterSpacing: "-0.02em"
                 }}
               >
                 Выберите тему, которая вас интересует
@@ -469,15 +626,21 @@ export default function Page() {
                       height: 56,
                       borderRadius: 999,
                       background: "#eff6ff",
-                      marginBottom: 18
+                      marginBottom: 18,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
                     }}
-                  />
+                  >
+                    {item.icon}
+                  </div>
                   <div
                     style={{
                       fontSize: 24,
                       fontWeight: 700,
                       color: "#0f172a",
-                      marginBottom: 12
+                      marginBottom: 12,
+                      letterSpacing: "-0.01em"
                     }}
                   >
                     {item.title}
@@ -507,7 +670,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* CATARACT BLOCK */}
         <section style={{ padding: "72px 20px" }}>
           <div
             style={{
@@ -525,7 +687,8 @@ export default function Page() {
                   fontSize: 36,
                   lineHeight: 1.2,
                   margin: "0 0 16px",
-                  color: "#0f172a"
+                  color: "#0f172a",
+                  letterSpacing: "-0.02em"
                 }}
               >
                 Как лечится катаракта
@@ -574,9 +737,9 @@ export default function Page() {
                   key={step}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "56px 1fr",
+                    gridTemplateColumns: "56px 1fr 28px",
                     gap: 18,
-                    alignItems: "start",
+                    alignItems: "center",
                     padding: "16px 0",
                     borderBottom:
                       index === cataractSteps.length - 1
@@ -610,13 +773,16 @@ export default function Page() {
                   >
                     {step}
                   </div>
+
+                  <div style={{ justifySelf: "end" }}>
+                    {index === 0 ? <EyeIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FINAL CTA */}
         <section style={{ padding: "0 20px 72px" }}>
           <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div
@@ -626,9 +792,34 @@ export default function Page() {
                 color: "#ffffff",
                 borderRadius: 28,
                 padding: "34px 28px",
-                boxShadow: "0 18px 42px rgba(15,23,42,0.18)"
+                boxShadow: "0 18px 42px rgba(15,23,42,0.18)",
+                position: "relative",
+                overflow: "hidden"
               }}
             >
+              <div
+                style={{
+                  position: "absolute",
+                  right: -80,
+                  bottom: -80,
+                  width: 320,
+                  height: 320,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.12)"
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  right: -20,
+                  bottom: -20,
+                  width: 220,
+                  height: 220,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.12)"
+                }}
+              />
+
               <div
                 style={{
                   display: "inline-block",
@@ -638,7 +829,9 @@ export default function Page() {
                   color: "#dbeafe",
                   fontSize: 14,
                   fontWeight: 700,
-                  marginBottom: 16
+                  marginBottom: 16,
+                  position: "relative",
+                  zIndex: 1
                 }}
               >
                 Следующий шаг
@@ -649,7 +842,9 @@ export default function Page() {
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
                   gap: 28,
-                  alignItems: "center"
+                  alignItems: "center",
+                  position: "relative",
+                  zIndex: 1
                 }}
               >
                 <div>
@@ -657,7 +852,8 @@ export default function Page() {
                     style={{
                       fontSize: 42,
                       lineHeight: 1.15,
-                      margin: "0 0 14px"
+                      margin: "0 0 14px",
+                      letterSpacing: "-0.03em"
                     }}
                   >
                     Пройдите короткий опрос перед консультацией
