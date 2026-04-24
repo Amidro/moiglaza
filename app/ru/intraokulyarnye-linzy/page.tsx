@@ -1,10 +1,8 @@
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
 import {
-  DropIcon,
   EyeIcon,
-  LayersIcon,
-  LensIcon
+  IntermediateIcon,
+  LensIcon,
+  MultifocalIcon
 } from "../../../components/icons";
 
 const lenses = [
