@@ -43,9 +43,9 @@ const cards = [
     accent: false
   },
   {
-    title: "Какое зрение вы бы хотели получить после операции?",
+    title: "Какое зрение вы хотите после операции?",
     preview:
-      "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом перед операцией.",
+      "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом.",
     expanded:
       "Ответьте на несколько простых вопросов о вашем образе жизни, зрительных привычках и ожиданиях. В результате вы увидите, какие технологии полезно знать перед консультацией — например, монофокальные ИОЛ, EDOF или трифокальные решения.",
     linkText: "Пройти короткий опрос →",
@@ -215,17 +215,13 @@ export default function Page() {
                     boxShadow: item.accent
                       ? "0 16px 38px rgba(37,99,235,0.10)"
                       : "0 10px 30px rgba(15,23,42,0.06)",
-                    height: "100%"
+                    minHeight: 230
                   }}
                 >
                   <summary
                     style={{
                       listStyle: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "100%",
-                      minHeight: 250
+                      cursor: "pointer"
                     }}
                   >
                     <div
@@ -254,10 +250,10 @@ export default function Page() {
 
                     <h3
                       style={{
-                        fontSize: item.accent ? 24 : 22,
+                        fontSize: item.accent ? 23 : 22,
                         lineHeight: 1.35,
                         color: "#0f172a",
-                        margin: "0 0 14px"
+                        margin: "0 0 12px"
                       }}
                     >
                       {item.title}
@@ -265,9 +261,9 @@ export default function Page() {
 
                     <p
                       style={{
-                        margin: 0,
+                        margin: "0 0 14px",
                         color: "#475569",
-                        lineHeight: 1.8,
+                        lineHeight: 1.75,
                         fontSize: 16
                       }}
                     >
@@ -276,8 +272,6 @@ export default function Page() {
 
                     <div
                       style={{
-                        marginTop: "auto",
-                        paddingTop: 16,
                         color: "#2563eb",
                         fontWeight: 700,
                         fontSize: 15
