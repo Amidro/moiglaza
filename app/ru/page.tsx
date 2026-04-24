@@ -1,97 +1,43 @@
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
 import {
-  BookIcon,
   DropIcon,
   EyeIcon,
-  LensIcon,
-  QuestionIcon,
-  ScalpelIcon,
-  SparklesIcon,
-  TargetIcon
-} from "../../components/icons";
+  SparklesIcon
+} from "../../../components/icons";
 
-const cards = [
-  {
-    title: "Зрение стало мутнее?",
-    preview: "Почему изображение становится не таким чётким, как раньше.",
-    expanded:
-      "После 40 лет это может быть связано с катарактой или возрастным ухудшением зрения вблизи. Важно понимать разницу, чтобы спокойнее обсудить её с врачом.",
-    linkText: "Подробнее о причинах →",
-    href: "/ru/katarakta",
-    accent: false,
-    icon: <EyeIcon />
-  },
-  {
-    title: "Что такое катаракта?",
-    preview: "Причины, симптомы и как катаракта влияет на качество жизни.",
-    expanded:
-      "Катаракта — это помутнение естественного хрусталика глаза. Из-за этого свет проходит хуже, и зрение становится менее чётким, как будто через туман.",
-    linkText: "Подробнее о катаракте →",
-    href: "/ru/katarakta",
-    accent: false,
-    icon: <QuestionIcon />
-  },
-  {
-    title: "Почему хуже видно вблизи?",
-    preview: "Возрастные изменения и их влияние на чтение и повседневные дела.",
-    expanded:
-      "С возрастом глазу становится труднее фокусироваться на близком расстоянии. Это состояние называется пресбиопией и часто становится заметным при чтении и работе с телефоном.",
-    linkText: "Подробнее о возрастном зрении →",
-    href: "/ru/katarakta",
-    accent: false,
-    icon: <BookIcon />
-  },
-  {
-    title: "Как проходит операция при катаракте?",
-    preview: "Безопасно, быстро и обычно без боли.",
-    expanded:
-      "Помутневший хрусталик заменяют прозрачной искусственной линзой через небольшой разрез. Операция обычно занимает около 15–20 минут и чаще всего проходит без боли.",
-    linkText: "Подробнее об операции →",
-    href: "/ru/katarakta",
-    accent: false,
-    icon: <ScalpelIcon />
-  },
-  {
-    title: "Какое зрение вы хотите после операции?",
-    preview: "Подумайте о своих целях и ожиданиях — это важно для выбора линзы.",
-    expanded:
-      "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом перед операцией. В результате вы увидите, какие технологии полезно знать перед консультацией.",
-    linkText: "Пройти короткий опрос →",
-    href: "/ru/start",
-    accent: true,
-    icon: <TargetIcon />
-  }
+const symptoms = [
+  "жжение",
+  "ощущение песка в глазах",
+  "усталость глаз к вечеру",
+  "временное затуманивание зрения",
+  "дискомфорт при работе за экраном"
 ];
 
-const topics = [
-  {
-    title: "Катаракта",
-    text: "Что это такое, как развивается и как современная хирургия помогает вернуть чёткое зрение.",
-    href: "/ru/katarakta",
-    icon: <EyeIcon />
-  },
-  {
-    title: "Интраокулярные линзы",
-    text: "Виды линз, их преимущества и как выбирать подходящий вариант вместе с врачом.",
-    href: "/ru/intraokulyarnye-linzy",
-    icon: <LensIcon />
-  },
-  {
-    title: "Сухой глаз",
-    text: "Причины сухости и дискомфорта и что можно сделать для улучшения состояния.",
-    href: "/ru/suhoj-glaz",
-    icon: <DropIcon />
-  }
+const triggers = [
+  "долгая работа за компьютером или телефоном",
+  "сухой воздух в помещении",
+  "кондиционер или отопление",
+  "возрастные изменения",
+  "нестабильная слёзная плёнка"
 ];
 
-const cataractSteps = [
-  "Помутневший хрусталик аккуратно удаляется.",
-  "На его место устанавливается искусственная линза.",
-  "Свет снова проходит свободно, и зрение становится более чётким."
+const help = [
+  "делать перерывы при работе за экраном",
+  "чаще моргать во время чтения и работы",
+  "избегать слишком сухого воздуха",
+  "обсудить с врачом увлажняющие капли",
+  "обратиться к специалисту, если симптомы повторяются часто"
 ];
 
-export default function Page() {
+const nextSteps = [
+  "если сухость и жжение возникают регулярно",
+  "если зрение временами становится мутным",
+  "если дискомфорт усиливается при работе за экраном",
+  "если симптомы мешают в повседневной жизни"
+];
+
+export default function DryEyePage() {
   return (
     <>
       <Header />
@@ -115,7 +61,7 @@ export default function Page() {
               alignItems: "center"
             }}
           >
-            <div style={{ maxWidth: 620 }}>
+            <div style={{ maxWidth: 640 }}>
               <div
                 style={{
                   display: "inline-block",
@@ -129,20 +75,20 @@ export default function Page() {
                   marginBottom: 18
                 }}
               >
-                Для пациентов
+                Сухой глаз
               </div>
 
               <h1
                 style={{
-                  fontSize: 54,
+                  fontSize: 50,
                   lineHeight: 1.08,
                   margin: "0 0 18px",
                   color: "#0f172a",
-                  maxWidth: 620,
+                  maxWidth: 760,
                   letterSpacing: "-0.03em"
                 }}
               >
-                Простым языком о катаракте, зрении и современных линзах
+                Сухой глаз: почему появляется дискомфорт и что с этим делать
               </h1>
 
               <p
@@ -150,18 +96,19 @@ export default function Page() {
                   fontSize: 20,
                   lineHeight: 1.75,
                   color: "#475569",
-                  maxWidth: 620,
+                  maxWidth: 640,
                   margin: "0 0 28px"
                 }}
               >
-                Понятно объясняем, почему зрение может ухудшаться после 40 лет,
-                как лечится катаракта и какие искусственные хрусталики
-                (интраокулярные линзы) можно обсудить с врачом.
+                Сухость глаз — это не только ощущение сухости. Она может
+                проявляться жжением, чувством песка, усталостью глаз и временным
+                затуманиванием зрения, особенно при работе за экраном и к концу
+                дня.
               </p>
 
               <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
                 <a
-                  href="/ru/katarakta"
+                  href="/ru"
                   style={{
                     textDecoration: "none",
                     padding: "14px 22px",
@@ -172,11 +119,11 @@ export default function Page() {
                     boxShadow: "0 12px 28px rgba(37,99,235,0.20)"
                   }}
                 >
-                  Узнать о катаракте →
+                  Вернуться на главную →
                 </a>
 
                 <a
-                  href="/ru/start"
+                  href="/ru/katarakta"
                   style={{
                     textDecoration: "none",
                     padding: "14px 22px",
@@ -187,7 +134,7 @@ export default function Page() {
                     fontWeight: 700
                   }}
                 >
-                  Пройти короткий опрос
+                  Читать о катаракте
                 </a>
               </div>
             </div>
@@ -195,30 +142,21 @@ export default function Page() {
             <div
               style={{
                 position: "relative",
-                minHeight: 390,
+                minHeight: 380,
                 borderRadius: 34,
                 background:
                   "radial-gradient(circle at 68% 46%, rgba(255,255,255,0.98) 0%, rgba(219,234,254,0.92) 34%, rgba(191,219,254,0.42) 58%, rgba(239,246,255,0.16) 100%)",
                 border: "1px solid rgba(191,219,254,0.8)",
-                overflow: "hidden",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)"
+                overflow: "hidden"
               }}
             >
               <div
                 style={{
                   position: "absolute",
-                  inset: 0,
-                  background:
-                    "radial-gradient(circle at 78% 36%, rgba(255,255,255,0.75) 0%, transparent 42%)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
                   top: "8%",
                   left: "10%",
-                  width: 420,
-                  height: 420,
+                  width: 400,
+                  height: 400,
                   borderRadius: "50%",
                   border: "1px solid rgba(255,255,255,0.75)"
                 }}
@@ -226,10 +164,10 @@ export default function Page() {
               <div
                 style={{
                   position: "absolute",
-                  top: "16%",
+                  top: "18%",
                   left: "22%",
-                  width: 300,
-                  height: 300,
+                  width: 280,
+                  height: 280,
                   borderRadius: "50%",
                   border: "1px solid rgba(255,255,255,0.75)"
                 }}
@@ -237,10 +175,10 @@ export default function Page() {
               <div
                 style={{
                   position: "absolute",
-                  right: "15%",
-                  top: "16%",
-                  width: 250,
-                  height: 250,
+                  right: "20%",
+                  top: "20%",
+                  width: 190,
+                  height: 190,
                   borderRadius: "50%",
                   background:
                     "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 26%, rgba(191,219,254,0.72) 50%, rgba(147,197,253,0.32) 72%, rgba(96,165,250,0.05) 100%)",
@@ -251,10 +189,10 @@ export default function Page() {
               <div
                 style={{
                   position: "absolute",
-                  right: "10%",
-                  top: "8%",
+                  right: "12%",
+                  top: "14%",
                   color: "rgba(37,99,235,0.12)",
-                  fontSize: 54,
+                  fontSize: 52,
                   fontWeight: 700,
                   lineHeight: 1.02,
                   letterSpacing: "0.22em",
@@ -274,14 +212,16 @@ export default function Page() {
         </section>
 
         <section style={{ padding: "72px 20px" }}>
-          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-            <div
-              style={{
-                textAlign: "center",
-                maxWidth: 760,
-                margin: "0 auto 34px"
-              }}
-            >
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gap: 28
+            }}
+          >
+            <div>
               <div
                 style={{
                   fontSize: 13,
@@ -292,300 +232,19 @@ export default function Page() {
                   marginBottom: 14
                 }}
               >
-                Для пациентов
+                Симптомы
               </div>
 
               <h2
                 style={{
                   fontSize: 36,
                   lineHeight: 1.2,
-                  margin: "0 0 14px",
+                  margin: "0 0 18px",
                   color: "#0f172a",
                   letterSpacing: "-0.02em"
                 }}
               >
-                Когда этот сайт может быть вам полезен
-              </h2>
-
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 18,
-                  lineHeight: 1.8,
-                  color: "#64748b"
-                }}
-              >
-                Ответьте на важные вопросы о своём зрении и узнайте больше о
-                возможностях современной офтальмологии.
-              </p>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
-                gap: 18,
-                alignItems: "stretch"
-              }}
-            >
-              {cards.map((item) => (
-                <details
-                  key={item.title}
-                  style={{
-                    background: item.accent
-                      ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
-                      : "#ffffff",
-                    border: item.accent
-                      ? "2px solid #93c5fd"
-                      : "1px solid #e2e8f0",
-                    borderRadius: 24,
-                    padding: 20,
-                    boxShadow: item.accent
-                      ? "0 14px 34px rgba(37,99,235,0.10)"
-                      : "0 10px 30px rgba(15,23,42,0.05)",
-                    minHeight: 300,
-                    position: "relative"
-                  }}
-                >
-                  {item.accent && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 16,
-                        right: 16,
-                        width: 24,
-                        height: 24,
-                        borderRadius: 999,
-                        background: "#2563eb",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "#ffffff",
-                        fontSize: 14,
-                        fontWeight: 700
-                      }}
-                    >
-                      ✓
-                    </div>
-                  )}
-
-                  <summary style={{ listStyle: "none", cursor: "pointer" }}>
-                    <div
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: 999,
-                        background: item.accent ? "#dbeafe" : "#eff6ff",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginBottom: 18
-                      }}
-                    >
-                      {item.icon}
-                    </div>
-
-                    <h3
-                      style={{
-                        fontSize: 21,
-                        lineHeight: 1.35,
-                        color: "#0f172a",
-                        margin: "0 0 12px",
-                        letterSpacing: "-0.01em"
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-
-                    <p
-                      style={{
-                        margin: "0 0 18px",
-                        color: "#475569",
-                        lineHeight: 1.75,
-                        fontSize: 16
-                      }}
-                    >
-                      {item.preview}
-                    </p>
-
-                    <div
-                      style={{
-                        color: "#2563eb",
-                        fontWeight: 700,
-                        fontSize: 15
-                      }}
-                    >
-                      Развернуть ↓
-                    </div>
-                  </summary>
-
-                  <div
-                    style={{
-                      marginTop: 18,
-                      paddingTop: 18,
-                      borderTop: "1px solid #e2e8f0"
-                    }}
-                  >
-                    <p
-                      style={{
-                        margin: "0 0 18px",
-                        color: "#475569",
-                        lineHeight: 1.8,
-                        fontSize: 16
-                      }}
-                    >
-                      {item.expanded}
-                    </p>
-
-                    <a
-                      href={item.href}
-                      style={{
-                        display: "inline-block",
-                        color: "#2563eb",
-                        fontWeight: 700,
-                        textDecoration: "none",
-                        fontSize: 15
-                      }}
-                    >
-                      {item.linkText}
-                    </a>
-
-                    <div
-                      style={{
-                        marginTop: 14,
-                        color: "#64748b",
-                        fontWeight: 700,
-                        fontSize: 14
-                      }}
-                    >
-                      Свернуть ↑
-                    </div>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          style={{
-            padding: "72px 20px",
-            background: "#f4f8fc"
-          }}
-        >
-          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
-            <div
-              style={{
-                textAlign: "center",
-                maxWidth: 760,
-                margin: "0 auto 30px"
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: 36,
-                  lineHeight: 1.2,
-                  margin: "0 0 14px",
-                  color: "#0f172a",
-                  letterSpacing: "-0.02em"
-                }}
-              >
-                Выберите тему, которая вас интересует
-              </h2>
-            </div>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
-                gap: 20
-              }}
-            >
-              {topics.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.href}
-                  style={{
-                    textDecoration: "none",
-                    border: "1px solid #e2e8f0",
-                    borderRadius: 24,
-                    padding: 28,
-                    background: "#ffffff",
-                    boxShadow: "0 10px 30px rgba(15,23,42,0.05)"
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 999,
-                      background: "#eff6ff",
-                      marginBottom: 18,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    {item.icon}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 24,
-                      fontWeight: 700,
-                      color: "#0f172a",
-                      marginBottom: 12,
-                      letterSpacing: "-0.01em"
-                    }}
-                  >
-                    {item.title}
-                  </div>
-                  <p
-                    style={{
-                      margin: "0 0 20px",
-                      color: "#475569",
-                      lineHeight: 1.75,
-                      fontSize: 17
-                    }}
-                  >
-                    {item.text}
-                  </p>
-                  <div
-                    style={{
-                      color: "#2563eb",
-                      fontSize: 24,
-                      lineHeight: 1
-                    }}
-                  >
-                    →
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section style={{ padding: "72px 20px" }}>
-          <div
-            style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "minmax(280px, 420px) minmax(320px, 1fr)",
-              gap: 30,
-              alignItems: "center"
-            }}
-          >
-            <div>
-              <h2
-                style={{
-                  fontSize: 36,
-                  lineHeight: 1.2,
-                  margin: "0 0 16px",
-                  color: "#0f172a",
-                  letterSpacing: "-0.02em"
-                }}
-              >
-                Как лечится катаракта
+                Какие ощущения бывают чаще всего
               </h2>
 
               <p
@@ -593,28 +252,25 @@ export default function Page() {
                   fontSize: 18,
                   lineHeight: 1.8,
                   color: "#475569",
-                  margin: "0 0 22px"
+                  margin: "0 0 18px"
                 }}
               >
-                Современная хирургия катаракты — это один из самых безопасных и
-                эффективных способов вернуть чёткое зрение и качество жизни.
+                У разных людей сухой глаз проявляется по-разному. Иногда жалобы
+                усиливаются к вечеру, после длительной работы, в машине, в офисе
+                или в помещении с кондиционером.
               </p>
 
-              <a
-                href="/ru/katarakta"
+              <p
                 style={{
-                  textDecoration: "none",
-                  display: "inline-block",
-                  padding: "14px 20px",
-                  borderRadius: 14,
-                  border: "1px solid #93c5fd",
-                  color: "#2563eb",
-                  fontWeight: 700,
-                  background: "#ffffff"
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: 0
                 }}
               >
-                Подробнее о лечении →
-              </a>
+                Важно то, что такие ощущения могут быть регулярными и заметно
+                влиять на комфорт в течение дня.
+              </p>
             </div>
 
             <div
@@ -626,53 +282,321 @@ export default function Page() {
                 boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
               }}
             >
-              {cataractSteps.map((step, index) => (
-                <div
-                  key={step}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "56px 1fr 28px",
-                    gap: 18,
-                    alignItems: "center",
-                    padding: "16px 0",
-                    borderBottom:
-                      index === cataractSteps.length - 1
-                        ? "none"
-                        : "1px solid #e2e8f0"
-                  }}
-                >
+              <h3
+                style={{
+                  marginTop: 0,
+                  marginBottom: 16,
+                  fontSize: 24,
+                  color: "#0f172a",
+                  letterSpacing: "-0.01em"
+                }}
+              >
+                Частые жалобы
+              </h3>
+
+              <div style={{ display: "grid", gap: 12 }}>
+                {symptoms.map((item) => (
                   <div
+                    key={item}
                     style={{
-                      width: 42,
-                      height: 42,
-                      borderRadius: 999,
-                      background: "#2563eb",
-                      color: "#ffffff",
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 700,
-                      fontSize: 20
+                      gap: 12,
+                      alignItems: "flex-start",
+                      padding: 14,
+                      borderRadius: 18,
+                      background: "#f8fafc"
                     }}
                   >
-                    {index + 1}
-                  </div>
+                    <div
+                      style={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 999,
+                        background: "#eff6ff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0
+                      }}
+                    >
+                      <EyeIcon />
+                    </div>
 
+                    <div
+                      style={{
+                        color: "#334155",
+                        lineHeight: 1.75,
+                        fontSize: 16
+                      }}
+                    >
+                      {item}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          style={{
+            background: "#f4f8fc",
+            padding: "72px 20px"
+          }}
+        >
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gap: 28
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 800,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "#2563eb",
+                  marginBottom: 14
+                }}
+              >
+                Почему это происходит
+              </div>
+
+              <h2
+                style={{
+                  fontSize: 36,
+                  lineHeight: 1.2,
+                  margin: "0 0 18px",
+                  color: "#0f172a",
+                  letterSpacing: "-0.02em"
+                }}
+              >
+                Что может усиливать сухость глаз
+              </h2>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: "0 0 18px"
+                }}
+              >
+                Часто дело не в одной причине, а в сочетании факторов. На
+                состояние глаз влияет окружающая среда, зрительная нагрузка и
+                качество слёзной плёнки.
+              </p>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: 0
+                }}
+              >
+                Поэтому одни и те же симптомы могут усиливаться и дома, и в
+                офисе, и в дороге, особенно если человек долго смотрит в экран и
+                редко моргает.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background: "#ffffff",
+                borderRadius: 24,
+                padding: 24,
+                border: "1px solid #e2e8f0",
+                boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+              }}
+            >
+              <h3
+                style={{
+                  marginTop: 0,
+                  marginBottom: 16,
+                  fontSize: 24,
+                  color: "#0f172a",
+                  letterSpacing: "-0.01em"
+                }}
+              >
+                Частые причины и триггеры
+              </h3>
+
+              <div style={{ display: "grid", gap: 12 }}>
+                {triggers.map((item) => (
                   <div
+                    key={item}
                     style={{
-                      color: "#334155",
-                      lineHeight: 1.75,
-                      fontSize: 18
+                      display: "flex",
+                      gap: 12,
+                      alignItems: "flex-start",
+                      padding: 14,
+                      borderRadius: 18,
+                      background: "#f8fafc"
                     }}
                   >
-                    {step}
-                  </div>
+                    <div
+                      style={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 999,
+                        background: "#eff6ff",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0
+                      }}
+                    >
+                      <DropIcon />
+                    </div>
 
-                  <div style={{ justifySelf: "end" }}>
-                    {index === 0 ? <EyeIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
+                    <div
+                      style={{
+                        color: "#334155",
+                        lineHeight: 1.75,
+                        fontSize: 16
+                      }}
+                    >
+                      {item}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ padding: "72px 20px" }}>
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gap: 28,
+              alignItems: "start"
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  fontSize: 13,
+                  fontWeight: 800,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "#2563eb",
+                  marginBottom: 14
+                }}
+              >
+                Что может помочь
+              </div>
+
+              <h2
+                style={{
+                  fontSize: 36,
+                  lineHeight: 1.2,
+                  margin: "0 0 18px",
+                  color: "#0f172a",
+                  letterSpacing: "-0.02em"
+                }}
+              >
+                С чего обычно начинают
+              </h2>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: "0 0 18px"
+                }}
+              >
+                При сухом глазе важно не только временно снять неприятные
+                ощущения, но и понять, что именно провоцирует дискомфорт в вашем
+                случае.
+              </p>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: 0
+                }}
+              >
+                Простые шаги могут заметно улучшить комфорт, особенно если
+                симптомы связаны с экраном, воздухом в помещении или усталостью
+                глаз к вечеру.
+              </p>
+            </div>
+
+            <div
+              style={{
+                background:
+                  "linear-gradient(135deg, #0b2f73 0%, #0f3f9f 40%, #082b68 100%)",
+                color: "#ffffff",
+                borderRadius: 28,
+                padding: "32px 26px",
+                boxShadow: "0 18px 42px rgba(15,23,42,0.18)"
+              }}
+            >
+              <h3
+                style={{
+                  marginTop: 0,
+                  marginBottom: 16,
+                  fontSize: 24,
+                  letterSpacing: "-0.01em"
+                }}
+              >
+                Что можно обсудить и попробовать
+              </h3>
+
+              <div style={{ display: "grid", gap: 12 }}>
+                {help.map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: 12,
+                      alignItems: "flex-start",
+                      padding: 14,
+                      borderRadius: 18,
+                      background: "rgba(255,255,255,0.08)",
+                      border: "1px solid rgba(255,255,255,0.10)"
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 42,
+                        height: 42,
+                        borderRadius: 999,
+                        background: "rgba(255,255,255,0.12)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0
+                      }}
+                    >
+                      <SparklesIcon />
+                    </div>
+
+                    <div
+                      style={{
+                        color: "#dbeafe",
+                        lineHeight: 1.75,
+                        fontSize: 16
+                      }}
+                    >
+                      {item}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -728,7 +652,7 @@ export default function Page() {
                   zIndex: 1
                 }}
               >
-                Следующий шаг
+                Когда стоит обсудить это с врачом
               </div>
 
               <div
@@ -736,7 +660,7 @@ export default function Page() {
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
                   gap: 28,
-                  alignItems: "center",
+                  alignItems: "start",
                   position: "relative",
                   zIndex: 1
                 }}
@@ -744,13 +668,13 @@ export default function Page() {
                 <div>
                   <h2
                     style={{
-                      fontSize: 42,
+                      fontSize: 40,
                       lineHeight: 1.15,
-                      margin: "0 0 14px",
+                      margin: "0 0 16px",
                       letterSpacing: "-0.03em"
                     }}
                   >
-                    Пройдите короткий опрос перед консультацией
+                    Не откладывайте консультацию, если симптомы повторяются
                   </h2>
 
                   <p
@@ -762,45 +686,73 @@ export default function Page() {
                       maxWidth: 620
                     }}
                   >
-                    Опрос поможет лучше понять ваши зрительные приоритеты и
-                    подготовить консультацию с учётом ваших целей и образа
-                    жизни.
+                    Особенно если сухость, жжение или затуманивание зрения уже
+                    мешают в привычной жизни.
                   </p>
                 </div>
 
-                <div style={{ display: "grid", gap: 14, justifyItems: "start" }}>
-                  <a
-                    href="/ru/start"
-                    style={{
-                      textDecoration: "none",
-                      padding: "16px 24px",
-                      minWidth: 280,
-                      textAlign: "center",
-                      borderRadius: 14,
-                      background: "#ffffff",
-                      color: "#0f172a",
-                      fontWeight: 700
-                    }}
-                  >
-                    Пройти короткий опрос →
-                  </a>
-
-                  <a
-                    href="/ru/intraokulyarnye-linzy"
-                    style={{
-                      textDecoration: "none",
-                      padding: "16px 24px",
-                      minWidth: 280,
-                      textAlign: "center",
-                      borderRadius: 14,
-                      border: "1px solid rgba(255,255,255,0.35)",
-                      color: "#ffffff",
-                      fontWeight: 700
-                    }}
-                  >
-                    Подробнее о линзах →
-                  </a>
+                <div
+                  style={{
+                    display: "grid",
+                    gap: 14
+                  }}
+                >
+                  {nextSteps.map((item) => (
+                    <div
+                      key={item}
+                      style={{
+                        padding: 18,
+                        borderRadius: 20,
+                        background: "rgba(255,255,255,0.08)",
+                        border: "1px solid rgba(255,255,255,0.10)",
+                        color: "#dbeafe",
+                        lineHeight: 1.7,
+                        fontSize: 16
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: 12,
+                  flexWrap: "wrap",
+                  marginTop: 24,
+                  position: "relative",
+                  zIndex: 1
+                }}
+              >
+                <a
+                  href="/ru"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 14,
+                    background: "#ffffff",
+                    color: "#0f172a",
+                    fontWeight: 700
+                  }}
+                >
+                  Вернуться на главную →
+                </a>
+
+                <a
+                  href="/ru/intraokulyarnye-linzy"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 14,
+                    border: "1px solid rgba(255,255,255,0.35)",
+                    color: "#ffffff",
+                    fontWeight: 700
+                  }}
+                >
+                  Подробнее о линзах →
+                </a>
               </div>
             </div>
           </div>
