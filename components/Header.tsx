@@ -1,3 +1,5 @@
+import { EyeIcon } from "./icons";
+
 export default function Header() {
   const navItems = [
     { label: "Главная", href: "/ru" },
@@ -102,20 +104,7 @@ export default function Header() {
                 boxShadow: "0 10px 24px rgba(37,99,235,0.12)"
               }}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
-                  stroke="#2563eb"
-                  strokeWidth="1.8"
-                />
-                <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
-              </svg>
+              <EyeIcon size={20} />
             </div>
 
             <div>
