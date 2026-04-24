@@ -5,53 +5,73 @@ import { content } from "../../lib/content";
 const cards = [
   {
     title: "Зрение стало мутнее?",
-    preview:
-      "После 40 лет это может быть связано с катарактой или возрастным ухудшением зрения вблизи.",
+    preview: "Почему изображение становится не таким чётким, как раньше.",
     expanded:
-      "Важно понимать разницу, потому что при катаракте зрение становится менее прозрачным, а при пресбиопии чаще всего становится труднее видеть именно вблизи.",
+      "После 40 лет это может быть связано с катарактой или возрастным ухудшением зрения вблизи. Важно понимать разницу, чтобы спокойнее обсудить её с врачом.",
     linkText: "Подробнее о причинах →",
     href: "/ru/katarakta",
     accent: false
   },
   {
     title: "Что такое катаракта?",
-    preview: "Катаракта — это помутнение естественного хрусталика глаза.",
+    preview: "Причины, симптомы и как катаракта влияет на качество жизни.",
     expanded:
-      "Из-за этого свет проходит хуже, и зрение становится менее чётким, как будто через туман. Со временем это состояние прогрессирует, и основным методом лечения становится замена хрусталика на искусственную линзу.",
+      "Катаракта — это помутнение естественного хрусталика глаза. Из-за этого свет проходит хуже, и зрение становится менее чётким, как будто через туман.",
     linkText: "Подробнее о катаракте →",
     href: "/ru/katarakta",
     accent: false
   },
   {
     title: "Почему хуже видно вблизи?",
-    preview:
-      "С возрастом глазу становится труднее фокусироваться на близком расстоянии.",
+    preview: "Возрастные изменения и их влияние на чтение и повседневные дела.",
     expanded:
-      "Это называется пресбиопией. В отличие от катаракты, при этом зрение обычно остаётся прозрачным, но для чтения и работы вблизи может потребоваться дополнительная коррекция.",
+      "С возрастом глазу становится труднее фокусироваться на близком расстоянии. Это состояние называется пресбиопией и часто становится заметным при чтении и работе с телефоном.",
     linkText: "Подробнее о возрастном зрении →",
     href: "/ru/katarakta",
     accent: false
   },
   {
     title: "Как проходит операция при катаракте?",
-    preview:
-      "Помутневший хрусталик заменяют прозрачной искусственной линзой через небольшой разрез.",
+    preview: "Безопасно, быстро и обычно без боли.",
     expanded:
-      "Операция обычно занимает около 15–20 минут и, как правило, проходит без боли. Используется местное обезболивание в виде капель, поэтому пациент остаётся в сознании и может видеть яркий свет, не испытывая дискомфорта.",
+      "Помутневший хрусталик заменяют прозрачной искусственной линзой через небольшой разрез. Операция обычно занимает около 15–20 минут и чаще всего проходит без боли.",
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
     accent: false
   },
   {
     title: "Какое зрение вы хотите после операции?",
-    preview:
-      "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом.",
+    preview: "Подумайте о своих целях и ожиданиях — это важно для выбора линзы.",
     expanded:
-      "Ответьте на несколько простых вопросов о вашем образе жизни, зрительных привычках и ожиданиях. В результате вы увидите, какие технологии полезно знать перед консультацией — например, монофокальные ИОЛ, EDOF или трифокальные решения.",
+      "Короткий опрос поможет понять, какие зрительные решения стоит обсудить с врачом перед операцией. В результате вы увидите, какие технологии полезно знать перед консультацией.",
     linkText: "Пройти короткий опрос →",
     href: "/ru/start",
     accent: true
   }
+];
+
+const topics = [
+  {
+    title: "Катаракта",
+    text: "Что это такое, как развивается и как современная хирургия помогает вернуть чёткое зрение.",
+    href: "/ru/katarakta"
+  },
+  {
+    title: "Интраокулярные линзы",
+    text: "Виды линз, их преимущества и как выбирать подходящий вариант вместе с врачом.",
+    href: "/ru/intraokulyarnye-linzy"
+  },
+  {
+    title: "Сухой глаз",
+    text: "Причины сухости и дискомфорта и что можно сделать для улучшения состояния.",
+    href: "/ru/suhoj-glaz"
+  }
+];
+
+const cataractSteps = [
+  "Помутневший хрусталик аккуратно удаляется.",
+  "На его место устанавливается искусственная линза.",
+  "Свет снова проходит свободно, и зрение становится более чётким."
 ];
 
 export default function Page() {
@@ -66,91 +86,164 @@ export default function Page() {
         <section
           style={{
             background:
-              "linear-gradient(135deg, #eff6ff 0%, #ffffff 58%, #f8fafc 100%)",
-            padding: "84px 20px 72px"
+              "linear-gradient(135deg, #edf5ff 0%, #f7fbff 45%, #eef6ff 100%)",
+            padding: "84px 20px 72px",
+            overflow: "hidden"
           }}
         >
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div
-              style={{
-                display: "inline-block",
-                padding: "8px 14px",
-                borderRadius: 999,
-                background: "#ffffff",
-                border: "1px solid #dbeafe",
-                color: "#2563eb",
-                fontSize: 14,
-                fontWeight: 700,
-                marginBottom: 18
-              }}
-            >
-              Для пациентов
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gap: 28,
+              alignItems: "center"
+            }}
+          >
+            <div style={{ maxWidth: 620 }}>
+              <div
+                style={{
+                  display: "inline-block",
+                  padding: "8px 14px",
+                  borderRadius: 999,
+                  background: "#ffffff",
+                  border: "1px solid #bfdbfe",
+                  color: "#2563eb",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  marginBottom: 18
+                }}
+              >
+                Для пациентов
+              </div>
+
+              <h1
+                style={{
+                  fontSize: 54,
+                  lineHeight: 1.08,
+                  margin: "0 0 18px",
+                  color: "#0f172a",
+                  maxWidth: 620
+                }}
+              >
+                Простым языком о катаракте, зрении и современных линзах
+              </h1>
+
+              <p
+                style={{
+                  fontSize: 20,
+                  lineHeight: 1.75,
+                  color: "#475569",
+                  maxWidth: 620,
+                  margin: "0 0 28px"
+                }}
+              >
+                Понятно объясняем, почему зрение может ухудшаться после 40 лет,
+                как лечится катаракта и какие искусственные хрусталики
+                (интраокулярные линзы) можно обсудить с врачом.
+              </p>
+
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+                <a
+                  href="/ru/katarakta"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 14,
+                    background: "#2563eb",
+                    color: "#ffffff",
+                    fontWeight: 700,
+                    boxShadow: "0 12px 28px rgba(37,99,235,0.20)"
+                  }}
+                >
+                  Узнать о катаракте →
+                </a>
+
+                <a
+                  href="/ru/start"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 14,
+                    border: "1px solid #93c5fd",
+                    background: "#ffffff",
+                    color: "#2563eb",
+                    fontWeight: 700
+                  }}
+                >
+                  Пройти короткий опрос
+                </a>
+              </div>
             </div>
 
-            <h1
+            <div
               style={{
-                fontSize: 54,
-                lineHeight: 1.08,
-                maxWidth: 780,
-                margin: "0 0 18px",
-                color: "#0f172a"
+                position: "relative",
+                minHeight: 360,
+                borderRadius: 32,
+                background:
+                  "radial-gradient(circle at 60% 45%, rgba(255,255,255,0.95) 0%, rgba(219,234,254,0.88) 38%, rgba(191,219,254,0.38) 62%, rgba(239,246,255,0.15) 100%)",
+                border: "1px solid rgba(191,219,254,0.8)",
+                overflow: "hidden"
               }}
             >
-              {data.heroTitle}
-            </h1>
-
-            <p
-              style={{
-                fontSize: 20,
-                lineHeight: 1.75,
-                color: "#475569",
-                maxWidth: 760,
-                margin: "0 0 28px"
-              }}
-            >
-              {data.heroText}
-            </p>
-
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <a
-                href="/ru/katarakta"
+              <div
                 style={{
-                  textDecoration: "none",
-                  padding: "14px 22px",
-                  borderRadius: 999,
-                  background: "#2563eb",
-                  color: "#ffffff",
-                  fontWeight: 700
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "radial-gradient(circle at 70% 50%, rgba(255,255,255,0.92) 0%, rgba(219,234,254,0.1) 45%, transparent 70%)"
                 }}
-              >
-                Узнать о катаракте
-              </a>
-
-              <a
-                href="/ru/start"
+              />
+              <div
                 style={{
-                  textDecoration: "none",
-                  padding: "14px 22px",
-                  borderRadius: 999,
-                  border: "1px solid #cbd5e1",
-                  background: "#ffffff",
-                  color: "#0f172a",
-                  fontWeight: 700
+                  position: "absolute",
+                  top: "10%",
+                  left: "14%",
+                  width: 380,
+                  height: 380,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.7)"
                 }}
-              >
-                Пройти короткий опрос
-              </a>
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: "18%",
+                  left: "24%",
+                  width: 280,
+                  height: 280,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.7)"
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  right: "12%",
+                  top: "16%",
+                  width: 230,
+                  height: 230,
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 30%, rgba(191,219,254,0.72) 55%, rgba(147,197,253,0.28) 78%, rgba(96,165,250,0.06) 100%)",
+                  boxShadow:
+                    "0 0 0 10px rgba(255,255,255,0.32), 0 0 40px rgba(96,165,250,0.18)"
+                }}
+              />
             </div>
           </div>
         </section>
 
         {/* USEFUL BLOCK */}
         <section style={{ padding: "72px 20px" }}>
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div
               style={{
+                textAlign: "center",
                 maxWidth: 760,
-                marginBottom: 32
+                margin: "0 auto 34px"
               }}
             >
               <div
@@ -182,21 +275,19 @@ export default function Page() {
                   margin: 0,
                   fontSize: 18,
                   lineHeight: 1.8,
-                  color: "#475569",
-                  maxWidth: 760
+                  color: "#64748b"
                 }}
               >
-                Мы собрали информацию так, чтобы она была понятна человеку без
-                медицинской подготовки и помогала спокойнее подготовиться к
-                консультации.
+                Ответьте на важные вопросы о своём зрении и узнайте больше о
+                возможностях современной офтальмологии.
               </p>
             </div>
 
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-                gap: 20,
+                gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
+                gap: 18,
                 alignItems: "stretch"
               }}
             >
@@ -208,14 +299,12 @@ export default function Page() {
                       ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
                       : "#ffffff",
                     border: item.accent
-                      ? "1px solid #bfdbfe"
+                      ? "2px solid #93c5fd"
                       : "1px solid #e2e8f0",
-                    borderRadius: 24,
-                    padding: 24,
-                    boxShadow: item.accent
-                      ? "0 16px 38px rgba(37,99,235,0.10)"
-                      : "0 10px 30px rgba(15,23,42,0.06)",
-                    minHeight: 230
+                    borderRadius: 22,
+                    padding: 20,
+                    boxShadow: "0 10px 30px rgba(15,23,42,0.05)",
+                    minHeight: 290
                   }}
                 >
                   <summary
@@ -229,9 +318,7 @@ export default function Page() {
                         width: 52,
                         height: 52,
                         borderRadius: 16,
-                        background: item.accent
-                          ? "linear-gradient(135deg, #bfdbfe 0%, #dbeafe 100%)"
-                          : "linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%)",
+                        background: item.accent ? "#dbeafe" : "#eff6ff",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
@@ -250,7 +337,7 @@ export default function Page() {
 
                     <h3
                       style={{
-                        fontSize: item.accent ? 23 : 22,
+                        fontSize: 22,
                         lineHeight: 1.35,
                         color: "#0f172a",
                         margin: "0 0 12px"
@@ -261,7 +348,7 @@ export default function Page() {
 
                     <p
                       style={{
-                        margin: "0 0 14px",
+                        margin: "0 0 18px",
                         color: "#475569",
                         lineHeight: 1.75,
                         fontSize: 16
@@ -333,11 +420,17 @@ export default function Page() {
         <section
           style={{
             padding: "72px 20px",
-            background: "#f8fafc"
+            background: "#f4f8fc"
           }}
         >
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <div style={{ maxWidth: 760, marginBottom: 28 }}>
+          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
+            <div
+              style={{
+                textAlign: "center",
+                maxWidth: 760,
+                margin: "0 auto 30px"
+              }}
+            >
               <h2
                 style={{
                   fontSize: 36,
@@ -348,28 +441,16 @@ export default function Page() {
               >
                 Выберите тему, которая вас интересует
               </h2>
-
-              <p
-                style={{
-                  margin: 0,
-                  color: "#475569",
-                  lineHeight: 1.8,
-                  fontSize: 18
-                }}
-              >
-                Здесь можно начать с базовой информации о катаракте, линзах и
-                причинах зрительного дискомфорта.
-              </p>
             </div>
 
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
                 gap: 20
               }}
             >
-              {data.topics.map((item) => (
+              {topics.map((item) => (
                 <a
                   key={item.title}
                   href={item.href}
@@ -377,41 +458,49 @@ export default function Page() {
                     textDecoration: "none",
                     border: "1px solid #e2e8f0",
                     borderRadius: 24,
-                    padding: 24,
+                    padding: 28,
                     background: "#ffffff",
-                    boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+                    boxShadow: "0 10px 30px rgba(15,23,42,0.05)"
                   }}
                 >
                   <div
                     style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 16,
+                      width: 56,
+                      height: 56,
+                      borderRadius: 999,
                       background: "#eff6ff",
-                      marginBottom: 16
+                      marginBottom: 18
                     }}
                   />
-
                   <div
                     style={{
-                      fontSize: 22,
+                      fontSize: 24,
                       fontWeight: 700,
                       color: "#0f172a",
-                      marginBottom: 10
+                      marginBottom: 12
                     }}
                   >
                     {item.title}
                   </div>
-
                   <p
                     style={{
-                      margin: 0,
+                      margin: "0 0 20px",
                       color: "#475569",
-                      lineHeight: 1.7
+                      lineHeight: 1.75,
+                      fontSize: 17
                     }}
                   >
                     {item.text}
                   </p>
+                  <div
+                    style={{
+                      color: "#2563eb",
+                      fontSize: 24,
+                      lineHeight: 1
+                    }}
+                  >
+                    →
+                  </div>
                 </a>
               ))}
             </div>
@@ -422,33 +511,20 @@ export default function Page() {
         <section style={{ padding: "72px 20px" }}>
           <div
             style={{
-              maxWidth: 1100,
+              maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-              gap: 28,
-              alignItems: "start"
+              gridTemplateColumns: "minmax(280px, 420px) minmax(320px, 1fr)",
+              gap: 30,
+              alignItems: "center"
             }}
           >
             <div>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#2563eb",
-                  marginBottom: 14
-                }}
-              >
-                Катаракта
-              </div>
-
               <h2
                 style={{
                   fontSize: 36,
                   lineHeight: 1.2,
-                  margin: "0 0 18px",
+                  margin: "0 0 16px",
                   color: "#0f172a"
                 }}
               >
@@ -460,23 +536,27 @@ export default function Page() {
                   fontSize: 18,
                   lineHeight: 1.8,
                   color: "#475569",
-                  margin: "0 0 24px"
+                  margin: "0 0 22px"
                 }}
               >
-                При катаракте естественный хрусталик становится мутным. Во время
-                операции его заменяют прозрачной интраокулярной линзой, чтобы
-                свет снова проходил свободно и зрение стало более чётким.
+                Современная хирургия катаракты — это один из самых безопасных и
+                эффективных способов вернуть чёткое зрение и качество жизни.
               </p>
 
               <a
                 href="/ru/katarakta"
                 style={{
                   textDecoration: "none",
+                  display: "inline-block",
+                  padding: "14px 20px",
+                  borderRadius: 14,
+                  border: "1px solid #93c5fd",
                   color: "#2563eb",
-                  fontWeight: 700
+                  fontWeight: 700,
+                  background: "#ffffff"
                 }}
               >
-                Подробнее о катаракте →
+                Подробнее о лечении →
               </a>
             </div>
 
@@ -489,40 +569,45 @@ export default function Page() {
                 boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
               }}
             >
-              {[
-                "Помутневший хрусталик аккуратно удаляется.",
-                "На его место устанавливается искусственная линза.",
-                "Свет снова проходит свободно, и зрение становится более чётким."
-              ].map((step, index) => (
+              {cataractSteps.map((step, index) => (
                 <div
                   key={step}
                   style={{
-                    display: "flex",
-                    gap: 14,
-                    alignItems: "flex-start",
-                    padding: 16,
-                    borderRadius: 18,
-                    background: "#f8fafc",
-                    marginBottom: index === 2 ? 0 : 12
+                    display: "grid",
+                    gridTemplateColumns: "56px 1fr",
+                    gap: 18,
+                    alignItems: "start",
+                    padding: "16px 0",
+                    borderBottom:
+                      index === cataractSteps.length - 1
+                        ? "none"
+                        : "1px solid #e2e8f0"
                   }}
                 >
                   <div
                     style={{
-                      minWidth: 36,
-                      height: 36,
+                      width: 42,
+                      height: 42,
                       borderRadius: 999,
                       background: "#2563eb",
                       color: "#ffffff",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontWeight: 700
+                      fontWeight: 700,
+                      fontSize: 20
                     }}
                   >
                     {index + 1}
                   </div>
 
-                  <div style={{ color: "#334155", lineHeight: 1.7 }}>
+                  <div
+                    style={{
+                      color: "#334155",
+                      lineHeight: 1.75,
+                      fontSize: 18
+                    }}
+                  >
                     {step}
                   </div>
                 </div>
@@ -532,85 +617,100 @@ export default function Page() {
         </section>
 
         {/* FINAL CTA */}
-        <section
-          style={{
-            padding: "0 20px 72px"
-          }}
-        >
-          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <section style={{ padding: "0 20px 72px" }}>
+          <div style={{ maxWidth: 1160, margin: "0 auto" }}>
             <div
               style={{
-                background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)",
+                background:
+                  "linear-gradient(135deg, #0b2f73 0%, #0f3f9f 40%, #082b68 100%)",
                 color: "#ffffff",
-                borderRadius: 30,
+                borderRadius: 28,
                 padding: "34px 28px",
                 boxShadow: "0 18px 42px rgba(15,23,42,0.18)"
               }}
             >
               <div
                 style={{
-                  fontSize: 13,
-                  fontWeight: 800,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#bfdbfe",
-                  marginBottom: 14
+                  display: "inline-block",
+                  padding: "8px 14px",
+                  borderRadius: 999,
+                  border: "1px solid rgba(255,255,255,0.22)",
+                  color: "#dbeafe",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  marginBottom: 16
                 }}
               >
                 Следующий шаг
               </div>
 
-              <h2
+              <div
                 style={{
-                  fontSize: 34,
-                  lineHeight: 1.2,
-                  margin: "0 0 14px"
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                  gap: 28,
+                  alignItems: "center"
                 }}
               >
-                Пройдите короткий опрос перед консультацией
-              </h2>
+                <div>
+                  <h2
+                    style={{
+                      fontSize: 42,
+                      lineHeight: 1.15,
+                      margin: "0 0 14px"
+                    }}
+                  >
+                    Пройдите короткий опрос перед консультацией
+                  </h2>
 
-              <p
-                style={{
-                  margin: "0 0 22px",
-                  color: "#dbeafe",
-                  lineHeight: 1.8,
-                  fontSize: 18,
-                  maxWidth: 760
-                }}
-              >
-                Он поможет лучше понять ваши зрительные привычки и покажет,
-                какие технологии полезно знать перед обсуждением с врачом.
-              </p>
+                  <p
+                    style={{
+                      margin: 0,
+                      color: "#dbeafe",
+                      lineHeight: 1.8,
+                      fontSize: 18,
+                      maxWidth: 620
+                    }}
+                  >
+                    Опрос поможет лучше понять ваши зрительные приоритеты и
+                    подготовить консультацию с учётом ваших целей и образа
+                    жизни.
+                  </p>
+                </div>
 
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a
-                  href="/ru/start"
-                  style={{
-                    textDecoration: "none",
-                    padding: "14px 22px",
-                    borderRadius: 999,
-                    background: "#ffffff",
-                    color: "#0f172a",
-                    fontWeight: 700
-                  }}
-                >
-                  Пройти короткий опрос
-                </a>
+                <div style={{ display: "grid", gap: 14, justifyItems: "start" }}>
+                  <a
+                    href="/ru/start"
+                    style={{
+                      textDecoration: "none",
+                      padding: "16px 24px",
+                      minWidth: 280,
+                      textAlign: "center",
+                      borderRadius: 14,
+                      background: "#ffffff",
+                      color: "#0f172a",
+                      fontWeight: 700
+                    }}
+                  >
+                    Пройти короткий опрос →
+                  </a>
 
-                <a
-                  href="/ru/intraokulyarnye-linzy"
-                  style={{
-                    textDecoration: "none",
-                    padding: "14px 22px",
-                    borderRadius: 999,
-                    border: "1px solid rgba(255,255,255,0.35)",
-                    color: "#ffffff",
-                    fontWeight: 700
-                  }}
-                >
-                  Подробнее о линзах
-                </a>
+                  <a
+                    href="/ru/intraokulyarnye-linzy"
+                    style={{
+                      textDecoration: "none",
+                      padding: "16px 24px",
+                      minWidth: 280,
+                      textAlign: "center",
+                      borderRadius: 14,
+                      border: "1px solid rgba(255,255,255,0.35)",
+                      color: "#ffffff",
+                      fontWeight: 700
+                    }}
+                  >
+                    Подробнее о линзах →
+                  </a>
+                </div>
               </div>
             </div>
           </div>
