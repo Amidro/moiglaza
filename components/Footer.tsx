@@ -3,17 +3,17 @@ export default function Footer() {
     <footer
       style={{
         marginTop: 80,
-        padding: "48px 20px 36px",
-        background: "#ffffff",
+        padding: "56px 20px 36px",
+        background: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
         borderTop: "1px solid #e2e8f0"
       }}
     >
-      <div style={{ maxWidth: 1160, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
-            gap: 28,
+            gap: 32,
             alignItems: "start"
           }}
         >
@@ -22,24 +22,25 @@ export default function Footer() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 10,
-                marginBottom: 14
+                gap: 12,
+                marginBottom: 16
               }}
             >
               <div
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 42,
+                  height: 42,
                   borderRadius: 999,
-                  background: "linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%)",
+                  background: "linear-gradient(135deg, #e0ecff 0%, #f8fbff 100%)",
+                  border: "1px solid #cfe1ff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center"
                 }}
               >
                 <svg
-                  width="18"
-                  height="18"
+                  width="20"
+                  height="20"
                   viewBox="0 0 24 24"
                   fill="none"
                   aria-hidden="true"
@@ -53,14 +54,26 @@ export default function Footer() {
                 </svg>
               </div>
 
-              <div
-                style={{
-                  fontWeight: 700,
-                  fontSize: 24,
-                  color: "#0f172a"
-                }}
-              >
-                MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
+              <div>
+                <div
+                  style={{
+                    fontWeight: 800,
+                    fontSize: 24,
+                    color: "#0f172a",
+                    lineHeight: 1
+                  }}
+                >
+                  MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
+                </div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: "#64748b",
+                    marginTop: 4
+                  }}
+                >
+                  Информационный patient-сайт
+                </div>
               </div>
             </div>
 
@@ -68,7 +81,7 @@ export default function Footer() {
               style={{
                 color: "#475569",
                 lineHeight: 1.8,
-                maxWidth: 420,
+                maxWidth: 460,
                 margin: 0,
                 fontSize: 16
               }}
@@ -82,25 +95,22 @@ export default function Footer() {
           <div>
             <div
               style={{
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: 800,
-                letterSpacing: "0.12em",
+                letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "#2563eb",
                 marginBottom: 14
               }}
             >
-              Разделы
+              Разделы сайта
             </div>
 
-            <div style={{ display: "grid", gap: 10 }}>
+            <div style={{ display: "grid", gap: 12 }}>
               {[
                 { label: "Главная", href: "/ru" },
                 { label: "Катаракта", href: "/ru/katarakta" },
-                {
-                  label: "Интраокулярные линзы",
-                  href: "/ru/intraokulyarnye-linzy"
-                },
+                { label: "Интраокулярные линзы", href: "/ru/intraokulyarnye-linzy" },
                 { label: "Сухой глаз", href: "/ru/suhoj-glaz" },
                 { label: "Короткий опрос", href: "/ru/start" }
               ].map((item) => (
@@ -109,8 +119,9 @@ export default function Footer() {
                   href={item.href}
                   style={{
                     textDecoration: "none",
-                    color: "#475569",
-                    fontSize: 16
+                    color: "#334155",
+                    fontSize: 16,
+                    fontWeight: 600
                   }}
                 >
                   {item.label}
@@ -122,7 +133,7 @@ export default function Footer() {
 
         <div
           style={{
-            marginTop: 30,
+            marginTop: 32,
             paddingTop: 20,
             borderTop: "1px solid #e2e8f0",
             color: "#64748b",
