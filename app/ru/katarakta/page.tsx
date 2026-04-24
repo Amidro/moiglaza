@@ -1,16 +1,39 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 
+const symptoms = [
+  "зрение как через туман",
+  "яркий свет начинает мешать сильнее",
+  "цвета кажутся менее яркими",
+  "сложнее читать мелкий текст",
+  "хуже видно вечером и ночью"
+];
+
+const steps = [
+  "Помутневший хрусталик аккуратно удаляется.",
+  "На его место устанавливается искусственная линза.",
+  "Свет снова проходит свободно, и зрение становится более чётким."
+];
+
+const questions = [
+  "какой тип линзы подходит именно вам",
+  "что для вас важнее: зрение вдаль, вблизи или на разных расстояниях",
+  "насколько важно меньше зависеть от очков",
+  "каких зрительных задач вы ждёте от результата операции"
+];
+
 export default function KataraktaPage() {
   return (
     <>
       <Header />
 
       <main>
+        {/* HERO */}
         <section
           style={{
-            background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f8fafc 100%)",
-            padding: "72px 20px 56px"
+            background:
+              "linear-gradient(135deg, #eff6ff 0%, #ffffff 58%, #f8fafc 100%)",
+            padding: "84px 20px 72px"
           }}
         >
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -34,7 +57,7 @@ export default function KataraktaPage() {
               style={{
                 fontSize: 52,
                 lineHeight: 1.08,
-                maxWidth: 820,
+                maxWidth: 840,
                 margin: "0 0 18px",
                 color: "#0f172a"
               }}
@@ -45,19 +68,51 @@ export default function KataraktaPage() {
             <p
               style={{
                 fontSize: 20,
-                lineHeight: 1.7,
+                lineHeight: 1.75,
                 color: "#475569",
                 maxWidth: 820,
-                margin: 0
+                margin: "0 0 28px"
               }}
             >
               Катаракта — это помутнение естественного хрусталика глаза. Из-за
               этого зрение становится размытым, тусклым и менее контрастным.
             </p>
+
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a
+                href="/ru/start"
+                style={{
+                  textDecoration: "none",
+                  padding: "14px 22px",
+                  borderRadius: 999,
+                  background: "#2563eb",
+                  color: "#ffffff",
+                  fontWeight: 700
+                }}
+              >
+                Пройти короткий опрос
+              </a>
+
+              <a
+                href="/ru/intraokulyarnye-linzy"
+                style={{
+                  textDecoration: "none",
+                  padding: "14px 22px",
+                  borderRadius: 999,
+                  border: "1px solid #cbd5e1",
+                  background: "#ffffff",
+                  color: "#0f172a",
+                  fontWeight: 700
+                }}
+              >
+                Подробнее о линзах
+              </a>
+            </div>
           </div>
         </section>
 
-        <section style={{ padding: "56px 20px" }}>
+        {/* WHAT HAPPENS */}
+        <section style={{ padding: "72px 20px" }}>
           <div
             style={{
               maxWidth: 1100,
@@ -83,7 +138,8 @@ export default function KataraktaPage() {
 
               <h2
                 style={{
-                  fontSize: 34,
+                  fontSize: 36,
+                  lineHeight: 1.2,
                   margin: "0 0 18px",
                   color: "#0f172a"
                 }}
@@ -96,12 +152,25 @@ export default function KataraktaPage() {
                   fontSize: 18,
                   lineHeight: 1.8,
                   color: "#475569",
-                  margin: 0
+                  margin: "0 0 18px"
                 }}
               >
                 При катаракте естественный хрусталик теряет прозрачность. Свет
-                проходит хуже, и пациент начинает видеть как будто через туман
+                проходит хуже, и человек начинает видеть как будто через туман
                 или мутное стекло.
+              </p>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: 0
+                }}
+              >
+                Со временем такие изменения могут становиться заметнее в
+                повседневной жизни: при чтении, вождении, прогулках и в условиях
+                слабого освещения.
               </p>
             </div>
 
@@ -117,35 +186,58 @@ export default function KataraktaPage() {
               <h3
                 style={{
                   marginTop: 0,
-                  fontSize: 22,
+                  marginBottom: 16,
+                  fontSize: 24,
                   color: "#0f172a"
                 }}
               >
                 Частые жалобы пациентов
               </h3>
 
-              <ul
-                style={{
-                  paddingLeft: 20,
-                  margin: 0,
-                  color: "#475569",
-                  lineHeight: 1.9
-                }}
-              >
-                <li>зрение как через туман</li>
-                <li>цвета кажутся менее яркими</li>
-                <li>яркий свет начинает мешать</li>
-                <li>сложнее читать мелкий текст</li>
-                <li>хуже видно вечером и ночью</li>
-              </ul>
+              <div style={{ display: "grid", gap: 12 }}>
+                {symptoms.map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      display: "flex",
+                      gap: 12,
+                      alignItems: "flex-start",
+                      padding: 14,
+                      borderRadius: 18,
+                      background: "#f8fafc"
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: 999,
+                        background: "#2563eb",
+                        marginTop: 8,
+                        flexShrink: 0
+                      }}
+                    />
+                    <div
+                      style={{
+                        color: "#334155",
+                        lineHeight: 1.75,
+                        fontSize: 16
+                      }}
+                    >
+                      {item}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
+        {/* TREATMENT */}
         <section
           style={{
             background: "#f8fafc",
-            padding: "64px 20px"
+            padding: "72px 20px"
           }}
         >
           <div
@@ -174,7 +266,8 @@ export default function KataraktaPage() {
 
               <h2
                 style={{
-                  fontSize: 34,
+                  fontSize: 36,
+                  lineHeight: 1.2,
                   margin: "0 0 18px",
                   color: "#0f172a"
                 }}
@@ -187,12 +280,25 @@ export default function KataraktaPage() {
                   fontSize: 18,
                   lineHeight: 1.8,
                   color: "#475569",
-                  margin: 0
+                  margin: "0 0 18px"
                 }}
               >
                 Если хрусталик уже помутнел, основным методом лечения является
                 операция. Во время процедуры мутный хрусталик заменяют
-                прозрачной интраокулярной линзой (ИОЛ).
+                прозрачной интраокулярной линзой.
+              </p>
+
+              <p
+                style={{
+                  fontSize: 18,
+                  lineHeight: 1.8,
+                  color: "#475569",
+                  margin: 0
+                }}
+              >
+                Для пациента важна не только сама операция, но и то, каким будет
+                зрение после неё и какие зрительные задачи можно будет решать в
+                повседневной жизни.
               </p>
             </div>
 
@@ -205,11 +311,7 @@ export default function KataraktaPage() {
                 boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
               }}
             >
-              {[
-                "Удаляется помутневший естественный хрусталик.",
-                "На его место устанавливается искусственная линза.",
-                "Свет снова проходит свободно, и зрение становится более четким."
-              ].map((step, index) => (
+              {steps.map((step, index) => (
                 <div
                   key={step}
                   style={{
@@ -219,7 +321,7 @@ export default function KataraktaPage() {
                     padding: 16,
                     borderRadius: 18,
                     background: "#f8fafc",
-                    marginBottom: index === 2 ? 0 : 12
+                    marginBottom: index === steps.length - 1 ? 0 : 12
                   }}
                 >
                   <div
@@ -238,7 +340,13 @@ export default function KataraktaPage() {
                     {index + 1}
                   </div>
 
-                  <div style={{ color: "#334155", lineHeight: 1.7 }}>
+                  <div
+                    style={{
+                      color: "#334155",
+                      lineHeight: 1.75,
+                      fontSize: 16
+                    }}
+                  >
                     {step}
                   </div>
                 </div>
@@ -247,14 +355,16 @@ export default function KataraktaPage() {
           </div>
         </section>
 
-        <section style={{ padding: "56px 20px" }}>
+        {/* WHAT TO DISCUSS */}
+        <section style={{ padding: "72px 20px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <div
               style={{
-                background: "#0f172a",
+                background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)",
                 color: "#ffffff",
-                borderRadius: 28,
-                padding: "36px 28px"
+                borderRadius: 30,
+                padding: "34px 28px",
+                boxShadow: "0 18px 42px rgba(15,23,42,0.18)"
               }}
             >
               <div
@@ -263,35 +373,78 @@ export default function KataraktaPage() {
                   fontWeight: 800,
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#93c5fd",
+                  color: "#bfdbfe",
                   marginBottom: 14
                 }}
               >
-                Что обсудить с врачом
+                Перед консультацией
               </div>
 
               <h2
                 style={{
-                  fontSize: 32,
-                  margin: "0 0 18px"
+                  fontSize: 34,
+                  lineHeight: 1.2,
+                  margin: "0 0 16px"
                 }}
               >
-                Важные вопросы перед операцией
+                Что полезно обсудить с врачом заранее
               </h2>
 
-              <ul
+              <div
                 style={{
-                  paddingLeft: 20,
-                  margin: 0,
-                  color: "#cbd5e1",
-                  lineHeight: 1.9
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+                  gap: 16,
+                  marginTop: 22
                 }}
               >
-                <li>какой тип линзы подходит именно вам</li>
-                <li>есть ли астигматизм</li>
-                <li>на каком расстоянии вам важно хорошо видеть</li>
-                <li>нужна ли коррекция для чтения и работы за компьютером</li>
-              </ul>
+                {questions.map((item) => (
+                  <div
+                    key={item}
+                    style={{
+                      padding: 18,
+                      borderRadius: 20,
+                      background: "rgba(255,255,255,0.08)",
+                      border: "1px solid rgba(255,255,255,0.10)",
+                      color: "#dbeafe",
+                      lineHeight: 1.7,
+                      fontSize: 16
+                    }}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 }}>
+                <a
+                  href="/ru/start"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 999,
+                    background: "#ffffff",
+                    color: "#0f172a",
+                    fontWeight: 700
+                  }}
+                >
+                  Пройти короткий опрос
+                </a>
+
+                <a
+                  href="/ru/intraokulyarnye-linzy"
+                  style={{
+                    textDecoration: "none",
+                    padding: "14px 22px",
+                    borderRadius: 999,
+                    border: "1px solid rgba(255,255,255,0.35)",
+                    color: "#ffffff",
+                    fontWeight: 700
+                  }}
+                >
+                  Подробнее о линзах
+                </a>
+              </div>
             </div>
           </div>
         </section>
