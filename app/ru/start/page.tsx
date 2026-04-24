@@ -138,7 +138,8 @@ function StepBadge({ children }: { children: React.ReactNode }) {
         display: "inline-block",
         padding: "8px 14px",
         borderRadius: 999,
-        background: "#eff6ff",
+        background: "#ffffff",
+        border: "1px solid #bfdbfe",
         color: "#2563eb",
         fontSize: 14,
         fontWeight: 700
@@ -166,10 +167,15 @@ function ChoiceCard({
       onClick={onClick}
       style={{
         textAlign: "left",
-        padding: 20,
+        padding: 22,
         borderRadius: 22,
-        border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-        background: active ? "#eff6ff" : "#ffffff",
+        border: active ? "2px solid #93c5fd" : "1px solid #e2e8f0",
+        background: active
+          ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
+          : "#ffffff",
+        boxShadow: active
+          ? "0 12px 30px rgba(37,99,235,0.10)"
+          : "0 10px 30px rgba(15,23,42,0.05)",
         cursor: "pointer",
         width: "100%"
       }}
@@ -179,13 +185,14 @@ function ChoiceCard({
           fontSize: 20,
           fontWeight: 700,
           color: "#0f172a",
-          marginBottom: text ? 8 : 0
+          marginBottom: text ? 8 : 0,
+          lineHeight: 1.35
         }}
       >
         {title}
       </div>
       {text ? (
-        <div style={{ color: "#475569", lineHeight: 1.7, fontSize: 16 }}>{text}</div>
+        <div style={{ color: "#475569", lineHeight: 1.75, fontSize: 16 }}>{text}</div>
       ) : null}
     </button>
   );
@@ -206,13 +213,18 @@ function ScaleButton({
       onClick={onClick}
       style={{
         padding: 18,
-        borderRadius: 20,
-        border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-        background: active ? "#eff6ff" : "#ffffff",
+        borderRadius: 18,
+        border: active ? "2px solid #93c5fd" : "1px solid #e2e8f0",
+        background: active
+          ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
+          : "#ffffff",
+        boxShadow: active
+          ? "0 12px 30px rgba(37,99,235,0.10)"
+          : "0 10px 30px rgba(15,23,42,0.05)",
         cursor: "pointer",
         color: "#0f172a",
         fontWeight: 700,
-        lineHeight: 1.5,
+        lineHeight: 1.45,
         minHeight: 88
       }}
     >
@@ -275,83 +287,127 @@ export default function StartPage() {
       <Header />
 
       <main>
-        {/* HERO */}
         <section
           style={{
-            background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 58%, #f8fafc 100%)",
-            padding: "84px 20px 56px"
+            background:
+              "linear-gradient(135deg, #edf5ff 0%, #f7fbff 45%, #eef6ff 100%)",
+            padding: "84px 20px 64px"
           }}
         >
-          <div style={{ maxWidth: 960, margin: "0 auto" }}>
-            <div
-              style={{
-                display: "inline-block",
-                padding: "8px 14px",
-                borderRadius: 999,
-                background: "#ffffff",
-                border: "1px solid #dbeafe",
-                color: "#2563eb",
-                fontSize: 14,
-                fontWeight: 700,
-                marginBottom: 18
-              }}
-            >
-              Короткий опрос
-            </div>
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gap: 28,
+              alignItems: "center"
+            }}
+          >
+            <div style={{ maxWidth: 620 }}>
+              <StepBadge>Короткий опрос</StepBadge>
 
-            <h1
-              style={{
-                fontSize: 46,
-                lineHeight: 1.08,
-                maxWidth: 780,
-                margin: "0 0 18px",
-                color: "#0f172a"
-              }}
-            >
-              Какое зрение вы бы хотели получить после операции?
-            </h1>
-
-            <p
-              style={{
-                fontSize: 20,
-                lineHeight: 1.75,
-                color: "#475569",
-                maxWidth: 760,
-                margin: 0
-              }}
-            >
-              Ответьте на несколько коротких вопросов, чтобы понять, какие
-              зрительные решения стоит обсудить с врачом.
-            </p>
-
-            {!started && (
-              <div
+              <h1
                 style={{
-                  display: "flex",
-                  gap: 12,
-                  flexWrap: "wrap",
-                  marginTop: 22,
-                  color: "#475569",
-                  fontSize: 15
+                  fontSize: 50,
+                  lineHeight: 1.08,
+                  margin: "18px 0 18px",
+                  color: "#0f172a"
                 }}
               >
-                <span>займёт около 1 минуты</span>
-                <span>•</span>
-                <span>без регистрации</span>
-                <span>•</span>
-                <span>не заменяет консультацию врача</span>
-              </div>
-            )}
+                Какое зрение вы хотите получить после операции?
+              </h1>
+
+              <p
+                style={{
+                  fontSize: 20,
+                  lineHeight: 1.75,
+                  color: "#475569",
+                  margin: 0,
+                  maxWidth: 620
+                }}
+              >
+                Ответьте на несколько коротких вопросов, чтобы понять, какие
+                зрительные решения стоит обсудить с врачом перед консультацией.
+              </p>
+
+              {!started && (
+                <div
+                  style={{
+                    display: "flex",
+                    gap: 12,
+                    flexWrap: "wrap",
+                    marginTop: 22,
+                    color: "#64748b",
+                    fontSize: 15
+                  }}
+                >
+                  <span>займёт около 1 минуты</span>
+                  <span>•</span>
+                  <span>без регистрации</span>
+                  <span>•</span>
+                  <span>не заменяет консультацию врача</span>
+                </div>
+              )}
+            </div>
+
+            <div
+              style={{
+                minHeight: 320,
+                borderRadius: 30,
+                background:
+                  "radial-gradient(circle at 65% 45%, rgba(255,255,255,0.95) 0%, rgba(219,234,254,0.88) 38%, rgba(191,219,254,0.38) 62%, rgba(239,246,255,0.15) 100%)",
+                border: "1px solid rgba(191,219,254,0.8)",
+                position: "relative",
+                overflow: "hidden"
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "12%",
+                  left: "12%",
+                  width: 320,
+                  height: 320,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.75)"
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: "22%",
+                  left: "24%",
+                  width: 220,
+                  height: 220,
+                  borderRadius: "50%",
+                  border: "1px solid rgba(255,255,255,0.75)"
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  right: "13%",
+                  top: "18%",
+                  width: 180,
+                  height: 180,
+                  borderRadius: "50%",
+                  background:
+                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 30%, rgba(191,219,254,0.72) 55%, rgba(147,197,253,0.28) 78%, rgba(96,165,250,0.06) 100%)",
+                  boxShadow:
+                    "0 0 0 10px rgba(255,255,255,0.32), 0 0 40px rgba(96,165,250,0.18)"
+                }}
+              />
+            </div>
           </div>
         </section>
 
-        {/* CONTENT */}
         <section style={{ padding: "0 20px 72px" }}>
           <div style={{ maxWidth: 960, margin: "0 auto" }}>
             <div
               style={{
                 background: "#ffffff",
-                borderRadius: 30,
+                borderRadius: 28,
                 padding: 28,
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 12px 34px rgba(15,23,42,0.06)"
@@ -369,8 +425,8 @@ export default function StartPage() {
                     }}
                   >
                     Опросник не является диагнозом. Его результат поможет лучше
-                    подготовиться к разговору с врачом и понять, какие технологии
-                    полезно знать перед консультацией.
+                    подготовиться к разговору с врачом и понять, какие названия
+                    технологий полезно знать перед консультацией.
                   </p>
 
                   <button
@@ -378,13 +434,14 @@ export default function StartPage() {
                     onClick={() => setStarted(true)}
                     style={{
                       padding: "14px 24px",
-                      borderRadius: 999,
+                      borderRadius: 14,
                       border: "none",
                       background: "#2563eb",
                       color: "#ffffff",
                       fontWeight: 700,
                       cursor: "pointer",
-                      fontSize: 16
+                      fontSize: 16,
+                      boxShadow: "0 12px 28px rgba(37,99,235,0.18)"
                     }}
                   >
                     Начать
@@ -475,7 +532,7 @@ export default function StartPage() {
                     style={{
                       background: "#f8fafc",
                       borderRadius: 24,
-                      padding: 20,
+                      padding: 22,
                       border: "1px solid #e2e8f0",
                       marginBottom: 24
                     }}
@@ -506,9 +563,10 @@ export default function StartPage() {
 
                   <div
                     style={{
-                      background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)",
+                      background:
+                        "linear-gradient(135deg, #0b2f73 0%, #0f3f9f 40%, #082b68 100%)",
                       color: "#ffffff",
-                      borderRadius: 24,
+                      borderRadius: 26,
                       padding: 22,
                       marginBottom: 24
                     }}
@@ -542,10 +600,11 @@ export default function StartPage() {
                       style={{
                         textDecoration: "none",
                         padding: "14px 22px",
-                        borderRadius: 999,
+                        borderRadius: 14,
                         background: "#2563eb",
                         color: "#ffffff",
-                        fontWeight: 700
+                        fontWeight: 700,
+                        boxShadow: "0 12px 28px rgba(37,99,235,0.18)"
                       }}
                     >
                       Подробнее о линзах
@@ -556,7 +615,7 @@ export default function StartPage() {
                       onClick={restart}
                       style={{
                         padding: "14px 22px",
-                        borderRadius: 999,
+                        borderRadius: 14,
                         border: "1px solid #cbd5e1",
                         background: "#ffffff",
                         color: "#334155",
@@ -576,14 +635,16 @@ export default function StartPage() {
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
-                        marginBottom: 10
+                        gap: 12,
+                        marginBottom: 12,
+                        flexWrap: "wrap"
                       }}
                     >
                       <StepBadge>
                         Вопрос {step + 1} из {steps.length}
                       </StepBadge>
 
-                      <div style={{ fontSize: 14, color: "#64748b" }}>
+                      <div style={{ fontSize: 14, color: "#64748b", fontWeight: 700 }}>
                         {Math.round(((step + 1) / steps.length) * 100)}%
                       </div>
                     </div>
@@ -724,8 +785,7 @@ export default function StartPage() {
                           margin: "0 0 18px"
                         }}
                       >
-                        Насколько для вас важно комфортно пользоваться телефоном и
-                        компьютером без напряжения?
+                        Насколько для вас важно комфортно пользоваться телефоном и компьютером без напряжения?
                       </h2>
 
                       <div
@@ -784,8 +844,7 @@ export default function StartPage() {
                           margin: "0 0 18px"
                         }}
                       >
-                        Насколько для вас важно меньше зависеть от очков после
-                        операции?
+                        Насколько для вас важно меньше зависеть от очков после операции?
                       </h2>
 
                       <div style={{ display: "grid", gap: 14 }}>
@@ -833,8 +892,7 @@ export default function StartPage() {
                           margin: "0 0 10px"
                         }}
                       >
-                        В каких ситуациях вам особенно хотелось бы обходиться без
-                        очков?
+                        В каких ситуациях вам особенно хотелось бы обходиться без очков?
                       </h2>
 
                       <p style={{ margin: "0 0 18px", color: "#475569", fontSize: 16 }}>
@@ -881,7 +939,7 @@ export default function StartPage() {
                       disabled={step === 0}
                       style={{
                         padding: "14px 18px",
-                        borderRadius: 999,
+                        borderRadius: 14,
                         border: "1px solid #cbd5e1",
                         background: step === 0 ? "#f8fafc" : "#ffffff",
                         color: step === 0 ? "#94a3b8" : "#334155",
@@ -905,12 +963,15 @@ export default function StartPage() {
                       disabled={!canGoNext}
                       style={{
                         padding: "14px 22px",
-                        borderRadius: 999,
+                        borderRadius: 14,
                         border: "none",
                         background: canGoNext ? "#2563eb" : "#cbd5e1",
                         color: "#ffffff",
                         cursor: canGoNext ? "pointer" : "not-allowed",
-                        fontWeight: 700
+                        fontWeight: 700,
+                        boxShadow: canGoNext
+                          ? "0 12px 28px rgba(37,99,235,0.18)"
+                          : "none"
                       }}
                     >
                       {isLastStep ? "Показать результат" : "Далее"}
