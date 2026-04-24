@@ -1,65 +1,11 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-
-function EyeIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
-        stroke="#2563eb"
-        strokeWidth="1.8"
-      />
-      <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
-    </svg>
-  );
-}
-
-function LensIcon() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <ellipse cx="12" cy="12" rx="5.5" ry="7" stroke="#2563eb" strokeWidth="1.8" />
-      <path d="M6 8L3.8 6.2" stroke="#2563eb" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M18 16L20.2 17.8" stroke="#2563eb" strokeWidth="1.8" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function LayersIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 4L20 8L12 12L4 8L12 4Z"
-        stroke="#2563eb"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 12L12 16L20 12"
-        stroke="#2563eb"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 16L12 20L20 16"
-        stroke="#2563eb"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function DropIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d="M12 3C12 3 6 10 6 14.2C6 17.6 8.7 20 12 20C15.3 20 18 17.6 18 14.2C18 10 12 3 12 3Z"
-        stroke="#2563eb"
-        strokeWidth="1.8"
-      />
-    </svg>
-  );
-}
+import {
+  DropIcon,
+  EyeIcon,
+  LayersIcon,
+  LensIcon
+} from "../../../components/icons";
 
 const lenses = [
   {
