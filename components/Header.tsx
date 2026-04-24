@@ -5,65 +5,120 @@ export default function Header() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(255,255,255,0.92)",
-        backdropFilter: "blur(10px)",
+        background: "rgba(255,255,255,0.88)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
         borderBottom: "1px solid #e2e8f0"
       }}
     >
       <div
         style={{
-          maxWidth: 1100,
+          maxWidth: 1160,
           margin: "0 auto",
-          padding: "16px 20px",
+          padding: "14px 20px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          gap: 20
+          gap: 18,
+          flexWrap: "wrap"
         }}
       >
         <a
           href="/ru"
           style={{
-            fontWeight: 700,
-            fontSize: 24,
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            textDecoration: "none",
             color: "#0f172a",
-            textDecoration: "none"
+            minWidth: 0
           }}
         >
-          MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
+          <div
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: 999,
+              background: "linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 8px 18px rgba(37,99,235,0.10)"
+            }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
+                stroke="#2563eb"
+                strokeWidth="1.8"
+              />
+              <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
+            </svg>
+          </div>
+
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: 24,
+              lineHeight: 1
+            }}
+          >
+            MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
+          </div>
         </a>
 
         <nav
           style={{
             display: "flex",
-            gap: 18,
+            gap: 10,
             flexWrap: "wrap",
             alignItems: "center"
           }}
         >
-          <a href="/ru" style={{ textDecoration: "none", color: "#334155" }}>
-            Главная
-          </a>
-          <a href="/ru/katarakta" style={{ textDecoration: "none", color: "#334155" }}>
-            Катаракта
-          </a>
-          <a
-            href="/ru/intraokulyarnye-linzy"
-            style={{ textDecoration: "none", color: "#334155" }}
-          >
-            Интраокулярные линзы
-          </a>
-          <a href="/ru/suhoj-glaz" style={{ textDecoration: "none", color: "#334155" }}>
-            Сухой глаз
-          </a>
+          {[
+            { label: "Главная", href: "/ru" },
+            { label: "Катаракта", href: "/ru/katarakta" },
+            {
+              label: "Интраокулярные линзы",
+              href: "/ru/intraokulyarnye-linzy"
+            },
+            { label: "Сухой глаз", href: "/ru/suhoj-glaz" }
+          ].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              style={{
+                textDecoration: "none",
+                color: "#334155",
+                padding: "10px 12px",
+                borderRadius: 12,
+                fontWeight: 600,
+                fontSize: 15,
+                lineHeight: 1.2
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+
           <a
             href="/uz"
             style={{
               textDecoration: "none",
               color: "#0f172a",
               border: "1px solid #cbd5e1",
-              padding: "8px 14px",
-              borderRadius: 999
+              background: "#ffffff",
+              padding: "10px 14px",
+              borderRadius: 999,
+              fontWeight: 700,
+              fontSize: 14,
+              lineHeight: 1.2
             }}
           >
             O‘zbekcha
