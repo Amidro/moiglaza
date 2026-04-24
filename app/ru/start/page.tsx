@@ -60,8 +60,8 @@ function getResultProfile(answers: Answers): ResultProfile {
   const wantsDriving = noGlassesSituations.includes("driving");
   const wantsDaily = noGlassesSituations.includes("daily_tasks");
 
-  const wantsSeveralNoGlasses = [wantsPhone, wantsReading, wantsComputer, wantsDriving, wantsDaily].filter(Boolean)
-    .length >= 2;
+  const wantsSeveralNoGlasses =
+    [wantsPhone, wantsReading, wantsComputer, wantsDriving, wantsDaily].filter(Boolean).length >= 2;
 
   const strongNearNeed =
     hasNear || gadgetsComfort >= 4 || wantsPhone || wantsReading || wantsComputer;
@@ -73,7 +73,6 @@ function getResultProfile(answers: Answers): ResultProfile {
     hasAllDay || multiFocusCount >= 2 || (strongNearNeed && strongDistanceNeed);
 
   const strongFreedomNeed = glassesFreedom === "minimum";
-  const mediumFreedomNeed = glassesFreedom === "prefer_less";
 
   if (
     strongDistanceNeed &&
@@ -132,6 +131,96 @@ function getResultProfile(answers: Answers): ResultProfile {
   };
 }
 
+function StepBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      style={{
+        display: "inline-block",
+        padding: "8px 14px",
+        borderRadius: 999,
+        background: "#eff6ff",
+        color: "#2563eb",
+        fontSize: 14,
+        fontWeight: 700
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function ChoiceCard({
+  title,
+  text,
+  active,
+  onClick
+}: {
+  title: string;
+  text?: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        textAlign: "left",
+        padding: 20,
+        borderRadius: 22,
+        border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
+        background: active ? "#eff6ff" : "#ffffff",
+        cursor: "pointer",
+        width: "100%"
+      }}
+    >
+      <div
+        style={{
+          fontSize: 20,
+          fontWeight: 700,
+          color: "#0f172a",
+          marginBottom: text ? 8 : 0
+        }}
+      >
+        {title}
+      </div>
+      {text ? (
+        <div style={{ color: "#475569", lineHeight: 1.7, fontSize: 16 }}>{text}</div>
+      ) : null}
+    </button>
+  );
+}
+
+function ScaleButton({
+  label,
+  active,
+  onClick
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{
+        padding: 18,
+        borderRadius: 20,
+        border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
+        background: active ? "#eff6ff" : "#ffffff",
+        cursor: "pointer",
+        color: "#0f172a",
+        fontWeight: 700,
+        lineHeight: 1.5,
+        minHeight: 88
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
 export default function StartPage() {
   const [started, setStarted] = useState(false);
   const [step, setStep] = useState(0);
@@ -140,56 +229,40 @@ export default function StartPage() {
   const result = useMemo(() => getResultProfile(answers), [answers]);
 
   const steps = [
-    {
-      id: "lifestyle",
-      title: "Как проходит ваш обычный день?"
-    },
-    {
-      id: "visualFocuses",
-      title: "В каких ситуациях вам особенно важно видеть чётко?"
-    },
-    {
-      id: "gadgetsComfort",
-      title: "Насколько для вас важно комфортно пользоваться телефоном и компьютером без напряжения?"
-    },
-    {
-      id: "glassesFreedom",
-      title: "Насколько для вас важно меньше зависеть от очков после операции?"
-    },
-    {
-      id: "noGlassesSituations",
-      title: "В каких ситуациях вам особенно хотелось бы обходиться без очков?"
+    "lifestyle",
+    "visualFocuses",
+    "gadgetsComfort",
+    "glassesFreedom",
+    "noGlassesSituations"
+  ] as const;
+
+  const isLastStep = step === steps.length - 1;
+  const currentStepId = step < steps.length ? steps[step] : null;
+
+  const canGoNext = (() => {
+    switch (currentStepId) {
+      case "lifestyle":
+        return !!answers.lifestyle;
+      case "visualFocuses":
+        return answers.visualFocuses.length > 0;
+      case "gadgetsComfort":
+        return !!answers.gadgetsComfort;
+      case "glassesFreedom":
+        return !!answers.glassesFreedom;
+      case "noGlassesSituations":
+        return answers.noGlassesSituations.length > 0;
+      default:
+        return false;
     }
-  ];
+  })();
 
-const isLastStep = step === steps.length - 1;
-
-const currentStepId = step < steps.length ? steps[step].id : null;
-
-const canGoNext = (() => {
-  switch (currentStepId) {
-    case "lifestyle":
-      return !!answers.lifestyle;
-    case "visualFocuses":
-      return answers.visualFocuses.length > 0;
-    case "gadgetsComfort":
-      return !!answers.gadgetsComfort;
-    case "glassesFreedom":
-      return !!answers.glassesFreedom;
-    case "noGlassesSituations":
-      return answers.noGlassesSituations.length > 0;
-    default:
-      return false;
-  }
-})();
-
-const isComplete =
-  step >= steps.length &&
-  !!answers.lifestyle &&
-  answers.visualFocuses.length > 0 &&
-  !!answers.gadgetsComfort &&
-  !!answers.glassesFreedom &&
-  answers.noGlassesSituations.length > 0;
+  const isComplete =
+    step >= steps.length &&
+    !!answers.lifestyle &&
+    answers.visualFocuses.length > 0 &&
+    !!answers.gadgetsComfort &&
+    !!answers.glassesFreedom &&
+    answers.noGlassesSituations.length > 0;
 
   const restart = () => {
     setStarted(false);
@@ -202,10 +275,11 @@ const isComplete =
       <Header />
 
       <main>
+        {/* HERO */}
         <section
           style={{
-            background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 60%, #f8fafc 100%)",
-            padding: "72px 20px 48px"
+            background: "linear-gradient(135deg, #eff6ff 0%, #ffffff 58%, #f8fafc 100%)",
+            padding: "84px 20px 56px"
           }}
         >
           <div style={{ maxWidth: 960, margin: "0 auto" }}>
@@ -228,8 +302,8 @@ const isComplete =
             <h1
               style={{
                 fontSize: 46,
-                lineHeight: 1.1,
-                maxWidth: 760,
+                lineHeight: 1.08,
+                maxWidth: 780,
                 margin: "0 0 18px",
                 color: "#0f172a"
               }}
@@ -240,14 +314,14 @@ const isComplete =
             <p
               style={{
                 fontSize: 20,
-                lineHeight: 1.7,
+                lineHeight: 1.75,
                 color: "#475569",
                 maxWidth: 760,
                 margin: 0
               }}
             >
-              Ответьте на несколько коротких вопросов, чтобы понять, какие зрительные
-              решения стоит обсудить с врачом.
+              Ответьте на несколько коротких вопросов, чтобы понять, какие
+              зрительные решения стоит обсудить с врачом.
             </p>
 
             {!started && (
@@ -271,12 +345,13 @@ const isComplete =
           </div>
         </section>
 
-        <section style={{ padding: "24px 20px 64px" }}>
+        {/* CONTENT */}
+        <section style={{ padding: "0 20px 72px" }}>
           <div style={{ maxWidth: 960, margin: "0 auto" }}>
             <div
               style={{
                 background: "#ffffff",
-                borderRadius: 28,
+                borderRadius: 30,
                 padding: 28,
                 border: "1px solid #e2e8f0",
                 boxShadow: "0 12px 34px rgba(15,23,42,0.06)"
@@ -286,14 +361,16 @@ const isComplete =
                 <div>
                   <p
                     style={{
-                      margin: "0 0 20px",
+                      margin: "0 0 22px",
                       color: "#475569",
                       lineHeight: 1.8,
-                      fontSize: 17
+                      fontSize: 17,
+                      maxWidth: 760
                     }}
                   >
                     Опросник не является диагнозом. Его результат поможет лучше
-                    подготовиться к разговору с врачом.
+                    подготовиться к разговору с врачом и понять, какие технологии
+                    полезно знать перед консультацией.
                   </p>
 
                   <button
@@ -315,54 +392,42 @@ const isComplete =
                 </div>
               ) : isComplete ? (
                 <div>
-                  <div
-                    style={{
-                      display: "inline-block",
-                      padding: "8px 14px",
-                      borderRadius: 999,
-                      background: "#eff6ff",
-                      color: "#2563eb",
-                      fontSize: 14,
-                      fontWeight: 700,
-                      marginBottom: 18
-                    }}
-                  >
-                    Что стоит обсудить с врачом
-                  </div>
+                  <StepBadge>Что стоит обсудить с врачом</StepBadge>
 
-                  <h2
-                    style={{
-                      fontSize: 34,
-                      lineHeight: 1.2,
-                      color: "#0f172a",
-                      margin: "0 0 18px"
-                    }}
-                  >
-                    Ваш приоритет
-                  </h2>
-
-                  <div
-                    style={{
-                      background: "#f8fafc",
-                      borderRadius: 24,
-                      padding: 22,
-                      border: "1px solid #e2e8f0",
-                      marginBottom: 20
-                    }}
-                  >
-                    <div
+                  <div style={{ marginTop: 22, marginBottom: 24 }}>
+                    <h2
                       style={{
-                        fontSize: 28,
-                        lineHeight: 1.3,
+                        fontSize: 34,
+                        lineHeight: 1.2,
                         color: "#0f172a",
-                        fontWeight: 700
+                        margin: "0 0 16px"
                       }}
                     >
-                      {result.title}
+                      Ваш приоритет
+                    </h2>
+
+                    <div
+                      style={{
+                        background: "#f8fafc",
+                        borderRadius: 24,
+                        padding: 22,
+                        border: "1px solid #e2e8f0"
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 28,
+                          lineHeight: 1.3,
+                          color: "#0f172a",
+                          fontWeight: 700
+                        }}
+                      >
+                        {result.title}
+                      </div>
                     </div>
                   </div>
 
-                  <div style={{ marginBottom: 22 }}>
+                  <div style={{ marginBottom: 24 }}>
                     <h3
                       style={{
                         margin: "0 0 10px",
@@ -384,7 +449,7 @@ const isComplete =
                     </p>
                   </div>
 
-                  <div style={{ marginBottom: 22 }}>
+                  <div style={{ marginBottom: 24 }}>
                     <h3
                       style={{
                         margin: "0 0 10px",
@@ -409,10 +474,10 @@ const isComplete =
                   <div
                     style={{
                       background: "#f8fafc",
-                      borderRadius: 22,
+                      borderRadius: 24,
                       padding: 20,
                       border: "1px solid #e2e8f0",
-                      marginBottom: 22
+                      marginBottom: 24
                     }}
                   >
                     <div
@@ -441,11 +506,11 @@ const isComplete =
 
                   <div
                     style={{
-                      background: "#0f172a",
+                      background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%)",
                       color: "#ffffff",
                       borderRadius: 24,
                       padding: 22,
-                      marginBottom: 22
+                      marginBottom: 24
                     }}
                   >
                     <div
@@ -460,7 +525,7 @@ const isComplete =
                     <p
                       style={{
                         margin: 0,
-                        color: "#cbd5e1",
+                        color: "#dbeafe",
                         lineHeight: 1.8,
                         fontSize: 16
                       }}
@@ -505,7 +570,7 @@ const isComplete =
                 </div>
               ) : (
                 <div>
-                  <div style={{ marginBottom: 22 }}>
+                  <div style={{ marginBottom: 24 }}>
                     <div
                       style={{
                         display: "flex",
@@ -514,15 +579,10 @@ const isComplete =
                         marginBottom: 10
                       }}
                     >
-                      <div
-                        style={{
-                          fontSize: 14,
-                          fontWeight: 700,
-                          color: "#2563eb"
-                        }}
-                      >
+                      <StepBadge>
                         Вопрос {step + 1} из {steps.length}
-                      </div>
+                      </StepBadge>
+
                       <div style={{ fontSize: 14, color: "#64748b" }}>
                         {Math.round(((step + 1) / steps.length) * 100)}%
                       </div>
@@ -549,121 +609,123 @@ const isComplete =
 
                   {step === 0 && (
                     <div>
-                      <h2 style={{ fontSize: 32, lineHeight: 1.25, color: "#0f172a", margin: "0 0 18px" }}>
+                      <h2
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 1.25,
+                          color: "#0f172a",
+                          margin: "0 0 18px"
+                        }}
+                      >
                         Как проходит ваш обычный день?
                       </h2>
 
                       <div style={{ display: "grid", gap: 14 }}>
-                        {[
-                          {
-                            value: "active" as LifestyleValue,
-                            title: "Активно",
-                            text: "Много времени провожу на улице, за рулём или в движении."
-                          },
-                          {
-                            value: "calm" as LifestyleValue,
-                            title: "Спокойно",
-                            text: "Чаще нахожусь дома, читаю, работаю за столом или занимаюсь домашними делами."
-                          },
-                          {
-                            value: "balanced" as LifestyleValue,
-                            title: "Сбалансированно",
-                            text: "В течение дня у меня есть и дела в помещении, и прогулки, и разные повседневные задачи."
+                        <ChoiceCard
+                          title="Активно"
+                          text="Много времени провожу на улице, за рулём или в движении."
+                          active={answers.lifestyle === "active"}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, lifestyle: "active" }))
                           }
-                        ].map((item) => {
-                          const active = answers.lifestyle === item.value;
-                          return (
-                            <button
-                              key={item.value}
-                              type="button"
-                              onClick={() => setAnswers((prev) => ({ ...prev, lifestyle: item.value }))}
-                              style={{
-                                textAlign: "left",
-                                padding: 20,
-                                borderRadius: 22,
-                                border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-                                background: active ? "#eff6ff" : "#ffffff",
-                                cursor: "pointer"
-                              }}
-                            >
-                              <div style={{ fontSize: 20, fontWeight: 700, color: "#0f172a", marginBottom: 8 }}>
-                                {item.title}
-                              </div>
-                              <div style={{ color: "#475569", lineHeight: 1.7 }}>{item.text}</div>
-                            </button>
-                          );
-                        })}
+                        />
+                        <ChoiceCard
+                          title="Спокойно"
+                          text="Чаще нахожусь дома, читаю, работаю за столом или занимаюсь домашними делами."
+                          active={answers.lifestyle === "calm"}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, lifestyle: "calm" }))
+                          }
+                        />
+                        <ChoiceCard
+                          title="Сбалансированно"
+                          text="В течение дня у меня есть и дела в помещении, и прогулки, и разные повседневные задачи."
+                          active={answers.lifestyle === "balanced"}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, lifestyle: "balanced" }))
+                          }
+                        />
                       </div>
                     </div>
                   )}
 
                   {step === 1 && (
                     <div>
-                      <h2 style={{ fontSize: 32, lineHeight: 1.25, color: "#0f172a", margin: "0 0 10px" }}>
+                      <h2
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 1.25,
+                          color: "#0f172a",
+                          margin: "0 0 10px"
+                        }}
+                      >
                         В каких ситуациях вам особенно важно видеть чётко?
                       </h2>
+
                       <p style={{ margin: "0 0 18px", color: "#475569", fontSize: 16 }}>
                         Можно выбрать несколько вариантов.
                       </p>
 
                       <div style={{ display: "grid", gap: 14 }}>
-                        {[
-                          {
-                            value: "distance" as VisionFocusValue,
-                            title: "Вдаль",
-                            text: "Например: вождение, телевизор, дорожные знаки, прогулки"
-                          },
-                          {
-                            value: "intermediate" as VisionFocusValue,
-                            title: "На среднем расстоянии",
-                            text: "Например: меню в ресторане, ценники в магазине, экран компьютера / планшета / телефона, приборная панель автомобиля"
-                          },
-                          {
-                            value: "near" as VisionFocusValue,
-                            title: "Вблизи",
-                            text: "Например: чтение книг, инструкции к лекарствам, макияж, рукоделие"
-                          },
-                          {
-                            value: "all_day" as VisionFocusValue,
-                            title: "На разных расстояниях в течение дня",
-                            text: ""
+                        <ChoiceCard
+                          title="Вдаль"
+                          text="Например: вождение, телевизор, дорожные знаки, прогулки"
+                          active={answers.visualFocuses.includes("distance")}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              visualFocuses: toggleArrayValue(prev.visualFocuses, "distance")
+                            }))
                           }
-                        ].map((item) => {
-                          const active = answers.visualFocuses.includes(item.value);
-                          return (
-                            <button
-                              key={item.value}
-                              type="button"
-                              onClick={() =>
-                                setAnswers((prev) => ({
-                                  ...prev,
-                                  visualFocuses: toggleArrayValue(prev.visualFocuses, item.value)
-                                }))
-                              }
-                              style={{
-                                textAlign: "left",
-                                padding: 20,
-                                borderRadius: 22,
-                                border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-                                background: active ? "#eff6ff" : "#ffffff",
-                                cursor: "pointer"
-                              }}
-                            >
-                              <div style={{ fontSize: 20, fontWeight: 700, color: "#0f172a", marginBottom: 8 }}>
-                                {item.title}
-                              </div>
-                              {item.text && <div style={{ color: "#475569", lineHeight: 1.7 }}>{item.text}</div>}
-                            </button>
-                          );
-                        })}
+                        />
+                        <ChoiceCard
+                          title="На среднем расстоянии"
+                          text="Например: меню в ресторане, ценники в магазине, экран компьютера / планшета / телефона, приборная панель автомобиля"
+                          active={answers.visualFocuses.includes("intermediate")}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              visualFocuses: toggleArrayValue(prev.visualFocuses, "intermediate")
+                            }))
+                          }
+                        />
+                        <ChoiceCard
+                          title="Вблизи"
+                          text="Например: чтение книг, инструкции к лекарствам, макияж, рукоделие"
+                          active={answers.visualFocuses.includes("near")}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              visualFocuses: toggleArrayValue(prev.visualFocuses, "near")
+                            }))
+                          }
+                        />
+                        <ChoiceCard
+                          title="На разных расстояниях в течение дня"
+                          active={answers.visualFocuses.includes("all_day")}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              visualFocuses: toggleArrayValue(prev.visualFocuses, "all_day")
+                            }))
+                          }
+                        />
                       </div>
                     </div>
                   )}
 
                   {step === 2 && (
                     <div>
-                      <h2 style={{ fontSize: 32, lineHeight: 1.25, color: "#0f172a", margin: "0 0 18px" }}>
-                        Насколько для вас важно комфортно пользоваться телефоном и компьютером без напряжения?
+                      <h2
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 1.25,
+                          color: "#0f172a",
+                          margin: "0 0 18px"
+                        }}
+                      >
+                        Насколько для вас важно комфортно пользоваться телефоном и
+                        компьютером без напряжения?
                       </h2>
 
                       <div
@@ -673,94 +735,108 @@ const isComplete =
                           gap: 12
                         }}
                       >
-                        {[
-                          { value: 1 as const, label: "Совсем не важно" },
-                          { value: 2 as const, label: "Скорее не важно" },
-                          { value: 3 as const, label: "Не уверен(а)" },
-                          { value: 4 as const, label: "Достаточно важно" },
-                          { value: 5 as const, label: "Очень важно" }
-                        ].map((item) => {
-                          const active = answers.gadgetsComfort === item.value;
-                          return (
-                            <button
-                              key={item.value}
-                              type="button"
-                              onClick={() =>
-                                setAnswers((prev) => ({ ...prev, gadgetsComfort: item.value }))
-                              }
-                              style={{
-                                padding: 18,
-                                borderRadius: 20,
-                                border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-                                background: active ? "#eff6ff" : "#ffffff",
-                                cursor: "pointer",
-                                color: "#0f172a",
-                                fontWeight: 700,
-                                lineHeight: 1.5
-                              }}
-                            >
-                              {item.label}
-                            </button>
-                          );
-                        })}
+                        <ScaleButton
+                          label="Совсем не важно"
+                          active={answers.gadgetsComfort === 1}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, gadgetsComfort: 1 }))
+                          }
+                        />
+                        <ScaleButton
+                          label="Скорее не важно"
+                          active={answers.gadgetsComfort === 2}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, gadgetsComfort: 2 }))
+                          }
+                        />
+                        <ScaleButton
+                          label="Не уверен(а)"
+                          active={answers.gadgetsComfort === 3}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, gadgetsComfort: 3 }))
+                          }
+                        />
+                        <ScaleButton
+                          label="Достаточно важно"
+                          active={answers.gadgetsComfort === 4}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, gadgetsComfort: 4 }))
+                          }
+                        />
+                        <ScaleButton
+                          label="Очень важно"
+                          active={answers.gadgetsComfort === 5}
+                          onClick={() =>
+                            setAnswers((prev) => ({ ...prev, gadgetsComfort: 5 }))
+                          }
+                        />
                       </div>
                     </div>
                   )}
 
                   {step === 3 && (
                     <div>
-                      <h2 style={{ fontSize: 32, lineHeight: 1.25, color: "#0f172a", margin: "0 0 18px" }}>
-                        Насколько для вас важно меньше зависеть от очков после операции?
+                      <h2
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 1.25,
+                          color: "#0f172a",
+                          margin: "0 0 18px"
+                        }}
+                      >
+                        Насколько для вас важно меньше зависеть от очков после
+                        операции?
                       </h2>
 
                       <div style={{ display: "grid", gap: 14 }}>
-                        {[
-                          {
-                            value: "ok_with_glasses" as GlassesFreedomValue,
-                            text: "Меня не смущает, если очки понадобятся для отдельных задач"
-                          },
-                          {
-                            value: "prefer_less" as GlassesFreedomValue,
-                            text: "Мне было бы комфортнее как можно реже пользоваться очками"
-                          },
-                          {
-                            value: "minimum" as GlassesFreedomValue,
-                            text: "Для меня очень важно свести использование очков к минимуму"
+                        <ChoiceCard
+                          title="Меня не смущает, если очки понадобятся для отдельных задач"
+                          active={answers.glassesFreedom === "ok_with_glasses"}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              glassesFreedom: "ok_with_glasses"
+                            }))
                           }
-                        ].map((item) => {
-                          const active = answers.glassesFreedom === item.value;
-                          return (
-                            <button
-                              key={item.value}
-                              type="button"
-                              onClick={() =>
-                                setAnswers((prev) => ({ ...prev, glassesFreedom: item.value }))
-                              }
-                              style={{
-                                textAlign: "left",
-                                padding: 20,
-                                borderRadius: 22,
-                                border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-                                background: active ? "#eff6ff" : "#ffffff",
-                                cursor: "pointer",
-                                color: "#0f172a",
-                                lineHeight: 1.7,
-                                fontSize: 17
-                              }}
-                            >
-                              {item.text}
-                            </button>
-                          );
-                        })}
+                        />
+                        <ChoiceCard
+                          title="Мне было бы комфортнее как можно реже пользоваться очками"
+                          active={answers.glassesFreedom === "prefer_less"}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              glassesFreedom: "prefer_less"
+                            }))
+                          }
+                        />
+                        <ChoiceCard
+                          title="Для меня очень важно свести использование очков к минимуму"
+                          active={answers.glassesFreedom === "minimum"}
+                          onClick={() =>
+                            setAnswers((prev) => ({
+                              ...prev,
+                              glassesFreedom: "minimum"
+                            }))
+                          }
+                        />
                       </div>
                     </div>
                   )}
 
                   {step === 4 && (
                     <div>
-                      <h2 style={{ fontSize: 32, lineHeight: 1.25, color: "#0f172a", margin: "0 0 10px" }}>
-                        В каких ситуациях вам особенно хотелось бы обходиться без очков?
+                      <h2
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 1.25,
+                          color: "#0f172a",
+                          margin: "0 0 10px"
+                        }}
+                      >
+                        В каких ситуациях вам особенно хотелось бы обходиться без
+                        очков?
                       </h2>
+
                       <p style={{ margin: "0 0 18px", color: "#475569", fontSize: 16 }}>
                         Можно выбрать несколько вариантов.
                       </p>
@@ -773,34 +849,19 @@ const isComplete =
                           { value: "computer" as NoGlassesSituationValue, label: "За компьютером" },
                           { value: "daily_tasks" as NoGlassesSituationValue, label: "При повседневных делах" },
                           { value: "not_important" as NoGlassesSituationValue, label: "Это не принципиально для меня" }
-                        ].map((item) => {
-                          const active = answers.noGlassesSituations.includes(item.value);
-                          return (
-                            <button
-                              key={item.value}
-                              type="button"
-                              onClick={() =>
-                                setAnswers((prev) => ({
-                                  ...prev,
-                                  noGlassesSituations: toggleArrayValue(prev.noGlassesSituations, item.value)
-                                }))
-                              }
-                              style={{
-                                textAlign: "left",
-                                padding: 20,
-                                borderRadius: 22,
-                                border: active ? "2px solid #2563eb" : "1px solid #e2e8f0",
-                                background: active ? "#eff6ff" : "#ffffff",
-                                cursor: "pointer",
-                                color: "#0f172a",
-                                lineHeight: 1.7,
-                                fontSize: 17
-                              }}
-                            >
-                              {item.label}
-                            </button>
-                          );
-                        })}
+                        ].map((item) => (
+                          <ChoiceCard
+                            key={item.value}
+                            title={item.label}
+                            active={answers.noGlassesSituations.includes(item.value)}
+                            onClick={() =>
+                              setAnswers((prev) => ({
+                                ...prev,
+                                noGlassesSituations: toggleArrayValue(prev.noGlassesSituations, item.value)
+                              }))
+                            }
+                          />
+                        ))}
                       </div>
                     </div>
                   )}
@@ -810,7 +871,7 @@ const isComplete =
                       display: "flex",
                       justifyContent: "space-between",
                       gap: 12,
-                      marginTop: 28,
+                      marginTop: 30,
                       flexWrap: "wrap"
                     }}
                   >
