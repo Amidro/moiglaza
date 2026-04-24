@@ -1,11 +1,15 @@
-import Header from "../../../components/Header";
-import Footer from "../../../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import {
+  BookIcon,
   DropIcon,
   EyeIcon,
-  SparklesIcon
-} from "../../../components/icons";
-
+  LensIcon,
+  QuestionIcon,
+  ScalpelIcon,
+  SparklesIcon,
+  TargetIcon
+} from "../../components/icons";
 const symptoms = [
   "жжение",
   "ощущение песка в глазах",
