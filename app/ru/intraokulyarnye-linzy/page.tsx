@@ -59,7 +59,6 @@ export default function LensesPage() {
       <Header />
 
       <main>
-        {/* HERO */}
         <section
           style={{
             background:
@@ -144,7 +143,6 @@ export default function LensesPage() {
           </div>
         </section>
 
-        {/* WHY IT MATTERS */}
         <section style={{ padding: "72px 20px" }}>
           <div
             style={{
@@ -168,9 +166,6 @@ export default function LensesPage() {
                 }}
               >
                 Почему это важно
-              }}
-              >
-                <div
               </div>
 
               <h2
@@ -260,7 +255,6 @@ export default function LensesPage() {
           </div>
         </section>
 
-        {/* TYPES */}
         <section
           style={{
             padding: "72px 20px",
@@ -364,7 +358,6 @@ export default function LensesPage() {
           </div>
         </section>
 
-        {/* HOW PATIENTS CHOOSE */}
         <section style={{ padding: "72px 20px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <div style={{ maxWidth: 760, marginBottom: 28 }}>
@@ -444,7 +437,6 @@ export default function LensesPage() {
           </div>
         </section>
 
-        {/* WHAT TO DISCUSS */}
         <section style={{ padding: "0 20px 72px" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <div
