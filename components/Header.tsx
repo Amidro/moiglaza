@@ -7,138 +7,192 @@ export default function Header() {
   ];
 
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 60,
-        background: "rgba(255,255,255,0.92)",
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-        borderBottom: "1px solid rgba(226,232,240,0.95)",
-        boxShadow: "0 8px 20px rgba(15,23,42,0.04)"
-      }}
-    >
-      <div
+    <>
+      <style>{`
+        @media (max-width: 768px) {
+          .moiglaza-header {
+            position: relative !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+          }
+
+          .moiglaza-header-inner {
+            padding: 12px 16px !important;
+            gap: 12px !important;
+          }
+
+          .moiglaza-brand-subtitle {
+            display: none !important;
+          }
+
+          .moiglaza-brand-title {
+            font-size: 22px !important;
+          }
+
+          .moiglaza-logo-badge {
+            width: 38px !important;
+            height: 38px !important;
+          }
+
+          .moiglaza-nav {
+            gap: 6px !important;
+            width: 100% !important;
+            justify-content: flex-start !important;
+          }
+
+          .moiglaza-nav-link {
+            padding: 8px 10px !important;
+            font-size: 13px !important;
+          }
+
+          .moiglaza-lang-link {
+            padding: 8px 12px !important;
+            font-size: 13px !important;
+          }
+        }
+      `}</style>
+
+      <header
+        className="moiglaza-header"
         style={{
-          maxWidth: 1180,
-          margin: "0 auto",
-          padding: "14px 20px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 18,
-          flexWrap: "wrap"
+          position: "sticky",
+          top: 0,
+          zIndex: 60,
+          background: "rgba(255,255,255,0.92)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          borderBottom: "1px solid rgba(226,232,240,0.95)",
+          boxShadow: "0 8px 20px rgba(15,23,42,0.04)"
         }}
       >
-        <a
-          href="/ru"
+        <div
+          className="moiglaza-header-inner"
           style={{
+            maxWidth: 1180,
+            margin: "0 auto",
+            padding: "14px 20px",
             display: "flex",
             alignItems: "center",
-            gap: 12,
-            textDecoration: "none",
-            color: "#0f172a"
-          }}
-        >
-          <div
-            style={{
-              width: 42,
-              height: 42,
-              borderRadius: 999,
-              background: "linear-gradient(135deg, #e0ecff 0%, #f8fbff 100%)",
-              border: "1px solid #cfe1ff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 10px 24px rgba(37,99,235,0.12)"
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
-                stroke="#2563eb"
-                strokeWidth="1.8"
-              />
-              <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
-            </svg>
-          </div>
-
-          <div>
-            <div
-              style={{
-                fontWeight: 800,
-                fontSize: 24,
-                lineHeight: 1,
-                letterSpacing: "-0.02em"
-              }}
-            >
-              MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
-            </div>
-            <div
-              style={{
-                fontSize: 12,
-                color: "#64748b",
-                marginTop: 4
-              }}
-            >
-              Понятно о зрении и катаракте
-            </div>
-          </div>
-        </a>
-
-        <nav
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
+            justifyContent: "space-between",
+            gap: 18,
             flexWrap: "wrap"
           }}
         >
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              style={{
-                textDecoration: "none",
-                color: "#334155",
-                padding: "10px 14px",
-                borderRadius: 999,
-                fontWeight: 700,
-                fontSize: 14,
-                lineHeight: 1.2,
-                background: "#ffffff"
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
-
           <a
-            href="/uz"
+            href="/ru"
             style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
               textDecoration: "none",
-              color: "#2563eb",
-              border: "1px solid #bfdbfe",
-              background: "#eff6ff",
-              padding: "10px 14px",
-              borderRadius: 999,
-              fontWeight: 800,
-              fontSize: 14,
-              lineHeight: 1.2,
-              boxShadow: "0 8px 18px rgba(37,99,235,0.08)"
+              color: "#0f172a"
             }}
           >
-            O‘zbekcha
+            <div
+              className="moiglaza-logo-badge"
+              style={{
+                width: 42,
+                height: 42,
+                borderRadius: 999,
+                background: "linear-gradient(135deg, #e0ecff 0%, #f8fbff 100%)",
+                border: "1px solid #cfe1ff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 10px 24px rgba(37,99,235,0.12)"
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 12C4.5 7.8 8 5.5 12 5.5C16 5.5 19.5 7.8 22 12C19.5 16.2 16 18.5 12 18.5C8 18.5 4.5 16.2 2 12Z"
+                  stroke="#2563eb"
+                  strokeWidth="1.8"
+                />
+                <circle cx="12" cy="12" r="3.2" stroke="#2563eb" strokeWidth="1.8" />
+              </svg>
+            </div>
+
+            <div>
+              <div
+                className="moiglaza-brand-title"
+                style={{
+                  fontWeight: 800,
+                  fontSize: 24,
+                  lineHeight: 1,
+                  letterSpacing: "-0.02em"
+                }}
+              >
+                MoiGlaza<span style={{ color: "#2563eb" }}>.uz</span>
+              </div>
+              <div
+                className="moiglaza-brand-subtitle"
+                style={{
+                  fontSize: 12,
+                  color: "#64748b",
+                  marginTop: 4
+                }}
+              >
+                Понятно о зрении и катаракте
+              </div>
+            </div>
           </a>
-        </nav>
-      </div>
-    </header>
+
+          <nav
+            className="moiglaza-nav"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              flexWrap: "wrap"
+            }}
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="moiglaza-nav-link"
+                style={{
+                  textDecoration: "none",
+                  color: "#334155",
+                  padding: "10px 14px",
+                  borderRadius: 999,
+                  fontWeight: 700,
+                  fontSize: 14,
+                  lineHeight: 1.2,
+                  background: "#ffffff"
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
+
+            <a
+              href="/uz"
+              className="moiglaza-lang-link"
+              style={{
+                textDecoration: "none",
+                color: "#2563eb",
+                border: "1px solid #bfdbfe",
+                background: "#eff6ff",
+                padding: "10px 14px",
+                borderRadius: 999,
+                fontWeight: 800,
+                fontSize: 14,
+                lineHeight: 1.2,
+                boxShadow: "0 8px 18px rgba(37,99,235,0.08)"
+              }}
+            >
+              O‘zbekcha
+            </a>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }
