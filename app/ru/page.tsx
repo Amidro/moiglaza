@@ -197,7 +197,7 @@ export default function Page() {
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
                 gap: 20,
-                alignItems: "start"
+                alignItems: "stretch"
               }}
             >
               {cards.map((item) => (
@@ -214,13 +214,18 @@ export default function Page() {
                     padding: 24,
                     boxShadow: item.accent
                       ? "0 16px 38px rgba(37,99,235,0.10)"
-                      : "0 10px 30px rgba(15,23,42,0.06)"
+                      : "0 10px 30px rgba(15,23,42,0.06)",
+                    height: "100%"
                   }}
                 >
                   <summary
                     style={{
                       listStyle: "none",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      display: "flex",
+                      flexDirection: "column",
+                      height: "100%",
+                      minHeight: 250
                     }}
                   >
                     <div
@@ -271,7 +276,8 @@ export default function Page() {
 
                     <div
                       style={{
-                        marginTop: 16,
+                        marginTop: "auto",
+                        paddingTop: 16,
                         color: "#2563eb",
                         fontWeight: 700,
                         fontSize: 15
