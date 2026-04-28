@@ -4,31 +4,32 @@ import {
   ComfortIcon,
   DropIcon,
   EyeIcon,
+  IntermediateIcon,
   SparklesIcon
 } from "../../../components/icons";
 
 const symptoms = [
-  "жжение",
-  "ощущение песка в глазах",
-  "усталость глаз к вечеру",
-  "временное затуманивание зрения",
-  "дискомфорт при работе за экраном"
+  { text: "жжение", icon: <SparklesIcon /> },
+  { text: "ощущение песка в глазах", icon: <EyeIcon /> },
+  { text: "усталость глаз к вечеру", icon: <ComfortIcon /> },
+  { text: "временное затуманивание зрения", icon: <EyeIcon /> },
+  { text: "дискомфорт при работе за экраном", icon: <IntermediateIcon /> }
 ];
 
 const triggers = [
-  "долгая работа за компьютером или телефоном",
-  "сухой воздух в помещении",
-  "кондиционер или отопление",
-  "возрастные изменения",
-  "нестабильная слёзная плёнка"
+  { text: "долгая работа за компьютером или телефоном", icon: <IntermediateIcon /> },
+  { text: "сухой воздух в помещении", icon: <DropIcon /> },
+  { text: "кондиционер или отопление", icon: <DropIcon /> },
+  { text: "возрастные изменения", icon: <EyeIcon /> },
+  { text: "нестабильная слёзная плёнка", icon: <DropIcon /> }
 ];
 
 const help = [
-  "делать перерывы при работе за экраном",
-  "чаще моргать во время чтения и работы",
-  "избегать слишком сухого воздуха",
-  "обсудить с врачом увлажняющие капли",
-  "обратиться к специалисту, если симптомы повторяются часто"
+  { text: "делать перерывы при работе за экраном", icon: <ComfortIcon /> },
+  { text: "чаще моргать во время чтения и работы", icon: <ComfortIcon /> },
+  { text: "избегать слишком сухого воздуха", icon: <SparklesIcon /> },
+  { text: "обсудить с врачом увлажняющие капли", icon: <SparklesIcon /> },
+  { text: "обратиться к специалисту, если симптомы повторяются часто", icon: <SparklesIcon /> }
 ];
 
 const nextSteps = [
@@ -298,7 +299,7 @@ export default function DryEyePage() {
               <div style={{ display: "grid", gap: 12 }}>
                 {symptoms.map((item) => (
                   <div
-                    key={item}
+                    key={item.text}
                     style={{
                       display: "flex",
                       gap: 12,
@@ -320,7 +321,7 @@ export default function DryEyePage() {
                         flexShrink: 0
                       }}
                     >
-                      <EyeIcon />
+                      {item.icon}
                     </div>
 
                     <div
@@ -330,7 +331,7 @@ export default function DryEyePage() {
                         fontSize: 16
                       }}
                     >
-                      {item}
+                      {item.text}
                     </div>
                   </div>
                 ))}
@@ -431,7 +432,7 @@ export default function DryEyePage() {
               <div style={{ display: "grid", gap: 12 }}>
                 {triggers.map((item) => (
                   <div
-                    key={item}
+                    key={item.text}
                     style={{
                       display: "flex",
                       gap: 12,
@@ -453,7 +454,7 @@ export default function DryEyePage() {
                         flexShrink: 0
                       }}
                     >
-                      <DropIcon />
+                      {item.icon}
                     </div>
 
                     <div
@@ -463,7 +464,7 @@ export default function DryEyePage() {
                         fontSize: 16
                       }}
                     >
-                      {item}
+                      {item.text}
                     </div>
                   </div>
                 ))}
@@ -558,9 +559,9 @@ export default function DryEyePage() {
               </h3>
 
               <div style={{ display: "grid", gap: 12 }}>
-                {help.map((item, index) => (
+                {help.map((item) => (
                   <div
-                    key={item}
+                    key={item.text}
                     style={{
                       display: "flex",
                       gap: 12,
@@ -583,7 +584,7 @@ export default function DryEyePage() {
                         flexShrink: 0
                       }}
                     >
-                      {index < 2 ? <ComfortIcon /> : <SparklesIcon />}
+                      {item.icon}
                     </div>
 
                     <div
@@ -593,7 +594,7 @@ export default function DryEyePage() {
                         fontSize: 16
                       }}
                     >
-                      {item}
+                      {item.text}
                     </div>
                   </div>
                 ))}
