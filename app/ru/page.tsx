@@ -1,15 +1,15 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import {
-  ReadingIcon,
+  CataractIcon,
   DropIcon,
   EyeIcon,
   LensIcon,
   QuestionIcon,
+  ReadingIcon,
   SurgeryIcon,
   SparklesIcon,
-  TargetIcon,
-  CataractIcon
+  TargetIcon
 } from "../../components/icons";
 
 const cards = [
