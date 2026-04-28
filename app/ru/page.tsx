@@ -21,7 +21,7 @@ const cards = [
     linkText: "Подробнее о причинах →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <CataractIcon />
+    icon: <CataractIcon size={26} />
   },
   {
     title: "Что такое катаракта?",
@@ -31,7 +31,7 @@ const cards = [
     linkText: "Подробнее о катаракте →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <QuestionIcon />
+    icon: <QuestionIcon size={26} />
   },
   {
     title: "Почему хуже видно вблизи?",
@@ -41,7 +41,7 @@ const cards = [
     linkText: "Подробнее о возрастном зрении →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <ReadingIcon />
+    icon: <ReadingIcon size={26} />
   },
   {
     title: "Как проходит операция при катаракте?",
@@ -51,7 +51,7 @@ const cards = [
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <SurgeryIcon />
+    icon: <SurgeryIcon size={26} />
   },
   {
     title: "Какое зрение вы хотите после операции?",
@@ -61,7 +61,7 @@ const cards = [
     linkText: "Пройти короткий опрос →",
     href: "/ru/start",
     accent: true,
-    icon: <TargetIcon />
+    icon: <TargetIcon size={26} />
   }
 ];
 
@@ -70,19 +70,19 @@ const topics = [
     title: "Катаракта",
     text: "Что это такое, как развивается и как современная хирургия помогает вернуть чёткое зрение.",
     href: "/ru/katarakta",
-    icon: <EyeIcon />
+    icon: <EyeIcon size={26} />
   },
   {
     title: "Интраокулярные линзы",
     text: "Виды линз, их преимущества и как выбирать подходящий вариант вместе с врачом.",
     href: "/ru/intraokulyarnye-linzy",
-    icon: <LensIcon />
+    icon: <LensIcon size={26} />
   },
   {
     title: "Сухой глаз",
     text: "Причины сухости и дискомфорта и что можно сделать для улучшения состояния.",
     href: "/ru/suhoj-glaz",
-    icon: <DropIcon />
+    icon: <DropIcon size={26} />
   }
 ];
 
@@ -324,7 +324,7 @@ export default function Page() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
+                gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
                 gap: 18,
                 alignItems: "stretch"
               }}
@@ -337,64 +337,50 @@ export default function Page() {
                       ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
                       : "#ffffff",
                     border: item.accent
-                      ? "2px solid #93c5fd"
-                      : "1px solid #e2e8f0",
-                    borderRadius: 24,
+                      ? "2px solid #7fb0ff"
+                      : "1px solid #dbe5f1",
+                    borderRadius: 28,
                     padding: 20,
                     boxShadow: item.accent
-                      ? "0 14px 34px rgba(37,99,235,0.10)"
-                      : "0 10px 30px rgba(15,23,42,0.05)",
-                    minHeight: 300,
+                      ? "0 12px 30px rgba(37,99,235,0.08)"
+                      : "0 8px 24px rgba(15,23,42,0.04)",
+                    minHeight: 356,
                     position: "relative"
                   }}
                 >
-                  {item.accent && (
+                  <summary
+                    style={{
+                      listStyle: "none",
+                      cursor: "pointer",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column"
+                    }}
+                  >
                     <div
                       style={{
-                        position: "absolute",
-                        top: 16,
-                        right: 16,
-                        width: 24,
-                        height: 24,
+                        width: 58,
+                        height: 58,
                         borderRadius: 999,
-                        background: "#2563eb",
+                        background: "#edf4ff",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "#ffffff",
-                        fontSize: 14,
-                        fontWeight: 700
+                        marginBottom: 20,
+                        flexShrink: 0
                       }}
                     >
-                      ✓
+                      {item.icon}
                     </div>
-                  )}
-
-                  <summary style={{ listStyle: "none", cursor: "pointer" }}>
-<div
-  style={{
-    width: 56,
-    height: 56,
-    borderRadius: 999,
-    background: item.accent ? "#dbeafe" : "#eff6ff",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 18
-  }}
->
-  <div style={{ transform: "scale(1.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-    {item.icon}
-  </div>
-</div>
 
                     <h3
                       style={{
-                        fontSize: 21,
+                        fontSize: 22,
                         lineHeight: 1.35,
                         color: "#0f172a",
-                        margin: "0 0 12px",
-                        letterSpacing: "-0.01em"
+                        margin: "0 0 14px",
+                        letterSpacing: "-0.02em",
+                        fontWeight: 600
                       }}
                     >
                       {item.title}
@@ -402,23 +388,25 @@ export default function Page() {
 
                     <p
                       style={{
-                        margin: "0 0 18px",
+                        margin: 0,
                         color: "#475569",
-                        lineHeight: 1.75,
+                        lineHeight: 1.72,
                         fontSize: 16
                       }}
                     >
                       {item.preview}
                     </p>
 
-                    <div
-                      style={{
-                        color: "#2563eb",
-                        fontWeight: 700,
-                        fontSize: 15
-                      }}
-                    >
-                      Развернуть ↓
+                    <div style={{ marginTop: "auto", paddingTop: 24 }}>
+                      <div
+                        style={{
+                          color: "#2563eb",
+                          fontWeight: 700,
+                          fontSize: 15
+                        }}
+                      >
+                        Развернуть ↓
+                      </div>
                     </div>
                   </summary>
 
@@ -452,17 +440,6 @@ export default function Page() {
                     >
                       {item.linkText}
                     </a>
-
-                    <div
-                      style={{
-                        marginTop: 14,
-                        color: "#64748b",
-                        fontWeight: 700,
-                        fontSize: 14
-                      }}
-                    >
-                      Свернуть ↑
-                    </div>
                   </div>
                 </details>
               ))}
@@ -517,22 +494,21 @@ export default function Page() {
                     boxShadow: "0 10px 30px rgba(15,23,42,0.05)"
                   }}
                 >
-                 <div
-  style={{
-    width: 60,
-    height: 60,
-    borderRadius: 999,
-    background: "#eff6ff",
-    marginBottom: 18,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  }}
->
-  <div style={{ transform: "scale(1.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-    {item.icon}
-  </div>
-</div>
+                  <div
+                    style={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: 999,
+                      background: "#edf4ff",
+                      marginBottom: 18,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+
                   <div
                     style={{
                       fontSize: 24,
@@ -544,6 +520,7 @@ export default function Page() {
                   >
                     {item.title}
                   </div>
+
                   <p
                     style={{
                       margin: "0 0 20px",
@@ -554,6 +531,7 @@ export default function Page() {
                   >
                     {item.text}
                   </p>
+
                   <div
                     style={{
                       color: "#2563eb",
@@ -636,7 +614,7 @@ export default function Page() {
                   key={step}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "56px 1fr 28px",
+                    gridTemplateColumns: "56px 1fr 30px",
                     gap: 18,
                     alignItems: "center",
                     padding: "16px 0",
@@ -673,8 +651,14 @@ export default function Page() {
                     {step}
                   </div>
 
-                  <div style={{ justifySelf: "end" }}>
-                    {index === 0 ? <EyeIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
+                  <div style={{ justifySelf: "end", display: "flex" }}>
+                    {index === 0 ? (
+                      <EyeIcon size={22} />
+                    ) : index === 1 ? (
+                      <LensIcon size={22} />
+                    ) : (
+                      <SparklesIcon size={22} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -773,7 +757,13 @@ export default function Page() {
                   </p>
                 </div>
 
-                <div style={{ display: "grid", gap: 14, justifyItems: "start" }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gap: 14,
+                    justifyItems: "start"
+                  }}
+                >
                   <a
                     href="/ru/start"
                     style={{
