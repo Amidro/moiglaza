@@ -324,7 +324,7 @@ export default function Page() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(5, minmax(0, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
                 gap: 18,
                 alignItems: "stretch"
               }}
@@ -337,17 +337,39 @@ export default function Page() {
                       ? "linear-gradient(180deg, #f8fbff 0%, #ffffff 100%)"
                       : "#ffffff",
                     border: item.accent
-                      ? "2px solid #7fb0ff"
-                      : "1px solid #dbe5f1",
-                    borderRadius: 28,
+                      ? "2px solid #93c5fd"
+                      : "1px solid #e2e8f0",
+                    borderRadius: 24,
                     padding: 20,
                     boxShadow: item.accent
-                      ? "0 12px 30px rgba(37,99,235,0.08)"
-                      : "0 8px 24px rgba(15,23,42,0.04)",
-                    minHeight: 356,
+                      ? "0 14px 34px rgba(37,99,235,0.10)"
+                      : "0 10px 30px rgba(15,23,42,0.05)",
+                    minHeight: 300,
                     position: "relative"
                   }}
                 >
+                  {item.accent && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 16,
+                        right: 16,
+                        width: 24,
+                        height: 24,
+                        borderRadius: 999,
+                        background: "#2563eb",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#ffffff",
+                        fontSize: 14,
+                        fontWeight: 700
+                      }}
+                    >
+                      ✓
+                    </div>
+                  )}
+
                   <summary
                     style={{
                       listStyle: "none",
@@ -359,14 +381,14 @@ export default function Page() {
                   >
                     <div
                       style={{
-                        width: 58,
-                        height: 58,
+                        width: 56,
+                        height: 56,
                         borderRadius: 999,
-                        background: "#edf4ff",
+                        background: item.accent ? "#dbeafe" : "#eff6ff",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        marginBottom: 20,
+                        marginBottom: 18,
                         flexShrink: 0
                       }}
                     >
@@ -375,12 +397,11 @@ export default function Page() {
 
                     <h3
                       style={{
-                        fontSize: 22,
+                        fontSize: 21,
                         lineHeight: 1.35,
                         color: "#0f172a",
-                        margin: "0 0 14px",
-                        letterSpacing: "-0.02em",
-                        fontWeight: 600
+                        margin: "0 0 12px",
+                        letterSpacing: "-0.01em"
                       }}
                     >
                       {item.title}
@@ -388,16 +409,16 @@ export default function Page() {
 
                     <p
                       style={{
-                        margin: 0,
+                        margin: "0 0 18px",
                         color: "#475569",
-                        lineHeight: 1.72,
+                        lineHeight: 1.75,
                         fontSize: 16
                       }}
                     >
                       {item.preview}
                     </p>
 
-                    <div style={{ marginTop: "auto", paddingTop: 24 }}>
+                    <div style={{ marginTop: "auto" }}>
                       <div
                         style={{
                           color: "#2563eb",
@@ -440,6 +461,17 @@ export default function Page() {
                     >
                       {item.linkText}
                     </a>
+
+                    <div
+                      style={{
+                        marginTop: 14,
+                        color: "#64748b",
+                        fontWeight: 700,
+                        fontSize: 14
+                      }}
+                    >
+                      Свернуть ↑
+                    </div>
                   </div>
                 </details>
               ))}
