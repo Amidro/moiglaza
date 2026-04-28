@@ -103,7 +103,10 @@ export function ReadingIcon({ size = 26, color = "#2563eb" }: IconProps) {
   );
 }
 
-export function SurgeryIcon({ size = 26, color = "#2563eb" }: IconProps) {
+export function SurgeryIcon({
+  size = 24,
+  color = "#2563eb",
+}: IconProps) {
   return (
     <svg
       width={size}
@@ -112,26 +115,54 @@ export function SurgeryIcon({ size = 26, color = "#2563eb" }: IconProps) {
       fill="none"
       aria-hidden="true"
     >
+      {/* глаз */}
       <path
-        d="M14.5 5.1L18.95 9.55"
+        d="M2.5 12C4.3 8.7 7.7 6.8 12 6.8C16.3 6.8 19.7 8.7 21.5 12C19.7 15.3 16.3 17.2 12 17.2C7.7 17.2 4.3 15.3 2.5 12Z"
         stroke={color}
-        strokeWidth="1.85"
-        strokeLinecap="round"
-      />
-      <path
-        d="M6.2 18.05L10.55 13.7L14.35 17.5L10 21.85"
-        stroke={color}
-        strokeWidth="1.85"
+        strokeWidth="1.7"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path
-        d="M13.1 6.55L17.5 10.95"
+
+      {/* зрачок */}
+      <circle
+        cx="10.2"
+        cy="12"
+        r="2.1"
         stroke={color}
-        strokeWidth="1.85"
+        strokeWidth="1.7"
+      />
+
+      {/* искусственная линза */}
+      <circle
+        cx="16.9"
+        cy="8.3"
+        r="2.2"
+        stroke={color}
+        strokeWidth="1.7"
+      />
+
+      {/* маленькие "опоры" линзы */}
+      <path
+        d="M15.3 6.9L14.4 6.2"
+        stroke={color}
+        strokeWidth="1.5"
         strokeLinecap="round"
       />
-      <circle cx="6.1" cy="18.1" r="1" fill={color} opacity="0.18" />
+      <path
+        d="M18.5 9.7L19.4 10.4"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+
+      {/* мягкая дуга / движение к глазу */}
+      <path
+        d="M14.5 10.2C13.9 10.7 13.3 11.1 12.7 11.4"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
