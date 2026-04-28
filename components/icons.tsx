@@ -115,52 +115,29 @@ export function SurgeryIcon({
       fill="none"
       aria-hidden="true"
     >
-      {/* глаз */}
       <path
-        d="M2.5 12C4.3 8.7 7.7 6.8 12 6.8C16.3 6.8 19.7 8.7 21.5 12C19.7 15.3 16.3 17.2 12 17.2C7.7 17.2 4.3 15.3 2.5 12Z"
+        d="M14.8 5.2L18.7 9.1"
         stroke={color}
-        strokeWidth="1.7"
+        strokeWidth="2.1"
+        strokeLinecap="round"
+      />
+      <path
+        d="M6.4 17.6L10.5 13.5L14.5 17.5L10.4 21.6"
+        stroke={color}
+        strokeWidth="2.1"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-
-      {/* зрачок */}
-      <circle
-        cx="10.2"
-        cy="12"
-        r="2.1"
-        stroke={color}
-        strokeWidth="1.7"
-      />
-
-      {/* искусственная линза */}
-      <circle
-        cx="16.9"
-        cy="8.3"
-        r="2.2"
-        stroke={color}
-        strokeWidth="1.7"
-      />
-
-      {/* маленькие "опоры" линзы */}
       <path
-        d="M15.3 6.9L14.4 6.2"
+        d="M13.3 6.7L17.2 10.6"
         stroke={color}
-        strokeWidth="1.5"
+        strokeWidth="2.1"
         strokeLinecap="round"
       />
       <path
-        d="M18.5 9.7L19.4 10.4"
+        d="M5.6 18.4H9.2"
         stroke={color}
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-
-      {/* мягкая дуга / движение к глазу */}
-      <path
-        d="M14.5 10.2C13.9 10.7 13.3 11.1 12.7 11.4"
-        stroke={color}
-        strokeWidth="1.5"
+        strokeWidth="2"
         strokeLinecap="round"
       />
     </svg>
