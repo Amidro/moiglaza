@@ -51,7 +51,7 @@ const cards = [
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <SurgeryIcon size={26} />
+    icon: <SurgeryIcon size={32} />
   },
   {
     title: "Какое зрение вы хотите после операции?",
