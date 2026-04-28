@@ -39,14 +39,9 @@ export function CataractIcon({ size = 22, color = "#2563eb" }: IconProps) {
 export function QuestionIcon({ size = 22, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <circle cx="12" cy="12" r="8.6" stroke={color} strokeWidth="1.7" />
-      <path
-        d="M10.3 9.6C10.6 8.7 11.3 8 12.4 8C13.7 8 14.6 8.7 14.6 9.8C14.6 10.7 14.1 11.2 13.3 11.7C12.5 12.2 12.1 12.7 12.1 13.6"
-        stroke={color}
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-      <circle cx="12.1" cy="16.6" r="0.95" fill={color} />
+      <rect x="4" y="4" width="16" height="16" rx="4" stroke={color} strokeWidth="1.7" />
+      <path d="M12 8V12" stroke={color} strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx="12" cy="16" r="1" fill={color} />
     </svg>
   );
 }
