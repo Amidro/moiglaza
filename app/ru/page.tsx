@@ -326,7 +326,7 @@ export default function Page() {
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
                 gap: 18,
-                alignItems: "stretch"
+                alignItems: "start"
               }}
             >
               {cards.map((item) => (
@@ -373,10 +373,7 @@ export default function Page() {
                   <summary
                     style={{
                       listStyle: "none",
-                      cursor: "pointer",
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column"
+                      cursor: "pointer"
                     }}
                   >
                     <div
@@ -388,8 +385,7 @@ export default function Page() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        marginBottom: 18,
-                        flexShrink: 0
+                        marginBottom: 18
                       }}
                     >
                       {item.icon}
@@ -418,16 +414,14 @@ export default function Page() {
                       {item.preview}
                     </p>
 
-                    <div style={{ marginTop: "auto" }}>
-                      <div
-                        style={{
-                          color: "#2563eb",
-                          fontWeight: 700,
-                          fontSize: 15
-                        }}
-                      >
-                        Развернуть ↓
-                      </div>
+                    <div
+                      style={{
+                        color: "#2563eb",
+                        fontWeight: 700,
+                        fontSize: 15
+                      }}
+                    >
+                      Развернуть ↓
                     </div>
                   </summary>
 
