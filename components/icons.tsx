@@ -176,8 +176,8 @@ export function TargetIcon({ size = 26, color = "#2563eb" }: IconProps) {
       fill="none"
       aria-hidden="true"
     >
-      <circle cx="12" cy="12" r="8.55" stroke={color} strokeWidth="1.85" />
-      <circle cx="12" cy="12" r="4.35" stroke={color} strokeWidth="1.85" />
+      <circle cx="12" cy="12" r="8.55" stroke={color} strokeWidth="2.1" />
+      <circle cx="12" cy="12" r="4.35" stroke={color} strokeWidth="2.1" />
       <circle cx="12" cy="12" r="1.45" fill={color} />
     </svg>
   );
