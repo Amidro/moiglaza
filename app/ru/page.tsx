@@ -517,20 +517,22 @@ export default function Page() {
                     boxShadow: "0 10px 30px rgba(15,23,42,0.05)"
                   }}
                 >
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 999,
-                      background: "#eff6ff",
-                      marginBottom: 18,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center"
-                    }}
-                  >
-                    {item.icon}
-                  </div>
+                 <div
+  style={{
+    width: 60,
+    height: 60,
+    borderRadius: 999,
+    background: "#eff6ff",
+    marginBottom: 18,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  }}
+>
+  <div style={{ transform: "scale(1.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    {item.icon}
+  </div>
+</div>
                   <div
                     style={{
                       fontSize: 24,
