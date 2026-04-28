@@ -326,7 +326,7 @@ export default function Page() {
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
                 gap: 18,
-                alignItems: "start"
+                alignItems: "stretch"
               }}
             >
               {cards.map((item) => (
@@ -344,8 +344,11 @@ export default function Page() {
                     boxShadow: item.accent
                       ? "0 14px 34px rgba(37,99,235,0.10)"
                       : "0 10px 30px rgba(15,23,42,0.05)",
-                    minHeight: 300,
-                    position: "relative"
+                    minHeight: 320,
+                    height: "100%",
+                    position: "relative",
+                    display: "flex",
+                    flexDirection: "column"
                   }}
                 >
                   {item.accent && (
@@ -373,7 +376,10 @@ export default function Page() {
                   <summary
                     style={{
                       listStyle: "none",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      display: "flex",
+                      flexDirection: "column",
+                      flex: 1
                     }}
                   >
                     <div
@@ -385,7 +391,8 @@ export default function Page() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        marginBottom: 18
+                        marginBottom: 18,
+                        flexShrink: 0
                       }}
                     >
                       {item.icon}
@@ -408,7 +415,8 @@ export default function Page() {
                         margin: "0 0 18px",
                         color: "#475569",
                         lineHeight: 1.75,
-                        fontSize: 16
+                        fontSize: 16,
+                        minHeight: 112
                       }}
                     >
                       {item.preview}
@@ -416,6 +424,7 @@ export default function Page() {
 
                     <div
                       style={{
+                        marginTop: "auto",
                         color: "#2563eb",
                         fontWeight: 700,
                         fontSize: 15
