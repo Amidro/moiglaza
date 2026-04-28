@@ -1,6 +1,12 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import { EyeIcon, LensIcon, SparklesIcon } from "../../../components/icons";
+import {
+  CataractIcon,
+  EyeIcon,
+  LensIcon,
+  QuestionIcon,
+  SparklesIcon
+} from "../../../components/icons";
 
 const symptoms = [
   "зрение как через туман",
@@ -281,7 +287,7 @@ export default function KataraktaPage() {
               </h3>
 
               <div style={{ display: "grid", gap: 12 }}>
-                {symptoms.map((item) => (
+                {symptoms.map((item, index) => (
                   <div
                     key={item}
                     style={{
@@ -305,7 +311,7 @@ export default function KataraktaPage() {
                         flexShrink: 0
                       }}
                     >
-                      <EyeIcon />
+                      {index === 0 ? <CataractIcon /> : <EyeIcon />}
                     </div>
 
                     <div
@@ -442,7 +448,7 @@ export default function KataraktaPage() {
                   </div>
 
                   <div style={{ justifySelf: "end" }}>
-                    {index === 0 ? <EyeIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
+                    {index === 0 ? <QuestionIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
                   </div>
                 </div>
               ))}
@@ -541,12 +547,7 @@ export default function KataraktaPage() {
                   </p>
                 </div>
 
-                <div
-                  style={{
-                    display: "grid",
-                    gap: 14
-                  }}
-                >
+                <div style={{ display: "grid", gap: 14 }}>
                   {questions.map((item) => (
                     <div
                       key={item}
