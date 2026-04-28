@@ -371,20 +371,22 @@ export default function Page() {
                   )}
 
                   <summary style={{ listStyle: "none", cursor: "pointer" }}>
-                    <div
-                      style={{
-                        width: 52,
-                        height: 52,
-                        borderRadius: 999,
-                        background: item.accent ? "#dbeafe" : "#eff6ff",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginBottom: 18
-                      }}
-                    >
-                      {item.icon}
-                    </div>
+<div
+  style={{
+    width: 56,
+    height: 56,
+    borderRadius: 999,
+    background: item.accent ? "#dbeafe" : "#eff6ff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 18
+  }}
+>
+  <div style={{ transform: "scale(1.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    {item.icon}
+  </div>
+</div>
 
                     <h3
                       style={{
