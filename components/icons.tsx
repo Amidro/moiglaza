@@ -130,24 +130,9 @@ export function IntermediateIcon({ size = 24, color = "#2563eb" }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <rect x="5" y="7" width="14" height="10" rx="2.5" stroke={color} strokeWidth="1.7" />
-      <path
-        d="M9 19H15"
-        stroke={color}
-        strokeWidth="1.7"
-        strokeLinecap="round"
-      />
-      <path
-        d="M10 10.5H14"
-        stroke={color}
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M9 13H15"
-        stroke={color}
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
+      <path d="M9 19H15" stroke={color} strokeWidth="1.7" strokeLinecap="round" />
+      <path d="M10 10.5H14" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M9 13H15" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
 }
