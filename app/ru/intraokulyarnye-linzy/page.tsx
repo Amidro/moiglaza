@@ -4,7 +4,8 @@ import {
   EyeIcon,
   IntermediateIcon,
   LensIcon,
-  MultifocalIcon
+  MultifocalIcon,
+  ToricIcon
 } from "../../../components/icons";
 
 const lenses = [
@@ -13,7 +14,7 @@ const lenses = [
     text:
       "Чаще всего ориентированы на хорошее зрение на одном основном расстоянии — обычно вдаль. Для чтения или работы вблизи после операции могут понадобиться очки.",
     highlight: "простое решение",
-    icon: <EyeIcon />
+    icon: <LensIcon />
   },
   {
     title: "EDOF",
@@ -34,7 +35,7 @@ const lenses = [
     text:
       "Используются, если у пациента есть астигматизм. Их задача — дополнительно учитывать этот фактор при выборе зрительного решения.",
     highlight: "при астигматизме",
-    icon: <LensIcon />
+    icon: <ToricIcon />
   }
 ];
 
@@ -68,7 +69,7 @@ export default function LensesPage() {
     <>
       <Header />
 
-      <main>
+      <main style={{ overflowX: "hidden" }}>
         <section
           style={{
             background:
@@ -79,12 +80,8 @@ export default function LensesPage() {
         >
           <div
             style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-              gap: 28,
-              alignItems: "center"
+              maxWidth: 760,
+              margin: "0 auto"
             }}
           >
             <div style={{ maxWidth: 640 }}>
@@ -106,7 +103,7 @@ export default function LensesPage() {
 
               <h1
                 style={{
-                  fontSize: 50,
+                  fontSize: "clamp(38px, 8vw, 50px)",
                   lineHeight: 1.08,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -164,66 +161,6 @@ export default function LensesPage() {
                 </a>
               </div>
             </div>
-
- 
-              <div
-                style={{
-                  position: "absolute",
-                  top: "8%",
-                  left: "10%",
-                  width: 400,
-                  height: 400,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "18%",
-                  left: "22%",
-                  width: 280,
-                  height: 280,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "18%",
-                  top: "18%",
-                  width: 210,
-                  height: 210,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 26%, rgba(191,219,254,0.72) 50%, rgba(147,197,253,0.32) 72%, rgba(96,165,250,0.05) 100%)",
-                  boxShadow:
-                    "0 0 0 12px rgba(255,255,255,0.30), 0 0 50px rgba(96,165,250,0.20)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "12%",
-                  top: "12%",
-                  color: "rgba(37,99,235,0.12)",
-                  fontSize: 52,
-                  fontWeight: 700,
-                  lineHeight: 1.02,
-                  letterSpacing: "0.22em",
-                  textAlign: "center"
-                }}
-              >
-                Ш
-                <br />
-                Б
-                <br />
-                М
-                <br />
-                Н
-              </div>
-            </div>
           </div>
         </section>
 
@@ -233,7 +170,8 @@ export default function LensesPage() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 28,
               alignItems: "start"
             }}
@@ -254,7 +192,7 @@ export default function LensesPage() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -363,7 +301,7 @@ export default function LensesPage() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 14px",
                   color: "#0f172a",
@@ -389,7 +327,8 @@ export default function LensesPage() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
                 gap: 20
               }}
             >
@@ -478,7 +417,7 @@ export default function LensesPage() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 14px",
                   color: "#0f172a",
@@ -598,7 +537,8 @@ export default function LensesPage() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                   gap: 28,
                   alignItems: "start",
                   position: "relative",
@@ -608,7 +548,7 @@ export default function LensesPage() {
                 <div>
                   <h2
                     style={{
-                      fontSize: 40,
+                      fontSize: "clamp(32px, 7vw, 40px)",
                       lineHeight: 1.15,
                       margin: "0 0 16px",
                       letterSpacing: "-0.03em"
