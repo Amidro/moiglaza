@@ -1,20 +1,13 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import {
-  CataractIcon,
-  EyeIcon,
-  LensIcon,
-  QuestionIcon,
-  ReadingIcon,
-  SparklesIcon
-} from "../../../components/icons";
+import { EyeIcon, LensIcon, SparklesIcon } from "../../../components/icons";
 
 const symptoms = [
-  { text: "зрение как через туман", icon: <CataractIcon /> },
-  { text: "яркий свет начинает мешать сильнее", icon: <SparklesIcon /> },
-  { text: "цвета кажутся менее яркими", icon: <EyeIcon /> },
-  { text: "сложнее читать мелкий текст", icon: <ReadingIcon /> },
-  { text: "хуже видно вечером и ночью", icon: <EyeIcon /> }
+  "зрение как через туман",
+  "яркий свет начинает мешать сильнее",
+  "цвета кажутся менее яркими",
+  "сложнее читать мелкий текст",
+  "хуже видно вечером и ночью"
 ];
 
 const steps = [
@@ -24,7 +17,7 @@ const steps = [
 ];
 
 const questions = [
-  "какой тип линзы подходит именно вам",
+  "какой вариант линзы больше подходит вашему образу жизни",
   "что для вас важнее: зрение вдаль, вблизи или на разных расстояниях",
   "насколько важно меньше зависеть от очков",
   "какое зрение вы ждёте после операции"
@@ -35,7 +28,7 @@ export default function KataraktaPage() {
     <>
       <Header />
 
-      <main>
+      <main style={{ overflowX: "hidden" }}>
         <section
           style={{
             background:
@@ -46,12 +39,8 @@ export default function KataraktaPage() {
         >
           <div
             style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
-              gap: 28,
-              alignItems: "center"
+              maxWidth: 760,
+              margin: "0 auto"
             }}
           >
             <div style={{ maxWidth: 620 }}>
@@ -73,7 +62,7 @@ export default function KataraktaPage() {
 
               <h1
                 style={{
-                  fontSize: 52,
+                  fontSize: "clamp(38px, 8vw, 52px)",
                   lineHeight: 1.08,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -129,76 +118,6 @@ export default function KataraktaPage() {
                 </a>
               </div>
             </div>
-
-            <div
-              style={{
-                position: "relative",
-                minHeight: 380,
-                borderRadius: 34,
-                background:
-                  "radial-gradient(circle at 68% 46%, rgba(255,255,255,0.98) 0%, rgba(219,234,254,0.92) 34%, rgba(191,219,254,0.42) 58%, rgba(239,246,255,0.16) 100%)",
-                border: "1px solid rgba(191,219,254,0.8)",
-                overflow: "hidden"
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "8%",
-                  left: "10%",
-                  width: 400,
-                  height: 400,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "18%",
-                  left: "22%",
-                  width: 280,
-                  height: 280,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "18%",
-                  top: "20%",
-                  width: 200,
-                  height: 200,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 26%, rgba(191,219,254,0.72) 50%, rgba(147,197,253,0.32) 72%, rgba(96,165,250,0.05) 100%)",
-                  boxShadow:
-                    "0 0 0 12px rgba(255,255,255,0.30), 0 0 50px rgba(96,165,250,0.20)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "11%",
-                  top: "10%",
-                  color: "rgba(37,99,235,0.12)",
-                  fontSize: 52,
-                  fontWeight: 700,
-                  lineHeight: 1.02,
-                  letterSpacing: "0.22em",
-                  textAlign: "center"
-                }}
-              >
-                Ш
-                <br />
-                Б
-                <br />
-                М
-                <br />
-                Н
-              </div>
-            </div>
           </div>
         </section>
 
@@ -208,7 +127,8 @@ export default function KataraktaPage() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 28,
               alignItems: "start"
             }}
@@ -229,7 +149,7 @@ export default function KataraktaPage() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -290,7 +210,7 @@ export default function KataraktaPage() {
               <div style={{ display: "grid", gap: 12 }}>
                 {symptoms.map((item) => (
                   <div
-                    key={item.text}
+                    key={item}
                     style={{
                       display: "flex",
                       gap: 12,
@@ -312,7 +232,7 @@ export default function KataraktaPage() {
                         flexShrink: 0
                       }}
                     >
-                      {item.icon}
+                      <EyeIcon />
                     </div>
 
                     <div
@@ -322,7 +242,7 @@ export default function KataraktaPage() {
                         fontSize: 16
                       }}
                     >
-                      {item.text}
+                      {item}
                     </div>
                   </div>
                 ))}
@@ -342,7 +262,8 @@ export default function KataraktaPage() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 28,
               alignItems: "start"
             }}
@@ -363,7 +284,7 @@ export default function KataraktaPage() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -405,7 +326,9 @@ export default function KataraktaPage() {
                 borderRadius: 24,
                 padding: 24,
                 border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+                boxShadow: "0 10px 30px rgba(15,23,42,0.06)",
+                maxWidth: "100%",
+                overflow: "hidden"
               }}
             >
               {steps.map((step, index) => (
@@ -413,7 +336,7 @@ export default function KataraktaPage() {
                   key={step}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "56px 1fr 28px",
+                    gridTemplateColumns: "42px minmax(0, 1fr) 24px",
                     gap: 18,
                     alignItems: "center",
                     padding: "16px 0",
@@ -432,7 +355,8 @@ export default function KataraktaPage() {
                       alignItems: "center",
                       justifyContent: "center",
                       fontWeight: 700,
-                      fontSize: 20
+                      fontSize: 20,
+                      flexShrink: 0
                     }}
                   >
                     {index + 1}
@@ -442,14 +366,21 @@ export default function KataraktaPage() {
                     style={{
                       color: "#334155",
                       lineHeight: 1.75,
-                      fontSize: 18
+                      fontSize: 18,
+                      minWidth: 0
                     }}
                   >
                     {step}
                   </div>
 
-                  <div style={{ justifySelf: "end" }}>
-                    {index === 0 ? <QuestionIcon /> : index === 1 ? <LensIcon /> : <SparklesIcon />}
+                  <div style={{ justifySelf: "end", display: "flex" }}>
+                    {index === 0 ? (
+                      <EyeIcon size={22} />
+                    ) : index === 1 ? (
+                      <LensIcon size={22} />
+                    ) : (
+                      <SparklesIcon size={22} />
+                    )}
                   </div>
                 </div>
               ))}
@@ -514,7 +445,8 @@ export default function KataraktaPage() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                   gap: 28,
                   alignItems: "start",
                   position: "relative",
@@ -524,7 +456,7 @@ export default function KataraktaPage() {
                 <div>
                   <h2
                     style={{
-                      fontSize: 40,
+                      fontSize: "clamp(32px, 7vw, 40px)",
                       lineHeight: 1.15,
                       margin: "0 0 16px",
                       letterSpacing: "-0.03em"
@@ -548,7 +480,12 @@ export default function KataraktaPage() {
                   </p>
                 </div>
 
-                <div style={{ display: "grid", gap: 14 }}>
+                <div
+                  style={{
+                    display: "grid",
+                    gap: 14
+                  }}
+                >
                   {questions.map((item) => (
                     <div
                       key={item}
