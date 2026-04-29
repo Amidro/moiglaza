@@ -108,13 +108,8 @@ export default function Page() {
         >
           <div
             style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: 28,
-              alignItems: "center"
+              maxWidth: 760,
+              margin: "0 auto"
             }}
           >
             <div style={{ maxWidth: 620 }}>
@@ -191,85 +186,6 @@ export default function Page() {
                 >
                   Пройти короткий опрос
                 </a>
-              </div>
-            </div>
-
-            <div
-              style={{
-                position: "relative",
-                minHeight: 390,
-                borderRadius: 34,
-                background:
-                  "radial-gradient(circle at 68% 46%, rgba(255,255,255,0.98) 0%, rgba(219,234,254,0.92) 34%, rgba(191,219,254,0.42) 58%, rgba(239,246,255,0.16) 100%)",
-                border: "1px solid rgba(191,219,254,0.8)",
-                overflow: "hidden",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.7)"
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "radial-gradient(circle at 78% 36%, rgba(255,255,255,0.75) 0%, transparent 42%)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "8%",
-                  left: "10%",
-                  width: 420,
-                  height: 420,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "16%",
-                  left: "22%",
-                  width: 300,
-                  height: 300,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "15%",
-                  top: "16%",
-                  width: 250,
-                  height: 250,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.86) 26%, rgba(191,219,254,0.72) 50%, rgba(147,197,253,0.32) 72%, rgba(96,165,250,0.05) 100%)",
-                  boxShadow:
-                    "0 0 0 12px rgba(255,255,255,0.30), 0 0 50px rgba(96,165,250,0.20)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "10%",
-                  top: "8%",
-                  color: "rgba(37,99,235,0.12)",
-                  fontSize: 54,
-                  fontWeight: 700,
-                  lineHeight: 1.02,
-                  letterSpacing: "0.22em",
-                  textAlign: "center"
-                }}
-              >
-                Ш
-                <br />
-                Б
-                <br />
-                М
-                <br />
-                Н
               </div>
             </div>
           </div>
@@ -586,12 +502,17 @@ export default function Page() {
         </section>
 
         <section style={{ padding: "72px 20px" }}>
-<div
-  style={{
-    maxWidth: 760,
-    margin: "0 auto"
-  }}
->
+          <div
+            style={{
+              maxWidth: 1160,
+              margin: "0 auto",
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
+              gap: 30,
+              alignItems: "center"
+            }}
+          >
             <div>
               <h2
                 style={{
