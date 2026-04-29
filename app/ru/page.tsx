@@ -586,17 +586,12 @@ export default function Page() {
         </section>
 
         <section style={{ padding: "72px 20px" }}>
-          <div
-            style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: 30,
-              alignItems: "center"
-            }}
-          >
+<div
+  style={{
+    maxWidth: 760,
+    margin: "0 auto"
+  }}
+>
             <div>
               <h2
                 style={{
