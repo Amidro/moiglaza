@@ -24,7 +24,7 @@ type Answers = {
 };
 
 type ResultProfile = {
-  id: "distance" | "near" | "all_distances" | "between_edof_panoptix";
+  id: "distance" | "all_distances" | "between_edof_panoptix";
   priorityTitle: string;
   priorityText: string;
   technologyLabel: string;
@@ -87,9 +87,6 @@ function getResultProfile(answers: Answers): ResultProfile {
     [wantsPhone, wantsReading, wantsComputer, wantsDriving, wantsDaily].filter(Boolean)
       .length >= 2;
 
-  /**
-   * 1. Максимальная свобода от очков → PanOptix
-   */
   if (
     wantsMinimumGlasses &&
     (hasAllDay || manyNoGlassesSituations || nearOrScreenNeed)
@@ -105,9 +102,6 @@ function getResultProfile(answers: Answers): ResultProfile {
     };
   }
 
-  /**
-   * 2. Даль + среднее расстояние / экран / повседневный комфорт → EDOF
-   */
   if (
     intermediateNeed ||
     nearOrScreenNeed ||
@@ -125,9 +119,6 @@ function getResultProfile(answers: Answers): ResultProfile {
     };
   }
 
-  /**
-   * 3. Простое решение, приоритет вдаль, очки не смущают → Clareon IQ
-   */
   return {
     id: "distance",
     priorityTitle: "Хорошее зрение вдаль",
@@ -304,13 +295,8 @@ export default function StartPage() {
         >
           <div
             style={{
-              maxWidth: 1160,
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
-              gap: 28,
-              alignItems: "center"
+              maxWidth: 760,
+              margin: "0 auto"
             }}
           >
             <div style={{ maxWidth: 620 }}>
@@ -358,55 +344,6 @@ export default function StartPage() {
                   <span>не заменяет консультацию врача</span>
                 </div>
               )}
-            </div>
-
-            <div
-              style={{
-                minHeight: 320,
-                borderRadius: 30,
-                background:
-                  "radial-gradient(circle at 65% 45%, rgba(255,255,255,0.95) 0%, rgba(219,234,254,0.88) 38%, rgba(191,219,254,0.38) 62%, rgba(239,246,255,0.15) 100%)",
-                border: "1px solid rgba(191,219,254,0.8)",
-                position: "relative",
-                overflow: "hidden"
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "12%",
-                  left: "12%",
-                  width: 320,
-                  height: 320,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "22%",
-                  left: "24%",
-                  width: 220,
-                  height: 220,
-                  borderRadius: "50%",
-                  border: "1px solid rgba(255,255,255,0.75)"
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  right: "13%",
-                  top: "18%",
-                  width: 180,
-                  height: 180,
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 30%, rgba(191,219,254,0.72) 55%, rgba(147,197,253,0.28) 78%, rgba(96,165,250,0.06) 100%)",
-                  boxShadow:
-                    "0 0 0 10px rgba(255,255,255,0.32), 0 0 40px rgba(96,165,250,0.18)"
-                }}
-              />
             </div>
           </div>
         </section>
@@ -457,12 +394,7 @@ export default function StartPage() {
                   </button>
                 </div>
               ) : isComplete ? (
-                <div
-                  style={{
-                    display: "grid",
-                    gap: 18
-                  }}
-                >
+                <div style={{ display: "grid", gap: 18 }}>
                   <StepBadge>Результат опроса</StepBadge>
 
                   <div
