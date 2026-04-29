@@ -25,16 +25,23 @@ type Answers = {
 
 type ResultProfile = {
   id: "distance" | "near" | "all_distances" | "between_edof_panoptix";
-  title: string;
-  meaning: string;
-  discuss: string;
+  priorityTitle: string;
+  priorityText: string;
   technologyLabel: string;
+  technologyNote: string;
 };
 
 const initialAnswers: Answers = {
   visualFocuses: [],
   noGlassesSituations: []
 };
+
+const discussionPoints = [
+  "какой вариант линзы больше подходит вашему образу жизни;",
+  "есть ли астигматизм и нужна ли торическая линза;",
+  "насколько реально уменьшить зависимость от очков;",
+  "в каких ситуациях очки всё равно могут понадобиться."
+];
 
 function toggleArrayValue<T extends string>(arr: T[], value: T) {
   return arr.includes(value) ? arr.filter((v) => v !== value) : [...arr, value];
@@ -82,12 +89,12 @@ function getResultProfile(answers: Answers): ResultProfile {
   ) {
     return {
       id: "distance",
-      title: "Для вас особенно важно хорошее зрение вдаль",
-      meaning:
-        "По вашим ответам можно предположить, что для вас особенно важно чётко видеть вдаль — например, при вождении, прогулках и в других повседневных ситуациях вне дома.",
-      discuss:
-        "На консультации стоит обсудить монофокальные ИОЛ, если ваш главный приоритет — качественное зрение вдаль, а очки для чтения, телефона или других близких задач не являются для вас большой проблемой.",
-      technologyLabel: "Clareon IQ (Айкю)"
+      priorityTitle: "Хорошее зрение вдаль",
+      priorityText:
+        "Для вас особенно важно чётко видеть вдаль — например, при вождении, прогулках, просмотре телевизора и других повседневных ситуациях вне дома. При этом очки для чтения или телефона могут быть для вас приемлемым вариантом.",
+      technologyLabel: "Монофокальная ИОЛ / Clareon IQ (АйКю)",
+      technologyNote:
+        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
     };
   }
 
@@ -99,35 +106,35 @@ function getResultProfile(answers: Answers): ResultProfile {
   ) {
     return {
       id: "near",
-      title: "Для вас особенно важны близкие и привычные повседневные задачи",
-      meaning:
-        "По вашим ответам можно предположить, что для вас особенно важны чтение, телефон, мелкий текст, домашние дела и другие действия на близком расстоянии.",
-      discuss:
-        "На консультации стоит обсудить, какие зрительные решения лучше соответствуют такому образу жизни и какой уровень комфорта можно ожидать при близких задачах после операции.",
-      technologyLabel: "Clareon IQ (Айкю)"
+      priorityTitle: "Комфорт в привычных близких делах",
+      priorityText:
+        "Для вас особенно важны чтение, телефон, мелкий текст, домашние дела и другие действия на близком расстоянии. На консультации стоит отдельно обсудить, какого зрения можно ожидать вблизи и в каких ситуациях могут понадобиться очки.",
+      technologyLabel: "Монофокальная ИОЛ / Clareon IQ (АйКю)",
+      technologyNote:
+        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
     };
   }
 
   if (strongAllDistancesNeed && strongFreedomNeed && wantsSeveralNoGlasses) {
     return {
       id: "all_distances",
-      title: "Для вас особенно важна большая свобода от очков в течение дня",
-      meaning:
-        "По вашим ответам можно предположить, что вам важно хорошо видеть вдаль, на среднем расстоянии и вблизи, а также как можно меньше зависеть от очков в повседневной жизни.",
-      discuss:
-        "На консультации стоит обсудить трифокальные ИОЛ, если для вас особенно важны разные расстояния и вы хотите максимально сократить использование очков после операции.",
-      technologyLabel: "PanOptix"
+      priorityTitle: "Больше свободы от очков в течение дня",
+      priorityText:
+        "Для вас важно видеть на разных расстояниях — вдаль, на среднем расстоянии и вблизи — и как можно реже пользоваться очками в повседневной жизни.",
+      technologyLabel: "Трифокальная ИОЛ / Clareon PanOptix",
+      technologyNote:
+        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
     };
   }
 
   return {
     id: "between_edof_panoptix",
-    title: "Для вас важны и повседневный комфорт, и большая зрительная свобода",
-    meaning:
-      "По вашим ответам можно предположить, что для вас важны несколько зрительных задач одновременно: хорошее зрение вдаль, комфорт на среднем расстоянии и стремление как можно реже пользоваться очками.",
-    discuss:
-      "На консультации стоит обсудить оба направления — EDOF и трифокальные ИОЛ. Если для вас важнее комфорт вдаль и на среднем расстоянии, а очки для мелкого текста вас не сильно смущают, врач может предложить обсудить EDOF. Если же для вас принципиально важно как можно меньше зависеть от очков и хорошо видеть на разных расстояниях в течение дня, стоит обсудить трифокальные ИОЛ.",
-    technologyLabel: "Vivity / PanOptix"
+    priorityTitle: "Повседневный комфорт и зрительная свобода",
+    priorityText:
+      "Для вас важны несколько ситуаций одновременно: хорошее зрение вдаль, комфорт на среднем расстоянии и желание реже пользоваться очками. На консультации стоит обсудить, что для вас важнее: мягкий повседневный диапазон зрения или максимальная свобода от очков.",
+    technologyLabel: "Линза с углублённым фокусом (EDOF) / Clareon Vivity",
+    technologyNote:
+      "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации. Врач также может объяснить разницу между EDOF и трифокальными ИОЛ."
   };
 }
 
@@ -286,7 +293,7 @@ export default function StartPage() {
     <>
       <Header />
 
-      <main>
+      <main style={{ overflowX: "hidden" }}>
         <section
           style={{
             background:
@@ -299,7 +306,8 @@ export default function StartPage() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 28,
               alignItems: "center"
             }}
@@ -309,7 +317,7 @@ export default function StartPage() {
 
               <h1
                 style={{
-                  fontSize: 50,
+                  fontSize: "clamp(38px, 8vw, 50px)",
                   lineHeight: 1.08,
                   margin: "18px 0 18px",
                   color: "#0f172a"
@@ -448,153 +456,192 @@ export default function StartPage() {
                   </button>
                 </div>
               ) : isComplete ? (
-                <div>
-                  <StepBadge>Что стоит обсудить с врачом</StepBadge>
-
-                  <div style={{ marginTop: 22, marginBottom: 24 }}>
-                    <h2
-                      style={{
-                        fontSize: 34,
-                        lineHeight: 1.2,
-                        color: "#0f172a",
-                        margin: "0 0 16px"
-                      }}
-                    >
-                      Ваш приоритет
-                    </h2>
-
-                    <div
-                      style={{
-                        background: "#f8fafc",
-                        borderRadius: 24,
-                        padding: 22,
-                        border: "1px solid #e2e8f0"
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: 28,
-                          lineHeight: 1.3,
-                          color: "#0f172a",
-                          fontWeight: 700
-                        }}
-                      >
-                        {result.title}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: 24 }}>
-                    <h3
-                      style={{
-                        margin: "0 0 10px",
-                        fontSize: 22,
-                        color: "#0f172a"
-                      }}
-                    >
-                      Что это может означать
-                    </h3>
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#475569",
-                        lineHeight: 1.8,
-                        fontSize: 17
-                      }}
-                    >
-                      {result.meaning}
-                    </p>
-                  </div>
-
-                  <div style={{ marginBottom: 24 }}>
-                    <h3
-                      style={{
-                        margin: "0 0 10px",
-                        fontSize: 22,
-                        color: "#0f172a"
-                      }}
-                    >
-                      Что стоит обсудить с врачом
-                    </h3>
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#475569",
-                        lineHeight: 1.8,
-                        fontSize: 17
-                      }}
-                    >
-                      {result.discuss}
-                    </p>
-                  </div>
+                <div
+                  style={{
+                    display: "grid",
+                    gap: 18
+                  }}
+                >
+                  <StepBadge>Результат опроса</StepBadge>
 
                   <div
                     style={{
-                      background: "#f8fafc",
-                      borderRadius: 24,
-                      padding: 22,
+                      background: "#ffffff",
                       border: "1px solid #e2e8f0",
-                      marginBottom: 24
+                      borderRadius: 24,
+                      padding: 24,
+                      boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
                     }}
                   >
                     <div
                       style={{
-                        fontSize: 14,
+                        fontSize: 13,
                         fontWeight: 800,
-                        letterSpacing: "0.12em",
+                        letterSpacing: "0.16em",
                         textTransform: "uppercase",
                         color: "#2563eb",
-                        marginBottom: 10
+                        marginBottom: 12
                       }}
                     >
-                      Название, которое полезно знать перед консультацией
+                      Ваш приоритет
                     </div>
 
-                    <div
+                    <h2
                       style={{
-                        fontSize: 24,
-                        fontWeight: 700,
-                        color: "#0f172a"
+                        margin: "0 0 12px",
+                        fontSize: "clamp(26px, 6vw, 34px)",
+                        lineHeight: 1.2,
+                        color: "#0f172a",
+                        letterSpacing: "-0.02em"
                       }}
                     >
-                      {result.technologyLabel}
-                    </div>
+                      {result.priorityTitle}
+                    </h2>
+
+                    <p
+                      style={{
+                        margin: 0,
+                        color: "#334155",
+                        fontSize: 18,
+                        lineHeight: 1.8
+                      }}
+                    >
+                      {result.priorityText}
+                    </p>
                   </div>
 
                   <div
                     style={{
                       background:
-                        "linear-gradient(135deg, #0b2f73 0%, #0f3f9f 40%, #082b68 100%)",
+                        "linear-gradient(135deg, #0b2f73 0%, #0f3f9f 45%, #082b68 100%)",
                       color: "#ffffff",
                       borderRadius: 26,
-                      padding: 22,
-                      marginBottom: 24
+                      padding: 26,
+                      boxShadow: "0 18px 42px rgba(15,23,42,0.18)",
+                      position: "relative",
+                      overflow: "hidden"
                     }}
                   >
                     <div
                       style={{
-                        fontSize: 18,
-                        fontWeight: 700,
-                        marginBottom: 8
+                        position: "absolute",
+                        right: -70,
+                        bottom: -70,
+                        width: 250,
+                        height: 250,
+                        borderRadius: "50%",
+                        border: "1px solid rgba(255,255,255,0.12)"
                       }}
-                    >
-                      Важно
+                    />
+
+                    <div style={{ position: "relative", zIndex: 1 }}>
+                      <div
+                        style={{
+                          fontSize: 13,
+                          fontWeight: 800,
+                          letterSpacing: "0.16em",
+                          textTransform: "uppercase",
+                          color: "#bfdbfe",
+                          marginBottom: 12
+                        }}
+                      >
+                        Название, которое полезно знать перед консультацией
+                      </div>
+
+                      <h2
+                        style={{
+                          margin: "0 0 12px",
+                          fontSize: "clamp(26px, 6vw, 36px)",
+                          lineHeight: 1.18,
+                          letterSpacing: "-0.03em",
+                          color: "#ffffff"
+                        }}
+                      >
+                        {result.technologyLabel}
+                      </h2>
+
+                      <p
+                        style={{
+                          margin: 0,
+                          color: "#dbeafe",
+                          fontSize: 16,
+                          lineHeight: 1.75,
+                          maxWidth: 720
+                        }}
+                      >
+                        {result.technologyNote}
+                      </p>
                     </div>
-                    <p
-                      style={{
-                        margin: 0,
-                        color: "#dbeafe",
-                        lineHeight: 1.8,
-                        fontSize: 16
-                      }}
-                    >
-                      Опросник не ставит диагноз и не заменяет обследование. Он
-                      помогает лучше подготовиться к разговору с врачом и понять,
-                      какие зрительные решения стоит обсудить на консультации.
-                    </p>
                   </div>
 
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <div
+                    style={{
+                      background: "#ffffff",
+                      border: "1px solid #e2e8f0",
+                      borderRadius: 24,
+                      padding: 24,
+                      boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 800,
+                        letterSpacing: "0.16em",
+                        textTransform: "uppercase",
+                        color: "#2563eb",
+                        marginBottom: 14
+                      }}
+                    >
+                      Что обсудить с врачом
+                    </div>
+
+                    <div style={{ display: "grid", gap: 12 }}>
+                      {discussionPoints.map((item) => (
+                        <div
+                          key={item}
+                          style={{
+                            display: "flex",
+                            gap: 12,
+                            alignItems: "flex-start",
+                            color: "#334155",
+                            fontSize: 16,
+                            lineHeight: 1.75
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: 8,
+                              height: 8,
+                              borderRadius: 999,
+                              background: "#2563eb",
+                              marginTop: 10,
+                              flexShrink: 0
+                            }}
+                          />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
+                      borderRadius: 20,
+                      padding: 18,
+                      color: "#64748b",
+                      fontSize: 14,
+                      lineHeight: 1.75
+                    }}
+                  >
+                    <strong style={{ color: "#334155" }}>Важно:</strong> опросник не ставит
+                    диагноз и не заменяет консультацию врача. Окончательное решение о лечении и
+                    выборе линзы принимает врач после обследования.
+                  </div>
+
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 6 }}>
                     <a
                       href="/ru/intraokulyarnye-linzy"
                       style={{
@@ -791,7 +838,8 @@ export default function StartPage() {
                       <div
                         style={{
                           display: "grid",
-                          gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))",
+                          gridTemplateColumns:
+                            "repeat(auto-fit, minmax(min(100%, 130px), 1fr))",
                           gap: 12
                         }}
                       >
