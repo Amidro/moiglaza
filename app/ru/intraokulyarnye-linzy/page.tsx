@@ -165,17 +165,7 @@ export default function LensesPage() {
               </div>
             </div>
 
-            <div
-              style={{
-                position: "relative",
-                minHeight: 380,
-                borderRadius: 34,
-                background:
-                  "radial-gradient(circle at 68% 46%, rgba(255,255,255,0.98) 0%, rgba(219,234,254,0.92) 34%, rgba(191,219,254,0.42) 58%, rgba(239,246,255,0.16) 100%)",
-                border: "1px solid rgba(191,219,254,0.8)",
-                overflow: "hidden"
-              }}
-            >
+ 
               <div
                 style={{
                   position: "absolute",
