@@ -51,7 +51,7 @@ const cards = [
     linkText: "Подробнее об операции →",
     href: "/ru/katarakta",
     accent: false,
-    icon: <SurgeryIcon size={32} />
+    icon: <SurgeryIcon size={26} />
   },
   {
     title: "Какое зрение вы хотите после операции?",
@@ -97,7 +97,7 @@ export default function Page() {
     <>
       <Header />
 
-      <main>
+      <main style={{ overflowX: "hidden" }}>
         <section
           style={{
             background:
@@ -111,7 +111,8 @@ export default function Page() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 28,
               alignItems: "center"
             }}
@@ -135,7 +136,7 @@ export default function Page() {
 
               <h1
                 style={{
-                  fontSize: 54,
+                  fontSize: "clamp(38px, 8vw, 54px)",
                   lineHeight: 1.08,
                   margin: "0 0 18px",
                   color: "#0f172a",
@@ -298,7 +299,7 @@ export default function Page() {
 
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 14px",
                   color: "#0f172a",
@@ -324,7 +325,8 @@ export default function Page() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(min(100%, 210px), 1fr))",
                 gap: 18,
                 alignItems: "stretch"
               }}
@@ -498,7 +500,7 @@ export default function Page() {
             >
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 14px",
                   color: "#0f172a",
@@ -512,7 +514,8 @@ export default function Page() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                gridTemplateColumns:
+                  "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                 gap: 20
               }}
             >
@@ -588,7 +591,8 @@ export default function Page() {
               maxWidth: 1160,
               margin: "0 auto",
               display: "grid",
-              gridTemplateColumns: "minmax(280px, 420px) minmax(320px, 1fr)",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 320px), 1fr))",
               gap: 30,
               alignItems: "center"
             }}
@@ -596,7 +600,7 @@ export default function Page() {
             <div>
               <h2
                 style={{
-                  fontSize: 36,
+                  fontSize: "clamp(30px, 6vw, 36px)",
                   lineHeight: 1.2,
                   margin: "0 0 16px",
                   color: "#0f172a",
@@ -641,7 +645,9 @@ export default function Page() {
                 borderRadius: 24,
                 padding: 24,
                 border: "1px solid #e2e8f0",
-                boxShadow: "0 10px 30px rgba(15,23,42,0.06)"
+                boxShadow: "0 10px 30px rgba(15,23,42,0.06)",
+                maxWidth: "100%",
+                overflow: "hidden"
               }}
             >
               {cataractSteps.map((step, index) => (
@@ -649,8 +655,8 @@ export default function Page() {
                   key={step}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "56px 1fr 30px",
-                    gap: 18,
+                    gridTemplateColumns: "42px minmax(0, 1fr) 24px",
+                    gap: 16,
                     alignItems: "center",
                     padding: "16px 0",
                     borderBottom:
@@ -670,7 +676,8 @@ export default function Page() {
                       alignItems: "center",
                       justifyContent: "center",
                       fontWeight: 700,
-                      fontSize: 20
+                      fontSize: 20,
+                      flexShrink: 0
                     }}
                   >
                     {index + 1}
@@ -680,7 +687,8 @@ export default function Page() {
                     style={{
                       color: "#334155",
                       lineHeight: 1.75,
-                      fontSize: 18
+                      fontSize: 18,
+                      minWidth: 0
                     }}
                   >
                     {step}
@@ -758,7 +766,8 @@ export default function Page() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+                  gridTemplateColumns:
+                    "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                   gap: 28,
                   alignItems: "center",
                   position: "relative",
@@ -768,7 +777,7 @@ export default function Page() {
                 <div>
                   <h2
                     style={{
-                      fontSize: 42,
+                      fontSize: "clamp(32px, 7vw, 42px)",
                       lineHeight: 1.15,
                       margin: "0 0 14px",
                       letterSpacing: "-0.03em"
@@ -804,7 +813,8 @@ export default function Page() {
                     style={{
                       textDecoration: "none",
                       padding: "16px 24px",
-                      minWidth: 280,
+                      width: "100%",
+                      maxWidth: 320,
                       textAlign: "center",
                       borderRadius: 14,
                       background: "#ffffff",
@@ -820,7 +830,8 @@ export default function Page() {
                     style={{
                       textDecoration: "none",
                       padding: "16px 24px",
-                      minWidth: 280,
+                      width: "100%",
+                      maxWidth: 320,
                       textAlign: "center",
                       borderRadius: 14,
                       border: "1px solid rgba(255,255,255,0.35)",
