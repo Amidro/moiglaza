@@ -59,63 +59,41 @@ function getResultProfile(answers: Answers): ResultProfile {
   const hasNear = visualFocuses.includes("near");
   const hasAllDay = visualFocuses.includes("all_day");
 
-  const multiFocusCount = [hasDistance, hasIntermediate, hasNear, hasAllDay].filter(Boolean).length;
-
   const wantsPhone = noGlassesSituations.includes("phone");
   const wantsReading = noGlassesSituations.includes("reading");
   const wantsComputer = noGlassesSituations.includes("computer");
   const wantsDriving = noGlassesSituations.includes("driving");
   const wantsDaily = noGlassesSituations.includes("daily_tasks");
 
-  const wantsSeveralNoGlasses =
-    [wantsPhone, wantsReading, wantsComputer, wantsDriving, wantsDaily].filter(Boolean).length >= 2;
+  const wantsLessGlasses =
+    glassesFreedom === "prefer_less" || glassesFreedom === "minimum";
 
-  const strongNearNeed =
-    hasNear || gadgetsComfort >= 4 || wantsPhone || wantsReading || wantsComputer;
+  const wantsMinimumGlasses = glassesFreedom === "minimum";
 
-  const strongDistanceNeed =
-    hasDistance || wantsDriving || lifestyle === "active";
+  const nearOrScreenNeed =
+    hasNear || wantsPhone || wantsReading || wantsComputer || gadgetsComfort >= 4;
 
-  const strongAllDistancesNeed =
-    hasAllDay || multiFocusCount >= 2 || (strongNearNeed && strongDistanceNeed);
+  const distanceNeed = hasDistance || wantsDriving || lifestyle === "active";
 
-  const strongFreedomNeed = glassesFreedom === "minimum";
+  const intermediateNeed =
+    hasIntermediate || wantsComputer || wantsDaily || gadgetsComfort >= 4;
 
+  const allDistanceNeed =
+    hasAllDay ||
+    (distanceNeed && nearOrScreenNeed) ||
+    (distanceNeed && intermediateNeed && wantsLessGlasses);
+
+  const manyNoGlassesSituations =
+    [wantsPhone, wantsReading, wantsComputer, wantsDriving, wantsDaily].filter(Boolean)
+      .length >= 2;
+
+  /**
+   * 1. Максимальная свобода от очков → PanOptix
+   */
   if (
-    strongDistanceNeed &&
-    !strongNearNeed &&
-    !strongAllDistancesNeed &&
-    glassesFreedom === "ok_with_glasses"
+    wantsMinimumGlasses &&
+    (hasAllDay || manyNoGlassesSituations || nearOrScreenNeed)
   ) {
-    return {
-      id: "distance",
-      priorityTitle: "Хорошее зрение вдаль",
-      priorityText:
-        "Для вас особенно важно чётко видеть вдаль — например, при вождении, прогулках, просмотре телевизора и других повседневных ситуациях вне дома. При этом очки для чтения или телефона могут быть для вас приемлемым вариантом.",
-      technologyLabel: "Монофокальная ИОЛ / Clareon IQ (АйКю)",
-      technologyNote:
-        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
-    };
-  }
-
-  if (
-    strongNearNeed &&
-    !strongAllDistancesNeed &&
-    !strongFreedomNeed &&
-    (lifestyle === "calm" || gadgetsComfort >= 4)
-  ) {
-    return {
-      id: "near",
-      priorityTitle: "Комфорт в привычных близких делах",
-      priorityText:
-        "Для вас особенно важны чтение, телефон, мелкий текст, домашние дела и другие действия на близком расстоянии. На консультации стоит отдельно обсудить, какого зрения можно ожидать вблизи и в каких ситуациях могут понадобиться очки.",
-      technologyLabel: "Монофокальная ИОЛ / Clareon IQ (АйКю)",
-      technologyNote:
-        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
-    };
-  }
-
-  if (strongAllDistancesNeed && strongFreedomNeed && wantsSeveralNoGlasses) {
     return {
       id: "all_distances",
       priorityTitle: "Больше свободы от очков в течение дня",
@@ -127,14 +105,37 @@ function getResultProfile(answers: Answers): ResultProfile {
     };
   }
 
+  /**
+   * 2. Даль + среднее расстояние / экран / повседневный комфорт → EDOF
+   */
+  if (
+    intermediateNeed ||
+    nearOrScreenNeed ||
+    allDistanceNeed ||
+    glassesFreedom === "prefer_less"
+  ) {
+    return {
+      id: "between_edof_panoptix",
+      priorityTitle: "Повседневный комфорт и зрительная свобода",
+      priorityText:
+        "Для вас важны комфортное зрение вдаль и на среднем расстоянии, а также удобство в повседневных ситуациях: экран, меню, общение, прогулки и привычные дела.",
+      technologyLabel: "Линза с углублённым фокусом (EDOF) / Clareon Vivity",
+      technologyNote:
+        "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации. Врач также может объяснить разницу между EDOF и трифокальными ИОЛ."
+    };
+  }
+
+  /**
+   * 3. Простое решение, приоритет вдаль, очки не смущают → Clareon IQ
+   */
   return {
-    id: "between_edof_panoptix",
-    priorityTitle: "Повседневный комфорт и зрительная свобода",
+    id: "distance",
+    priorityTitle: "Хорошее зрение вдаль",
     priorityText:
-      "Для вас важны несколько ситуаций одновременно: хорошее зрение вдаль, комфорт на среднем расстоянии и желание реже пользоваться очками. На консультации стоит обсудить, что для вас важнее: мягкий повседневный диапазон зрения или максимальная свобода от очков.",
-    technologyLabel: "Линза с углублённым фокусом (EDOF) / Clareon Vivity",
+      "Для вас особенно важно чётко видеть вдаль — например, при вождении, прогулках, просмотре телевизора и других повседневных ситуациях вне дома. При этом очки для чтения или телефона могут быть приемлемым вариантом.",
+    technologyLabel: "Монофокальная ИОЛ / Clareon IQ (АйКю)",
     technologyNote:
-      "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации. Врач также может объяснить разницу между EDOF и трифокальными ИОЛ."
+      "Это не назначение лечения, а название технологии, которое можно обсудить с врачом на консультации."
   };
 }
 
