@@ -1,12 +1,48 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { EyeIcon } from "./icons";
 
+const languagePairs: Record<string, string> = {
+  "/ru": "/uz",
+  "/ru/katarakta": "/uz/katarakta",
+  "/ru/intraokulyarnye-linzy": "/uz/intraokulyar-linzalar",
+  "/ru/suhoj-glaz": "/uz/quruq-koz",
+  "/ru/start": "/uz/start",
+
+  "/uz": "/ru",
+  "/uz/katarakta": "/ru/katarakta",
+  "/uz/intraokulyar-linzalar": "/ru/intraokulyarnye-linzy",
+  "/uz/quruq-koz": "/ru/suhoj-glaz",
+  "/uz/start": "/ru/start"
+};
+
 export default function Header() {
-  const navItems = [
-    { label: "Главная", href: "/ru" },
-    { label: "Катаракта", href: "/ru/katarakta" },
-    { label: "Интраокулярные линзы", href: "/ru/intraokulyarnye-linzy" },
-    { label: "Сухой глаз", href: "/ru/suhoj-glaz" }
-  ];
+  const pathname = usePathname();
+
+  const isUz = pathname?.startsWith("/uz");
+
+  const navItems = isUz
+    ? [
+        { label: "Бош саҳифа", href: "/uz" },
+        { label: "Катаракта", href: "/uz/katarakta" },
+        { label: "Интраокуляр линзалар", href: "/uz/intraokulyar-linzalar" },
+        { label: "Қуруқ кўз", href: "/uz/quruq-koz" }
+      ]
+    : [
+        { label: "Главная", href: "/ru" },
+        { label: "Катаракта", href: "/ru/katarakta" },
+        { label: "Интраокулярные линзы", href: "/ru/intraokulyarnye-linzy" },
+        { label: "Сухой глаз", href: "/ru/suhoj-glaz" }
+      ];
+
+  const homeHref = isUz ? "/uz" : "/ru";
+  const subtitle = isUz
+    ? "Кўриш ва катаракта ҳақида содда тилда"
+    : "Понятно о зрении и катаракте";
+
+  const langHref = languagePairs[pathname || ""] || (isUz ? "/ru" : "/uz");
+  const langLabel = isUz ? "Русский" : "O‘zbekcha";
 
   return (
     <>
@@ -81,7 +117,7 @@ export default function Header() {
           }}
         >
           <a
-            href="/ru"
+            href={homeHref}
             style={{
               display: "flex",
               alignItems: "center",
@@ -127,7 +163,7 @@ export default function Header() {
                   marginTop: 4
                 }}
               >
-                Понятно о зрении и катаракте
+                {subtitle}
               </div>
             </div>
           </a>
@@ -162,7 +198,7 @@ export default function Header() {
             ))}
 
             <a
-              href="/uz"
+              href={langHref}
               className="moiglaza-lang-link"
               style={{
                 textDecoration: "none",
@@ -177,7 +213,7 @@ export default function Header() {
                 boxShadow: "0 8px 18px rgba(37,99,235,0.08)"
               }}
             >
-              O‘zbekcha
+              {langLabel}
             </a>
           </nav>
         </div>
