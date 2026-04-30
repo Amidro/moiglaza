@@ -156,8 +156,7 @@ export function LensIcon({ size = 26, color = "#2563eb" }: IconProps) {
 
 /**
  * EDOF — удлинённый свет / вытянутый фокус
- * Премиальный и понятный вариант:
- * источник света + горизонтальный расширяющийся конус света
+ * Конусообразный свет: узкий источник слева → широкий световой диапазон справа
  */
 export function IntermediateIcon({
   size = 26,
@@ -171,79 +170,84 @@ export function IntermediateIcon({
       fill="none"
       aria-hidden="true"
     >
-      {/* источник света */}
-      <circle cx="5.4" cy="12" r="1.55" fill={color} />
+      <defs>
+        <linearGradient
+          id="edofBeamGradient"
+          x1="4"
+          y1="12"
+          x2="21"
+          y2="12"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor={color} stopOpacity="0.95" />
+          <stop offset="52%" stopColor={color} stopOpacity="0.34" />
+          <stop offset="100%" stopColor={color} stopOpacity="0.95" />
+        </linearGradient>
 
-      {/* мягкий залитый конус света */}
-      <path
-        d="M8.1 10.35
-           C10.1 9.35 12.6 8.8 15.7 8.7
-           C17.9 8.62 19.7 8.95 21.2 9.45
-           L21.2 14.55
-           C19.7 15.05 17.9 15.38 15.7 15.3
-           C12.6 15.2 10.1 14.65 8.1 13.65
-           Z"
-        fill={color}
-        opacity="0.18"
-      />
+        <linearGradient
+          id="edofCenterGlow"
+          x1="4"
+          y1="12"
+          x2="21"
+          y2="12"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.1" />
+          <stop offset="48%" stopColor="#ffffff" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#ffffff" stopOpacity="0.12" />
+        </linearGradient>
+      </defs>
 
-      {/* верхняя граница конуса */}
+      {/* основной расширяющийся конус света */}
       <path
-        d="M7.8 10.4
-           C9.7 9.35 12.3 8.78 15.4 8.68
-           C17.4 8.61 19.3 8.86 21 9.35"
-        stroke={color}
-        strokeWidth="1.95"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      {/* нижняя граница конуса */}
-      <path
-        d="M7.8 13.6
-           C9.7 14.65 12.3 15.22 15.4 15.32
-           C17.4 15.39 19.3 15.14 21 14.65"
-        stroke={color}
-        strokeWidth="1.95"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-
-      {/* центральная ось света */}
-      <path
-        d="M8.4 12H19.6"
-        stroke={color}
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        opacity="0.95"
+        d="
+          M4.1 11.1
+          C4.7 10.65 5.45 10.35 6.35 10.15
+          L20.2 6.9
+          C20.95 6.72 21.6 7.28 21.6 8.05
+          V15.95
+          C21.6 16.72 20.95 17.28 20.2 17.1
+          L6.35 13.85
+          C5.45 13.65 4.7 13.35 4.1 12.9
+          C3.48 12.44 3.48 11.56 4.1 11.1
+          Z
+        "
+        fill="url(#edofBeamGradient)"
       />
 
-      {/* мягкое начало луча */}
+      {/* мягкий световой центр внутри луча */}
       <path
-        d="M6.9 11.15L8.4 10.75"
+        d="
+          M5.3 12
+          C7.8 11.45 11.4 11.05 15.2 11.05
+          H20.3
+          V12.95
+          H15.2
+          C11.4 12.95 7.8 12.55 5.3 12
+          Z
+        "
+        fill="url(#edofCenterGlow)"
+        opacity="0.9"
+      />
+
+      {/* верхняя и нижняя границы для читаемости в маленьком размере */}
+      <path
+        d="M6.2 10.2L20.25 6.95"
         stroke={color}
-        strokeWidth="1.55"
+        strokeWidth="1.05"
         strokeLinecap="round"
-        opacity="0.8"
+        opacity="0.55"
       />
       <path
-        d="M6.8 12H8.4"
+        d="M6.2 13.8L20.25 17.05"
         stroke={color}
-        strokeWidth="1.55"
+        strokeWidth="1.05"
         strokeLinecap="round"
-        opacity="0.8"
-      />
-      <path
-        d="M6.9 12.85L8.4 13.25"
-        stroke={color}
-        strokeWidth="1.55"
-        strokeLinecap="round"
-        opacity="0.8"
+        opacity="0.55"
       />
     </svg>
   );
 }
-
 /**
  * Трифокал — зачёркнутые очки
  */
