@@ -158,53 +158,64 @@ export function LensIcon({ size = 26, color = "#2563eb" }: IconProps) {
  * EDOF — удлинённый свет / вытянутый фокус
  * Маяк полностью убран
  */
-export function IntermediateIcon({ size = 26, color = "#2563eb" }: IconProps) {
+export function IntermediateIcon({
+  size = 24,
+  color = "#2563eb",
+}: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      {/* источник света */}
-      <circle cx="6.2" cy="12" r="1.6" fill={color} />
-
-      {/* удлинённый свет / расширенный фокус */}
-      <path
-        d="M9.2 9.4L20 7.2"
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="7"
+        cy="12"
+        r="2.1"
         stroke={color}
-        strokeWidth="2.05"
-        strokeLinecap="round"
-      />
-      <path
-        d="M9.2 12L21 12"
-        stroke={color}
-        strokeWidth="2.05"
-        strokeLinecap="round"
-      />
-      <path
-        d="M9.2 14.6L20 16.8"
-        stroke={color}
-        strokeWidth="2.05"
-        strokeLinecap="round"
+        strokeWidth="1.8"
       />
 
-      {/* мягкое начало луча */}
       <path
-        d="M7.8 10.4L9.4 9.9"
-        stroke={color}
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        opacity="0.85"
+        d="M9.4 10.2
+           C11.2 9.2 13.4 8.6 16.1 8.5
+           C18.0 8.45 19.5 8.8 20.9 9.3
+           L20.9 14.7
+           C19.5 15.2 18.0 15.55 16.1 15.5
+           C13.4 15.4 11.2 14.8 9.4 13.8
+           Z"
+        fill={color}
+        opacity="0.18"
       />
+
       <path
-        d="M7.8 12L9.4 12"
+        d="M9.2 10.3
+           C11.0 9.2 13.2 8.6 16.0 8.5
+           C17.8 8.45 19.5 8.8 21.0 9.4"
         stroke={color}
-        strokeWidth="1.8"
+        strokeWidth="1.7"
         strokeLinecap="round"
-        opacity="0.85"
+        strokeLinejoin="round"
       />
+
       <path
-        d="M7.8 13.6L9.4 14.1"
+        d="M9.2 13.7
+           C11.0 14.8 13.2 15.4 16.0 15.5
+           C17.8 15.55 19.5 15.2 21.0 14.6"
         stroke={color}
-        strokeWidth="1.8"
+        strokeWidth="1.7"
         strokeLinecap="round"
-        opacity="0.85"
+        strokeLinejoin="round"
+      />
+
+      <path
+        d="M9.8 12H19.2"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        opacity="0.9"
       />
     </svg>
   );
