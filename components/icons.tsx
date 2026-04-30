@@ -156,10 +156,11 @@ export function LensIcon({ size = 26, color = "#2563eb" }: IconProps) {
 
 /**
  * EDOF — удлинённый свет / вытянутый фокус
- * Маяк полностью убран
+ * Премиальный и понятный вариант:
+ * источник света + горизонтальный расширяющийся конус света
  */
 export function IntermediateIcon({
-  size = 24,
+  size = 26,
   color = "#2563eb",
 }: IconProps) {
   return (
@@ -170,52 +171,74 @@ export function IntermediateIcon({
       fill="none"
       aria-hidden="true"
     >
-      <circle
-        cx="7"
-        cy="12"
-        r="2.1"
-        stroke={color}
-        strokeWidth="1.8"
-      />
+      {/* источник света */}
+      <circle cx="5.4" cy="12" r="1.55" fill={color} />
 
+      {/* мягкий залитый конус света */}
       <path
-        d="M9.4 10.2
-           C11.2 9.2 13.4 8.6 16.1 8.5
-           C18.0 8.45 19.5 8.8 20.9 9.3
-           L20.9 14.7
-           C19.5 15.2 18.0 15.55 16.1 15.5
-           C13.4 15.4 11.2 14.8 9.4 13.8
+        d="M8.1 10.35
+           C10.1 9.35 12.6 8.8 15.7 8.7
+           C17.9 8.62 19.7 8.95 21.2 9.45
+           L21.2 14.55
+           C19.7 15.05 17.9 15.38 15.7 15.3
+           C12.6 15.2 10.1 14.65 8.1 13.65
            Z"
         fill={color}
         opacity="0.18"
       />
 
+      {/* верхняя граница конуса */}
       <path
-        d="M9.2 10.3
-           C11.0 9.2 13.2 8.6 16.0 8.5
-           C17.8 8.45 19.5 8.8 21.0 9.4"
+        d="M7.8 10.4
+           C9.7 9.35 12.3 8.78 15.4 8.68
+           C17.4 8.61 19.3 8.86 21 9.35"
         stroke={color}
-        strokeWidth="1.7"
+        strokeWidth="1.95"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
+      {/* нижняя граница конуса */}
       <path
-        d="M9.2 13.7
-           C11.0 14.8 13.2 15.4 16.0 15.5
-           C17.8 15.55 19.5 15.2 21.0 14.6"
+        d="M7.8 13.6
+           C9.7 14.65 12.3 15.22 15.4 15.32
+           C17.4 15.39 19.3 15.14 21 14.65"
         stroke={color}
-        strokeWidth="1.7"
+        strokeWidth="1.95"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
+      {/* центральная ось света */}
       <path
-        d="M9.8 12H19.2"
+        d="M8.4 12H19.6"
         stroke={color}
-        strokeWidth="1.5"
+        strokeWidth="1.75"
         strokeLinecap="round"
-        opacity="0.9"
+        opacity="0.95"
+      />
+
+      {/* мягкое начало луча */}
+      <path
+        d="M6.9 11.15L8.4 10.75"
+        stroke={color}
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        opacity="0.8"
+      />
+      <path
+        d="M6.8 12H8.4"
+        stroke={color}
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        opacity="0.8"
+      />
+      <path
+        d="M6.9 12.85L8.4 13.25"
+        stroke={color}
+        strokeWidth="1.55"
+        strokeLinecap="round"
+        opacity="0.8"
       />
     </svg>
   );
