@@ -9,6 +9,16 @@ const nextConfig = {
         destination: "/ru",
         permanent: false,
       },
+      {
+        source: "/katarakta",
+        destination: "/ru",
+        permanent: false,
+      },
+      {
+        source: "/katarakta/",
+        destination: "/ru",
+        permanent: false,
+      },
     ];
   },
 };
