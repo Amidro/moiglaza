@@ -1,13 +1,35 @@
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import { EyeIcon, LensIcon, SparklesIcon } from "../../../components/icons";
+import {
+  CataractIcon,
+  EyeIcon,
+  LensIcon,
+  ReadingIcon,
+  SparklesIcon,
+  TargetIcon
+} from "../../../components/icons";
 
 const symptoms = [
-  "зрение как через туман",
-  "яркий свет начинает мешать сильнее",
-  "цвета кажутся менее яркими",
-  "сложнее читать мелкий текст",
-  "хуже видно вечером и ночью"
+  {
+    text: "зрение как через туман",
+    icon: <CataractIcon size={22} />
+  },
+  {
+    text: "яркий свет начинает мешать сильнее",
+    icon: <SparklesIcon size={22} />
+  },
+  {
+    text: "цвета кажутся менее яркими",
+    icon: <LensIcon size={22} />
+  },
+  {
+    text: "сложнее читать мелкий текст",
+    icon: <ReadingIcon size={22} />
+  },
+  {
+    text: "хуже видно вечером и ночью",
+    icon: <TargetIcon size={22} />
+  }
 ];
 
 const steps = [
@@ -210,7 +232,7 @@ export default function KataraktaPage() {
               <div style={{ display: "grid", gap: 12 }}>
                 {symptoms.map((item) => (
                   <div
-                    key={item}
+                    key={item.text}
                     style={{
                       display: "flex",
                       gap: 12,
@@ -232,7 +254,7 @@ export default function KataraktaPage() {
                         flexShrink: 0
                       }}
                     >
-                      <EyeIcon />
+                      {item.icon}
                     </div>
 
                     <div
@@ -242,7 +264,7 @@ export default function KataraktaPage() {
                         fontSize: 16
                       }}
                     >
-                      {item}
+                      {item.text}
                     </div>
                   </div>
                 ))}
